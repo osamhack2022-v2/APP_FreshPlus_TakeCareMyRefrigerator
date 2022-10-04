@@ -17,10 +17,13 @@ class Item {
 }
 
 class ItemRepositoryException {
-  String code ;}
+  String code;
+  ItemRepositoryException(this.code);
+}
 
-class ItemRepos i 
- String fridgeID;
+class ItemRepository {
+  String unitID;
+  String fridgeID;
   String uid;
   CollectionReference? itemsRef;
   ItemRepository(this.unitID, this.fridgeID, this.uid);
@@ -65,7 +68,7 @@ class ItemRepos i
     }
     switch (item.type) {
       case (ItemType.drink):
-        itemDoc['type']='drink';
+        itemDoc['type'] = 'drink';
         break;
       case (ItemType.food):
         itemDoc['type'] = 'food';

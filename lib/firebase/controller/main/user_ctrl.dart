@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:helloworld/firebase/controller/ctrl_exception.dart';
 import 'package:helloworld/firebase/repository/item_repository.dart';
 import 'main_ctrl.dart';
 import '/firebase/repository/user_repository.dart';
 import '/firebase/repository/user_box_repository.dart';
 import 'general/dto.dart';
-
 
 class UserController {
   //Login Status
@@ -25,8 +23,8 @@ class UserController {
     unitID = user.unitID;
     fridgeID = user.fridgeID;
     switch (user.type) {
-      case (UserType.manager):
-        userType = "manager";
+      case (UserType.master):
+        userType = "master";
         if (reqFridgeID == null || reqUid == null) {
           CtrlException('null-parameter');
         }
@@ -34,8 +32,8 @@ class UserController {
         this.reqUid = reqUid!;
         break;
 
-      case (UserType.master):
-        userType = "master";
+      case (UserType.manager):
+        userType = "manager";
         if (reqUid == null) {
           CtrlException('null-parameter');
         }
@@ -65,48 +63,67 @@ class UserController {
   }
 
   Future<List<ItemDTO>> getWarningItemList() async {
-    var items = await userBoxRepo.getItemsQuery('this.reqUid','status','warning');
-    return items.map((value){
+    var items =
+        await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'warning');
+    return items.map((value) {
       String type;
-      switch(value.type){
-        case(ItemType.drink):
+      switch (value.type) {
+        case (ItemType.drink):
           type = "drink";
           break;
-        case(ItemType.food):
+        case (ItemType.food):
           type = "food";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, value.uid,"warning" ,type);
+      return ItemDTO(value.itemID, value.itemName, value.uid, "warning", type);
     }).toList();
   }
-  Future<List<ItemDTO>> getTrashItemList() async{
-    var items = await userBoxRepo.getItemsQuery('this.reqUid','status','warning');
-    return items.map((value){
+
+  Future<List<ItemDTO>> getTrashItemList() async {
+    var items =
+        await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'warning');
+    return items.map((value) {
       String type;
-      switch(value.type){
-        case(ItemType.drink):
+      switch (value.type) {
+        case (ItemType.drink):
           type = "drink";
           break;
-        case(ItemType.food):
+        case (ItemType.food):
           type = "food";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, value.uid,"trash" ,type);
+      return ItemDTO(value.itemID, value.itemName, value.uid, "trash", type);
     }).toList();
-}
-  Future<List<ItemDTO>> getCategoryList(String type) async{
-    var items = await userBoxRepo.getItemsQuery('this.reqUid','type',type);
-    return items.map((value){
+  }
+
+  Future<List<ItemDTO>> getCategoryList(String type) async {
+    var items = await userBoxRepo.getItemsQuery('this.reqUid', 'type', type);
+    return items.map((value) {
       String type;
-      switch(value.type){
-        case(ItemType.drink):
+      String status ="ok";
+      switch (value.type) {
+        case (ItemType.drink):
           type = "drink";
           break;
-        case(ItemType.food):
+        case (ItemType.food):
           type = "food";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, value.uid, value.status, type);
+      switch (value.status) {
+        case (ItemStatus.lost):
+          status = "lost";
+          break;
+        case (ItemStatus.noHost):
+          status = "noHost";
+          break;
+        case (ItemStatus.trash):
+          status = "trash";
+          break;
+        case (ItemStatus.warning):
+          status = "warning";
+          break;
+      }
+      return ItemDTO(value.itemID, value.itemName, value.uid, status, type);
     }).toList();
   }
 }

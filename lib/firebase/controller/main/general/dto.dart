@@ -14,13 +14,29 @@ class ItemDTO {
   String uid;
   String status;
   String type;
-  ItemDTO(this.itemID, this.itemName, this.uid, this.status,this.type);
+  ItemDTO(this.itemID, this.itemName, this.uid, this.status, this.type);
 }
 
-class UserDTO{
-
+class FridgeDTO {
+  String fridgeID;
+  int itemNum;
+  String manager;
+  int warningNum;
+  int trashNum;
+  int lostNum;
+  int noHostNum;
+  FridgeDTO(this.fridgeID, this.itemNum, this.manager, this.warningNum,
+      this.trashNum, this.lostNum, this.noHostNum);
 }
 
-class FridgeDTO{
-  
+class UnitDTO {
+  String unitID;
+  String master;
+  int itemNum;
+  int warningNum;
+  int lostNum;
+  int noHostNum;
+  UnitDTO(this.unitID, this.master, 
+  this.itemNum, this.warningNum, this.lostNum,
+      this.noHostNum);
 }
