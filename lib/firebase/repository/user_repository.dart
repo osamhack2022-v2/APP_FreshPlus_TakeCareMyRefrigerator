@@ -119,6 +119,7 @@ class UserRepository {
   Future<User> getUser(String uid) async {
     DocumentSnapshot userDoc =
         await FirebaseFirestore.instance.collection('user').doc(uid).get();
+    if(userDoc.exists==false) throw UserRepositoryException('no-user');
     UserType type_enum = UserType.user;
     switch (userDoc.get('type')) {
       case ("manager"):

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'item_repository.dart';
 class UserBox {
   String uid;
   int itemNum;
@@ -110,5 +110,41 @@ class UserBoxRepository {
         userBoxSnapshot.get('items').cast<String>(),
         userBoxSnapshot.get('warningNum'),userBoxSnapshot.get('trashNum'),
         userBoxSnapshot.get('lostNum'));
+  }
+
+  Future<List<Item>> getItemsQuery(String uid, String fieldName, String fieldValue) async{
+    CollectionReference itemsRef = userBoxesRef!.doc(uid).collection("items");
+    Query query = itemsRef.where(fieldName,isEqualTo:fieldValue);
+    List<QueryDocumentSnapshot> queryDocSnapshotList = (await query.get()).docs;
+    return queryDocSnapshotList.map((value) {
+      if(value.exists==false) throw UserBoxRepositoryException('no-item');
+      DateTime inDate = value.get('inDate').toDate();
+      DateTime dueDate = value.get('dueDate').toDate();
+      ItemStatus status = ItemStatus.ok;
+      switch (value.get('status')) {
+        case ('lost'):
+          status = ItemStatus.lost;
+          break;
+        case ('noHost'):
+          status = ItemStatus.noHost;
+          break;
+        case ('trash'):
+          status = ItemStatus.trash;
+          break;
+        case ('warning'):
+          status = ItemStatus.warning;
+          break;
+      }
+      return Item(
+          value.get('itemID'),
+          value.get('itemName'),
+          value.get('uid'),
+          inDate,
+          dueDate,
+          status,
+          value.get('type'));
+
+    }).toList();
+
   }
 }
