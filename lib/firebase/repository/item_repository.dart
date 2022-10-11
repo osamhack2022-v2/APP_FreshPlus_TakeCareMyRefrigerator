@@ -40,7 +40,7 @@ class ItemRepository {
     if (itemsRef == null) throw ItemRepositoryException("null-items");
   }
 
-  Future<void> addItem(Item item) async {
+  Future<String> addItem(Item item) async {
     //itemID자율배정입니다.
     var itemDoc = {
       'itemID': "",
@@ -76,6 +76,7 @@ class ItemRepository {
     }
     DocumentReference docRef = await itemsRef!.add(itemDoc);
     await docRef.update({'itemID': docRef.id});
+    return docRef.id;
   }
 
   Future<void> deleteItem(String itemID) async {

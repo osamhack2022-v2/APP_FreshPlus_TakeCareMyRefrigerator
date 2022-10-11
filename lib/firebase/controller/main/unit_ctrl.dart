@@ -33,7 +33,7 @@ class UnitController {
   Future<List<FridgeDTO>> getFridgeList() async{
     var fridges = unit.fridges;
     List<FridgeDTO> list = [];
-    fridges.forEach(await (value) async {
+    fridges.forEach((value) async {
       try{
         var fridge = await fridgeRepo.getFridge(value);
         list.add(FridgeDTO(fridge.fridgeID, fridge.itemNum,

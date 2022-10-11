@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'item_repository.dart';
+
 class UserBox {
   String uid;
   int itemNum;
@@ -55,6 +56,7 @@ class UserBoxRepository {
     DocumentReference userBoxRef = userBoxesRef!.doc(uid);
     userBoxRef.delete();
   }
+
   //will be deleted soon
   Future<void> editItemNum(String uid, int num) async {
     DocumentSnapshot userBoxSnapshot = await userBoxesRef!.doc(uid).get();
@@ -106,21 +108,26 @@ class UserBoxRepository {
     DocumentSnapshot userBoxSnapshot = await userBoxesRef!.doc(uid).get();
     if (userBoxSnapshot.exists == false)
       throw UserBoxRepositoryException('no-userbox');
-    return UserBox(userBoxSnapshot.get('uid'), userBoxSnapshot.get('itemNum'),
+    return UserBox(
+        userBoxSnapshot.get('uid'),
+        userBoxSnapshot.get('itemNum'),
         userBoxSnapshot.get('items').cast<String>(),
-        userBoxSnapshot.get('warningNum'),userBoxSnapshot.get('trashNum'),
+        userBoxSnapshot.get('warningNum'),
+        userBoxSnapshot.get('trashNum'),
         userBoxSnapshot.get('lostNum'));
   }
 
-  Future<List<Item>> getItemsQuery(String uid, String fieldName, String fieldValue) async{
+  Future<List<Item>> getItemsQuery(
+      String uid, String fieldName, String fieldValue) async {
     CollectionReference itemsRef = userBoxesRef!.doc(uid).collection("items");
-    Query query = itemsRef.where(fieldName,isEqualTo:fieldValue);
+    Query query = itemsRef.where(fieldName, isEqualTo: fieldValue);
     List<QueryDocumentSnapshot> queryDocSnapshotList = (await query.get()).docs;
     return queryDocSnapshotList.map((value) {
-      if(value.exists==false) throw UserBoxRepositoryException('no-item');
+      if (value.exists == false) throw UserBoxRepositoryException('no-item');
       DateTime inDate = value.get('inDate').toDate();
       DateTime dueDate = value.get('dueDate').toDate();
       ItemStatus status = ItemStatus.ok;
+      ItemType type = ItemType.drink;
       switch (value.get('status')) {
         case ('lost'):
           status = ItemStatus.lost;
@@ -135,16 +142,13 @@ class UserBoxRepository {
           status = ItemStatus.warning;
           break;
       }
-      return Item(
-          value.get('itemID'),
-          value.get('itemName'),
-          value.get('uid'),
-          inDate,
-          dueDate,
-          status,
-          value.get('type'));
-
+      switch (value.get('type')) {
+        case ("food"):
+          type = ItemType.food;
+          break;
+      }
+      return Item(value.get('itemID'), value.get('itemName'), value.get('uid'),
+          inDate, dueDate, status, type);
     }).toList();
-
   }
 }

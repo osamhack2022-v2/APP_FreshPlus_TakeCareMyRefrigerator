@@ -73,7 +73,7 @@ class FridgeController {
 
   Future<List<ItemDTO>> getStatusItemList(String status) async {
     List<ItemDTO> list = [];
-    fridge.users.forEach((value) async {
+    await () async{fridge.users.forEach((value) async {
       var itemList;
       try {
         itemList = await userBoxRepo.getItemsQuery(value, "status", status);
@@ -93,7 +93,7 @@ class FridgeController {
       } on UserBoxRepositoryException catch (e) {
         CtrlException(e.code);
       }
-    });
+    });};
     return list;
     //users에 manager 포함되게 변경 필요
   }

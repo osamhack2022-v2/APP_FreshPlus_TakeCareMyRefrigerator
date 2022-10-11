@@ -22,6 +22,7 @@ class UserController {
     uid = user.uid;
     unitID = user.unitID;
     fridgeID = user.fridgeID;
+    print(user.type);
     switch (user.type) {
       case (UserType.master):
         userType = "master";
@@ -97,10 +98,11 @@ class UserController {
   }
 
   Future<List<ItemDTO>> getCategoryList(String type) async {
-    var items = await userBoxRepo.getItemsQuery('this.reqUid', 'type', type);
+    var items = await userBoxRepo.getItemsQuery(reqUid, 'type', type);
+    print(items.length);
     return items.map((value) {
       String type;
-      String status ="ok";
+      String status = "ok";
       switch (value.type) {
         case (ItemType.drink):
           type = "drink";

@@ -40,3 +40,10 @@ class UnitDTO {
   this.itemNum, this.warningNum, this.lostNum,
       this.noHostNum);
 }
+
+class ItemAddDTO{
+  String itemName;
+  String type;
+  DateTime dueDate;
+  ItemAddDTO(this.itemName,this.type,this.dueDate);
+}
