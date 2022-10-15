@@ -11,5 +11,16 @@ class MessageController {
     userRepo = UserRepository();
   }
 
-  Future<List<MessageDTO>> getMessages() async {}
+  Future<List<MessageDTO>> getMessages() async {
+    var unread = await userRepo.getUnreadMessage(uid);
+    var read = await userRepo.getReadMessage(uid);
+    List<MessageDTO> unreadDTO = unread.map((value) {
+      return MessageDTO(value, false);
+    }).toList();
+    List<MessageDTO> readDTO = read.map((value) {
+      return MessageDTO(value, true);
+    }).toList();
+    unreadDTO.addAll(readDTO);
+    return unreadDTO;
+  }
 }
