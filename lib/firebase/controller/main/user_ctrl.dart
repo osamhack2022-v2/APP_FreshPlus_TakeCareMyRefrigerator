@@ -51,6 +51,7 @@ class UserController {
 
     userBoxRepo = UserBoxRepository(unitID, this.reqFridgeID);
     userBoxRepo.init();
+    await _checkStatus();
     try {
       userBox = await userBoxRepo.getUserBox(this.reqUid);
     } on UserBoxRepositoryException catch (e) {
@@ -67,7 +68,7 @@ class UserController {
     var items =
         await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'warning');
     return items.map((value) {
-      String type;
+      String type = "drink";
       switch (value.type) {
         case (ItemType.drink):
           type = "drink";
@@ -84,7 +85,7 @@ class UserController {
     var items =
         await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'warning');
     return items.map((value) {
-      String type;
+      String type = "drink";
       switch (value.type) {
         case (ItemType.drink):
           type = "drink";
@@ -101,7 +102,7 @@ class UserController {
     var items = await userBoxRepo.getItemsQuery(reqUid, 'type', type);
     print(items.length);
     return items.map((value) {
-      String type;
+      String type = "drink";
       String status = "ok";
       switch (value.type) {
         case (ItemType.drink):
@@ -127,5 +128,30 @@ class UserController {
       }
       return ItemDTO(value.itemID, value.itemName, value.uid, status, type);
     }).toList();
+  }
+
+  Future<void> _checkStatus() async {
+    var user = await userBoxRepo.getUserBox(uid);
+    var itemRepo = ItemRepository(unitID, fridgeID, uid);
+    bool changeLog = false;
+    itemRepo.init();
+    if (_sameDay(user.last, DateTime.now()) == false) {
+      changeLog = await itemRepo.checkDate();
+    }
+    if (changeLog) {
+      await userBoxRepo.updateUserStats(uid);
+    }
+    userBoxRepo.editLast(uid);
+  }
+
+  bool _sameDay(DateTime a, DateTime b) {
+    if (a.year == b.year) {
+      if (a.month == b.month) {
+        if (a.day == b.day) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//noHost should be changed to notRegistered
 enum ItemStatus { ok, lost, noHost, warning, trash }
 
 enum ItemType { drink, food }
@@ -151,5 +152,36 @@ class ItemRepository {
         dueDate,
         status,
         itemSnapshot.get('type'));
+  }
+
+  //If changed return true, else false
+  Future<bool> checkDate() async {
+    bool changeLog = false;
+    var querySnapshot = await itemsRef!
+        .where("duedate", isLessThan: DateTime.now())
+        .where("status", isNotEqualTo: "lost")
+        .get();
+    changeLog = await changeByQuery(querySnapshot, ItemStatus.trash);
+
+    var querySnapshotWarning = await itemsRef!
+        .where("dueDate",
+            isLessThan: DateTime.now().add(const Duration(days: 2)))
+        .where("dueDate", isGreaterThan: DateTime.now())
+        .where("status", isNotEqualTo: "lost")
+        .get();
+    changeLog = await changeByQuery(querySnapshotWarning, ItemStatus.warning);
+    return changeLog;
+  }
+
+  Future<bool> changeByQuery(QuerySnapshot snap, ItemStatus status) async {
+    bool changeLog = false;
+    if (snap.size != 0) {
+      var list = snap.docs;
+      for (int i = 0; i < list.length; i++) {
+        await editstatus(list[i].id, status);
+        changeLog = true;
+      }
+    }
+    return changeLog;
   }
 }

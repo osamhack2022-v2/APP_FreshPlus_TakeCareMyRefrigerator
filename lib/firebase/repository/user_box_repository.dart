@@ -8,8 +8,9 @@ class UserBox {
   int warningNum;
   int trashNum;
   int lostNum;
+  DateTime last;
   UserBox(this.uid, this.itemNum, this.items, this.warningNum, this.trashNum,
-      this.lostNum);
+      this.lostNum, this.last);
 }
 
 class UserBoxRepositoryException {
@@ -44,6 +45,7 @@ class UserBoxRepository {
       'warningNum': 0,
       'trashNum': 0,
       'lostNum': 0,
+      'last': Timestamp.fromDate(DateTime.now())
     };
     if (userBoxSnapshot.exists == true) {
       throw UserBoxRepositoryException('already-exist');
@@ -64,6 +66,12 @@ class UserBoxRepository {
       throw UserBoxRepositoryException('no-userbox');
     int numPast = userBoxSnapshot.get('itemNum');
     await userBoxesRef!.doc(uid).update({'itemNum': (numPast + num)});
+  }
+
+  Future<void> editLast(String uid) async {
+    await userBoxesRef!
+        .doc(uid)
+        .update({'last': Timestamp.fromDate(DateTime.now())});
   }
 
   Future<void> updateUserStats(String uid) async {
@@ -114,7 +122,8 @@ class UserBoxRepository {
         userBoxSnapshot.get('items').cast<String>(),
         userBoxSnapshot.get('warningNum'),
         userBoxSnapshot.get('trashNum'),
-        userBoxSnapshot.get('lostNum'));
+        userBoxSnapshot.get('lostNum'),
+        userBoxSnapshot.get('last').toDate());
   }
 
   Future<List<Item>> getItemsQuery(

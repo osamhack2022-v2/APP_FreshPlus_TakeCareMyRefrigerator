@@ -23,7 +23,8 @@ class FridgeAddController {
   }
 
   Future<void> add(String fridgeID) async {
-    await fridgeRepo.addFridge(Fridge(fridgeID, "", 0, "", [], 0, 0, 0, 0));
+    await fridgeRepo
+        .addFridge(Fridge(fridgeID, "", 0, "", [], 0, 0, 0, 0, DateTime.now()));
     //Error Handling req
     await unitRepo.addFridges(unitID, fridgeID);
     //Error Handling req
