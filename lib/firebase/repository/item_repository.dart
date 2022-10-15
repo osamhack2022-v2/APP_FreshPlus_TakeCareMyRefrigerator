@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'user_repository.dart';
 
 //noHost should be changed to notRegistered
 enum ItemStatus { ok, lost, noHost, warning, trash }
@@ -120,6 +121,11 @@ class ItemRepository {
       case (ItemStatus.warning):
         statusStr = 'warning';
         break;
+    }
+    if (status == ItemStatus.trash) {
+      var userRepo = UserRepository();
+      var item = (await getItem(itemID)).itemName;
+      userRepo.addMessage(uid, "$item 유통기한이 지났습니다.");
     }
     await itemsRef!.doc(itemID).update({'status': statusStr});
   }

@@ -36,14 +36,19 @@ class UnitDTO {
   int warningNum;
   int lostNum;
   int noHostNum;
-  UnitDTO(this.unitID, this.master, 
-  this.itemNum, this.warningNum, this.lostNum,
+  UnitDTO(this.unitID, this.master, this.itemNum, this.warningNum, this.lostNum,
       this.noHostNum);
 }
 
-class ItemAddDTO{
+class ItemAddDTO {
   String itemName;
   String type;
   DateTime dueDate;
-  ItemAddDTO(this.itemName,this.type,this.dueDate);
+  ItemAddDTO(this.itemName, this.type, this.dueDate);
+}
+
+class MessageDTO {
+  String message;
+  bool read;
+  MessageDTO(this.message,this.read);
 }
