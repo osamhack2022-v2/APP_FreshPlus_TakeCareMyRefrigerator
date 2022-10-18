@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'item_repository.dart';
 
 class UserBox {
   String uid;
@@ -7,8 +8,9 @@ class UserBox {
   int warningNum;
   int trashNum;
   int lostNum;
+  DateTime last;
   UserBox(this.uid, this.itemNum, this.items, this.warningNum, this.trashNum,
-      this.lostNum);
+      this.lostNum, this.last);
 }
 
 class UserBoxRepositoryException {
@@ -43,6 +45,7 @@ class UserBoxRepository {
       'warningNum': 0,
       'trashNum': 0,
       'lostNum': 0,
+      'last': Timestamp.fromDate(DateTime.now())
     };
     if (userBoxSnapshot.exists == true) {
       throw UserBoxRepositoryException('already-exist');
@@ -55,6 +58,7 @@ class UserBoxRepository {
     DocumentReference userBoxRef = userBoxesRef!.doc(uid);
     userBoxRef.delete();
   }
+
   //will be deleted soon
   Future<void> editItemNum(String uid, int num) async {
     DocumentSnapshot userBoxSnapshot = await userBoxesRef!.doc(uid).get();
@@ -62,6 +66,12 @@ class UserBoxRepository {
       throw UserBoxRepositoryException('no-userbox');
     int numPast = userBoxSnapshot.get('itemNum');
     await userBoxesRef!.doc(uid).update({'itemNum': (numPast + num)});
+  }
+
+  Future<void> editLast(String uid) async {
+    await userBoxesRef!
+        .doc(uid)
+        .update({'last': Timestamp.fromDate(DateTime.now())});
   }
 
   Future<void> updateUserStats(String uid) async {
@@ -106,9 +116,48 @@ class UserBoxRepository {
     DocumentSnapshot userBoxSnapshot = await userBoxesRef!.doc(uid).get();
     if (userBoxSnapshot.exists == false)
       throw UserBoxRepositoryException('no-userbox');
-    return UserBox(userBoxSnapshot.get('uid'), userBoxSnapshot.get('itemNum'),
+    return UserBox(
+        userBoxSnapshot.get('uid'),
+        userBoxSnapshot.get('itemNum'),
         userBoxSnapshot.get('items').cast<String>(),
-        userBoxSnapshot.get('warningNum'),userBoxSnapshot.get('trashNum'),
-        userBoxSnapshot.get('lostNum'));
+        userBoxSnapshot.get('warningNum'),
+        userBoxSnapshot.get('trashNum'),
+        userBoxSnapshot.get('lostNum'),
+        userBoxSnapshot.get('last').toDate());
+  }
+
+  Future<List<Item>> getItemsQuery(
+      String uid, String fieldName, String fieldValue) async {
+    CollectionReference itemsRef = userBoxesRef!.doc(uid).collection("items");
+    Query query = itemsRef.where(fieldName, isEqualTo: fieldValue);
+    List<QueryDocumentSnapshot> queryDocSnapshotList = (await query.get()).docs;
+    return queryDocSnapshotList.map((value) {
+      if (value.exists == false) throw UserBoxRepositoryException('no-item');
+      DateTime inDate = value.get('inDate').toDate();
+      DateTime dueDate = value.get('dueDate').toDate();
+      ItemStatus status = ItemStatus.ok;
+      ItemType type = ItemType.drink;
+      switch (value.get('status')) {
+        case ('lost'):
+          status = ItemStatus.lost;
+          break;
+        case ('noHost'):
+          status = ItemStatus.noHost;
+          break;
+        case ('trash'):
+          status = ItemStatus.trash;
+          break;
+        case ('warning'):
+          status = ItemStatus.warning;
+          break;
+      }
+      switch (value.get('type')) {
+        case ("food"):
+          type = ItemType.food;
+          break;
+      }
+      return Item(value.get('itemID'), value.get('itemName'), value.get('uid'),
+          inDate, dueDate, status, type);
+    }).toList();
   }
 }

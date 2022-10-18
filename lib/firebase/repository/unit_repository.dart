@@ -10,8 +10,9 @@ class Unit {
   int trashNum;
   int lostNum;
   int noHostNum;
-  Unit(this.unitID, this.unitName, this.fridges, this.master,
-  this.itemNum,this.warningNum,this.trashNum,this.lostNum,this.noHostNum);
+  DateTime last;
+  Unit(this.unitID, this.unitName, this.fridges, this.master, this.itemNum,
+      this.warningNum, this.trashNum, this.lostNum, this.noHostNum, this.last);
 }
 
 class UnitRepositoryException {
@@ -30,11 +31,12 @@ class UnitRepository {
       'unitName': unit.unitName,
       'fridges': unit.fridges,
       'master': unit.master,
-      'itemNum':0,
-      'warningNum':0,
-      'trashNum':0,
-      'lostNum':0,
-      'noHostNum':0,
+      'itemNum': 0,
+      'warningNum': 0,
+      'trashNum': 0,
+      'lostNum': 0,
+      'noHostNum': 0,
+      'last': Timestamp.fromDate(DateTime.now())
     };
     if (unitSnapShot.exists == true) {
       throw UnitRepositoryException('already-exist');
@@ -65,17 +67,28 @@ class UnitRepository {
         .doc(unitID)
         .update({'master': master});
   }
+
+  Future<void> editLast(String unitID) async {
+    await FirebaseFirestore.instance
+        .collection('unit')
+        .doc(unitID)
+        .update({'last': Timestamp.fromDate(DateTime.now())});
+  }
+
   //will be deleted soon
   Future<void> editItemNum(String unitID, int num) async {
-    int numPast = (await FirebaseFirestore.instance
-        .collection('unit').doc(unitID).get()).get('itemNum');
+    int numPast =
+        (await FirebaseFirestore.instance.collection('unit').doc(unitID).get())
+            .get('itemNum');
     await FirebaseFirestore.instance
-        .collection('unit').doc(unitID).update({'itemNum': (numPast + num)});
+        .collection('unit')
+        .doc(unitID)
+        .update({'itemNum': (numPast + num)});
   }
 
   Future<void> updateUnitStats(String unitID) async {
-   DocumentReference unitRef = await FirebaseFirestore.instance
-        .collection('unit').doc(unitID);
+    DocumentReference unitRef =
+        await FirebaseFirestore.instance.collection('unit').doc(unitID);
     if ((await unitRef.get()).exists == false)
       throw UnitRepositoryException('no-unit');
     QuerySnapshot query = await (unitRef.collection('fridges').get());
@@ -96,6 +109,7 @@ class UnitRepository {
       'noHostNum': noHostNum,
     });
   }
+
   Future<void> addFridges(String unitID, String fridgeID) async {
     await FirebaseFirestore.instance.collection('unit').doc(unitID).update({
       'fridges': FieldValue.arrayUnion([fridgeID])
@@ -107,16 +121,21 @@ class UnitRepository {
       'fridges': FieldValue.arrayRemove([fridgeID])
     });
   }
+
   Future<bool> existUnit(String unitID) async {
     DocumentSnapshot unitSnapshot =
         await FirebaseFirestore.instance.collection('unit').doc(unitID).get();
-    if(unitSnapshot.exists==true) return true;
-    else return false;
+    if (unitSnapshot.exists == true)
+      return true;
+    else
+      return false;
   }
+
   Future<Unit> getUnit(String unitID) async {
     DocumentSnapshot unitSnapshot =
         await FirebaseFirestore.instance.collection('unit').doc(unitID).get();
-    if(unitSnapshot.exists==false) throw UnitRepositoryException('unit-exists');
+    if (unitSnapshot.exists == false)
+      throw UnitRepositoryException('unit-exists');
     return Unit(
         unitSnapshot.get('unitID'),
         unitSnapshot.get('unitName'),
@@ -127,6 +146,6 @@ class UnitRepository {
         unitSnapshot.get('trashNum'),
         unitSnapshot.get('lostNum'),
         unitSnapshot.get('noHostNum'),
-        );
+        unitSnapshot.get('last').toDate());
   }
 }
