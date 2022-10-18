@@ -87,15 +87,17 @@ class UserRepository {
       throw UserRepositoryException('no-email');
   }
 
-  Future<void> editUserName(String uid, String name) async{
-    DocumentSnapshot userSnapshot = 
+  Future<void> editUserName(String uid, String name) async {
+    DocumentSnapshot userSnapshot =
         await FirebaseFirestore.instance.collection('user').doc(uid).get();
-    if(userSnapshot.exists==false) throw UserRepositoryException('no-user');
-    await FirebaseFirestore.instance.collection('user').doc(uid).update({
-      'name':name
-    });
+    if (userSnapshot.exists == false) throw UserRepositoryException('no-user');
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .update({'name': name});
   }
-  Future<void> editUserType(String uid, UserType type) async{
+
+  Future<void> editUserType(String uid, UserType type) async {
     String userType;
     switch (type) {
       case (UserType.master):
@@ -108,17 +110,20 @@ class UserRepository {
         userType = 'user';
         break;
     }
-    DocumentSnapshot userSnapshot = 
+    DocumentSnapshot userSnapshot =
         await FirebaseFirestore.instance.collection('user').doc(uid).get();
-    if(userSnapshot.exists==false) throw UserRepositoryException('no-user');
-    await FirebaseFirestore.instance.collection('user').doc(uid).update({
-      'type':userType
-    });
+    if (userSnapshot.exists == false) throw UserRepositoryException('no-user');
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .update({'type': userType});
   }
+
   //double check required?
   Future<User> getUser(String uid) async {
     DocumentSnapshot userDoc =
         await FirebaseFirestore.instance.collection('user').doc(uid).get();
+    if (userDoc.exists == false) throw UserRepositoryException('no-user');
     UserType type_enum = UserType.user;
     switch (userDoc.get('type')) {
       case ("manager"):
@@ -165,10 +170,48 @@ class UserRepository {
   }
 
   Future<void> requestPasswordReset(String email) async {
-    try{
+    try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    } on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       throw UserRepositoryException('no-email');
     }
+  }
+
+  Future<void> addMessage(String uid, String message) async {
+    var messageCol = FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .collection('message');
+    var data = {
+      'message': message,
+      'read': false,
+    };
+    await messageCol.add(data);
+  }
+
+  Future<List<String>> getUnreadMessage(String uid) async {
+    var messageCol = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .collection('message');
+    var query = await messageCol.where('read', isEqualTo: false).get();
+    List<String> messages = [];
+    query.docs.forEach((value) {
+      messages.add(value.get("message"));
+    });
+    return messages;
+  }
+
+  Future<List<String>> getReadMessage(String uid) async {
+    var messageCol = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .collection('message');
+    var query = await messageCol.where('read', isEqualTo: true).get();
+    List<String> messages = [];
+    query.docs.forEach((value) {
+      messages.add(value.get("message"));
+    });
+    return messages;
   }
 }

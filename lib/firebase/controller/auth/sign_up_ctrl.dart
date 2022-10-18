@@ -89,30 +89,23 @@ Future<String> signUp(String email, String password, String name, String unitID,
     print(3);
     if (userType == "master") {
       //addUnit
-      await unit_repo.addUnit(Unit(
-        unitID,
-        "",
-        [],
-        uid,
-        0,
-        0,
-        0,
-        0,
-        0,
-      ));
+      await unit_repo
+          .addUnit(Unit(unitID, "", [], uid, 0, 0, 0, 0, 0, DateTime.now()));
     } else if (userType == "manager") {
       //editManager
       await fridge_repo.editManager(fridgeID, uid);
       UserBoxRepository userboxRepo = UserBoxRepository(unitID, fridgeID);
       userboxRepo.init();
-      await userboxRepo.addUserBox(UserBox(uid, 0, [], 0, 0, 0));
+      await userboxRepo
+          .addUserBox(UserBox(uid, 0, [], 0, 0, 0, DateTime.now()));
     } else {
       //addUsers
       await fridge_repo.addUsers(fridgeID, uid);
       //addUserBox
       UserBoxRepository userboxRepo = UserBoxRepository(unitID, fridgeID);
       userboxRepo.init();
-      await userboxRepo.addUserBox(UserBox(uid, 0, [], 0, 0, 0));
+      await userboxRepo
+          .addUserBox(UserBox(uid, 0, [], 0, 0, 0, DateTime.now()));
     }
   } on UserRepositoryException catch (e) {
     throw CtrlException(e.code);

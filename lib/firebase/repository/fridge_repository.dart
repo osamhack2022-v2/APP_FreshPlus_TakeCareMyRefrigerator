@@ -10,8 +10,9 @@ class Fridge {
   int trashNum;
   int lostNum;
   int noHostNum;
+  DateTime last;
   Fridge(this.fridgeID, this.fridgeName, this.itemNum, this.manager, this.users,
-      this.warningNum, this.trashNum, this.lostNum, this.noHostNum);
+      this.warningNum, this.trashNum, this.lostNum, this.noHostNum, this.last);
 }
 
 class FridgeRepositoryException {
@@ -44,6 +45,7 @@ class FridgeRepository {
       'trashNum': 0,
       'lostNum': 0,
       'noHostNum': 0,
+      'last': Timestamp.fromDate(DateTime.now())
     };
     if (fridgeSnapShot.exists == true) {
       throw FridgeRepositoryException('already-exist');
@@ -69,6 +71,13 @@ class FridgeRepository {
   Future<void> editItemNum(String fridgeID, int num) async {
     int numPast = (await fridgesRef!.doc(fridgeID).get()).get('itemNum');
     await fridgesRef!.doc(fridgeID).update({'itemNum': (numPast + num)});
+  }
+
+  Future<void> editLast(String unitID) async {
+    await FirebaseFirestore.instance
+        .collection('unit')
+        .doc(unitID)
+        .update({'last': Timestamp.fromDate(DateTime.now())});
   }
 
   Future<void> updateFridgeStats(String fridgeID) async {
@@ -109,24 +118,29 @@ class FridgeRepository {
       'users': FieldValue.arrayRemove([uid])
     });
   }
-  Future<bool> existFridge(String fridgeID) async{
+
+  Future<bool> existFridge(String fridgeID) async {
     DocumentSnapshot fridgeSnapshot = await fridgesRef!.doc(fridgeID).get();
-    if(fridgeSnapshot.exists==true) return true;
-    else return false;
+    if (fridgeSnapshot.exists == true)
+      return true;
+    else
+      return false;
   }
+
   Future<Fridge> getFridge(String fridgeID) async {
     DocumentSnapshot fridgeSnapshot = await fridgesRef!.doc(fridgeID).get();
-    if(fridgeSnapshot.exists==false) throw FridgeRepositoryException('no-fridge');
+    if (fridgeSnapshot.exists == false)
+      throw FridgeRepositoryException('no-fridge');
     return Fridge(
-      fridgeSnapshot.get('fridgeID'),
-      fridgeSnapshot.get('fridgeName'),
-      fridgeSnapshot.get('itemNum'),
-      fridgeSnapshot.get('manager'),
-      fridgeSnapshot.get('users').cast<String>(),
-      fridgeSnapshot.get('warningNum'),
-      fridgeSnapshot.get('trashNum'),
-      fridgeSnapshot.get('lostNum'),
-      fridgeSnapshot.get('noHostNum'),
-    );
+        fridgeSnapshot.get('fridgeID'),
+        fridgeSnapshot.get('fridgeName'),
+        fridgeSnapshot.get('itemNum'),
+        fridgeSnapshot.get('manager'),
+        fridgeSnapshot.get('users').cast<String>(),
+        fridgeSnapshot.get('warningNum'),
+        fridgeSnapshot.get('trashNum'),
+        fridgeSnapshot.get('lostNum'),
+        fridgeSnapshot.get('noHostNum'),
+        fridgeSnapshot.get('last').toDate());
   }
 }
