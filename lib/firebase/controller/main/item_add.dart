@@ -30,7 +30,7 @@ class ItemAddController{
         break;
 
     }
-    var id = await itemRepo.addItem(Item("", item.itemName, uid, DateTime.now(), item.dueDate, ItemStatus.ok, itemType));
+    var id = await itemRepo.addItem(Item("", item.itemName,item.itemCode, uid, DateTime.now(), item.dueDate, ItemStatus.ok, itemType));
     await userBoxRepo.addItems(uid,id);
   }
 }

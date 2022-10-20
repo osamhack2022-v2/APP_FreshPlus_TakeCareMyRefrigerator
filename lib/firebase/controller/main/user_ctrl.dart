@@ -24,7 +24,7 @@ class UserController {
     fridgeID = user.fridgeID;
     print(user.type);
     switch (user.type) {
-      case (UserType.master):
+      case ("master"):
         userType = "master";
         if (reqFridgeID == null || reqUid == null) {
           CtrlException('null-parameter');
@@ -33,7 +33,7 @@ class UserController {
         this.reqUid = reqUid!;
         break;
 
-      case (UserType.manager):
+      case ("manager"):
         userType = "manager";
         if (reqUid == null) {
           CtrlException('null-parameter');
@@ -77,7 +77,8 @@ class UserController {
           type = "food";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, value.uid, "warning", type);
+      return ItemDTO(value.itemID, value.itemName,value.itemCode,
+        value.uid, "warning", type,value.dueDate);
     }).toList();
   }
 
@@ -94,7 +95,8 @@ class UserController {
           type = "food";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, value.uid, "trash", type);
+      return ItemDTO(value.itemID, value.itemName, 
+      value.itemCode,value.uid, "trash", type,value.dueDate);
     }).toList();
   }
 
@@ -126,7 +128,8 @@ class UserController {
           status = "warning";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, value.uid, status, type);
+      return ItemDTO(value.itemID, value.itemName, value.itemCode,
+      value.uid, status, type,value.dueDate);
     }).toList();
   }
 

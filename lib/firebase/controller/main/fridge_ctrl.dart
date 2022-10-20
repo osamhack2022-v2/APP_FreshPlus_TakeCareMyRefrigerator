@@ -24,7 +24,7 @@ class FridgeController {
     unitID = user.unitID;
     fridgeID = user.fridgeID;
     switch (user.type) {
-      case (UserType.master):
+      case ("master"):
         userType = "master";
         if (reqFridgeID == null) {
           throw CtrlException('null-parameter');
@@ -32,7 +32,7 @@ class FridgeController {
         this.reqFridgeID = reqFridgeID!;
         break;
 
-      case (UserType.manager):
+      case ("manager"):
         userType = "manager";
         this.reqFridgeID = fridgeID;
         break;
@@ -76,7 +76,7 @@ class FridgeController {
     List<ItemDTO> list = [];
     await () async {
       fridge.users.forEach((value) async {
-        var itemList;
+        List<Item> itemList;
         try {
           itemList = await userBoxRepo.getItemsQuery(value, "status", status);
           itemList.forEach((value) {
@@ -90,7 +90,7 @@ class FridgeController {
                 break;
             }
             list.add(
-                ItemDTO(value.itemID, value.itemName, value.uid, status, type));
+                ItemDTO(value.itemID, value.itemCode, value.itemName, value.uid, status, type,value.dueDate));
           });
         } on UserBoxRepositoryException catch (e) {
           CtrlException(e.code);
@@ -117,7 +117,8 @@ class FridgeController {
             break;
         }
         list.add(
-            ItemDTO(value.itemID, value.itemName, value.uid, "NoHost", type));
+            ItemDTO(value.itemID, value.itemName,value.itemCode,
+             value.uid, "NoHost", type,value.dueDate));
       });
     } on UserBoxRepositoryException catch (e) {
       CtrlException(e.code);

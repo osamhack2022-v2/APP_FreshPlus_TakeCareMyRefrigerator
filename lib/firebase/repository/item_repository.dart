@@ -9,13 +9,14 @@ enum ItemType { drink, food }
 class Item {
   String itemID;
   String itemName;
+  String itemCode;
   String uid;
   DateTime inDate;
   DateTime dueDate;
   ItemStatus status;
   ItemType type;
-  Item(this.itemID, this.itemName, this.uid, this.inDate, this.dueDate,
-      this.status, this.type);
+  Item(this.itemID, this.itemName, this.itemCode, this.uid, this.inDate,
+      this.dueDate, this.status, this.type);
 }
 
 class ItemRepositoryException {
@@ -47,6 +48,7 @@ class ItemRepository {
     var itemDoc = {
       'itemID': "",
       'itemName': item.itemName,
+      'itemCode': item.itemCode,
       'uid': item.uid,
       'inDate': Timestamp.fromDate(item.inDate),
       'dueDate': Timestamp.fromDate(item.dueDate),
@@ -153,6 +155,7 @@ class ItemRepository {
     return Item(
         itemSnapshot.get('itemID'),
         itemSnapshot.get('itemName'),
+        itemSnapshot.get('itemCode'),
         itemSnapshot.get('uid'),
         inDate,
         dueDate,

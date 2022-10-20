@@ -156,8 +156,8 @@ class UserBoxRepository {
           type = ItemType.food;
           break;
       }
-      return Item(value.get('itemID'), value.get('itemName'), value.get('uid'),
-          inDate, dueDate, status, type);
+      return Item(value.get('itemID'), value.get('itemName'), value.get('itemCode')
+      ,value.get('uid'), inDate, dueDate, status, type);
     }).toList();
   }
 }
