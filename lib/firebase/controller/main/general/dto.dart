@@ -8,13 +8,23 @@ class UserBoxDTO {
       this.uid, this.itemNum, this.warningNum, this.trashNum, this.lostNum);
 }
 
-class UserDTO{
+class UserDTO {
   String uid;
   String userName;
   String unitID;
   String fridgeID;
   String type;
-  UserDTO(this.uid,this.userName,this.unitID,this.fridgeID,this.type);
+  UserDTO(this.uid, this.userName, this.unitID, this.fridgeID, this.type);
+}
+
+class UserPassDTO {
+  String userName;
+  int itemNum;
+  int warningNum;
+  int trashNum;
+  int lostNum;
+  UserPassDTO(this.userName, this.itemNum, this.warningNum, this.trashNum,
+      this.lostNum);
 }
 
 class ItemDTO {
@@ -25,7 +35,8 @@ class ItemDTO {
   String status;
   String type;
   DateTime dueDate;
-  ItemDTO(this.itemID, this.itemName, this.itemCode, this.uid, this.status, this.type,this.dueDate);
+  ItemDTO(this.itemID, this.itemName, this.itemCode, this.uid, this.status,
+      this.type, this.dueDate);
 }
 
 class FridgeDTO {
@@ -56,11 +67,11 @@ class ItemAddDTO {
   String itemCode;
   String type;
   DateTime dueDate;
-  ItemAddDTO(this.itemName,this.itemCode, this.type, this.dueDate);
+  ItemAddDTO(this.itemName, this.itemCode, this.type, this.dueDate);
 }
 
 class MessageDTO {
   String message;
   bool read;
-  MessageDTO(this.message,this.read);
+  MessageDTO(this.message, this.read);
 }

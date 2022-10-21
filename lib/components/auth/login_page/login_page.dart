@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_form.dart';
 import 'package:flutter/material.dart';
-import '../general/homepage_logo.dart';
+import '../../general/homepage_logo.dart';
 import 'package:get/get.dart';
 import '../signup_page/signup_page.dart';
 

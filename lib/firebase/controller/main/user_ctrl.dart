@@ -8,6 +8,7 @@ import 'general/dto.dart';
 class UserController {
   //Login Status
   late String uid;
+  late String userName;
   late String unitID;
   late String fridgeID;
   late String userType;
@@ -22,6 +23,7 @@ class UserController {
     uid = user.uid;
     unitID = user.unitID;
     fridgeID = user.fridgeID;
+    userName = user.userName;
     print(user.type);
     switch (user.type) {
       case ("master"):
@@ -51,7 +53,7 @@ class UserController {
 
     userBoxRepo = UserBoxRepository(unitID, this.reqFridgeID);
     userBoxRepo.init();
-    await _checkStatus();
+    //await _checkStatus();
     try {
       userBox = await userBoxRepo.getUserBox(this.reqUid);
     } on UserBoxRepositoryException catch (e) {
@@ -77,8 +79,8 @@ class UserController {
           type = "food";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName,value.itemCode,
-        value.uid, "warning", type,value.dueDate);
+      return ItemDTO(value.itemID, value.itemName, value.itemCode, value.uid,
+          "warning", type, value.dueDate);
     }).toList();
   }
 
@@ -95,8 +97,8 @@ class UserController {
           type = "food";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, 
-      value.itemCode,value.uid, "trash", type,value.dueDate);
+      return ItemDTO(value.itemID, value.itemName, value.itemCode, value.uid,
+          "trash", type, value.dueDate);
     }).toList();
   }
 
@@ -128,8 +130,8 @@ class UserController {
           status = "warning";
           break;
       }
-      return ItemDTO(value.itemID, value.itemName, value.itemCode,
-      value.uid, status, type,value.dueDate);
+      return ItemDTO(value.itemID, value.itemName, value.itemCode, value.uid,
+          status, type, value.dueDate);
     }).toList();
   }
 

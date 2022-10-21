@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
-  flutter_mobile_vision: ^0.1.4+1
+  flutter_mobile_vision_2: ^0.1.13
   syncfusion_flutter_gauges: ^20.3.50
 
 dev_dependencies:

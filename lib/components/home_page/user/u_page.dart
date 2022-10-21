@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:firebase_core/firebase_core.dart';
 import '../user/u_tab.dart';
 import 'package:helloworld/components/general/homepage_drawer.dart';
 import 'package:helloworld/components/general/homepage_gauge.dart';
+import '/components/item_add/item_add.dart';
+import '/firebase/controller/main/user_ctrl.dart';
+import '/firebase/controller/main/general/dto.dart';
 
 class UPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final UserController ctrl = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,8 +20,8 @@ class UPage extends StatelessWidget {
             backgroundColor: Color(0xff2C7B0C),
             toolbarHeight: 56.0,
             title: Text(
-              "User_Name 의 냉장고", //User_Name Firebase에서 받아와야함
-              style: TextStyle(
+              ctrl.userName + "의 냉장고", //User_Name Firebase에서 받아와야함
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20.0,
                 fontFamily: "Roboto",
@@ -27,9 +30,9 @@ class UPage extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: BottomAppBar(
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             notchMargin: 8.0,
-            color: Color(0xff2C7B0C),
+            color: const Color(0xff2C7B0C),
             child: Container(
                 height: 56.0,
                 child: Row(
@@ -63,7 +66,9 @@ class UPage extends StatelessWidget {
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => OcrScan());
+            },
             child: Align(
               alignment: Alignment.center,
               child: Icon(
@@ -85,9 +90,9 @@ class UPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("총 물품 : N개"),
-                      Text("유통기한 임박 : M개"),
-                      Text("유통기한 경과 : L개"),
+                      Text("총 물품 : "+ctrl.userBox.itemNum.toString()+"개"),
+                      Text("유통기한 임박 : "+ctrl.userBox.warningNum.toString()+"개"),
+                      Text("유통기한 경과 : "+ctrl.userBox.trashNum.toString()+"개"),
                     ],
                   )
                 ]),

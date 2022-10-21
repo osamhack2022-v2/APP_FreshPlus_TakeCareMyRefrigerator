@@ -5,7 +5,7 @@ import 'firebase/init.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  initialize();
+  await initialize();
   runApp(GetMaterialApp(
     home: Auth(),
   ));

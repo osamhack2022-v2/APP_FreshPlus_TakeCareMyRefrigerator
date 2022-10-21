@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '/firebase/repository/user_repository.dart';
+import '/components/home_page/home_page.dart';
+import 'package:get/get.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -162,6 +164,6 @@ class _CustomFormState extends State<LoginForm> {
   }
   _signIn(String email,String password) async {
     await repo.requestLogIn(emailController.text.trim(),passwordController.text.trim());
-    //Get.offAll(() => const HomePage());
+    Get.offAll(() => HomePage());
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
+import 'package:flutter_mobile_vision_2/flutter_mobile_vision_2.dart';
 
 class ReceiptRecognition extends StatefulWidget {
   @override
@@ -20,9 +20,9 @@ class _ReceiptRecognitionState extends State<ReceiptRecognition> {
         children: [
           SizedBox(height: 40),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: _read,
-              color: Color(0xff2C7B0C),
+              style: ButtonStyle( backgroundColor: MaterialStatePropertyAll<Color>(Color(0xff2C7B0C))),
               child: Text(
                 '영수증 인식',
                 style: TextStyle(fontSize: 16, color: Colors.white),

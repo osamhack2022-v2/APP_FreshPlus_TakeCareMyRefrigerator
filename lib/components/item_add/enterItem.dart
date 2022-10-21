@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '/firebase/controller/main/item_add.dart';
+import '/firebase/controller/main/general/dto.dart';
 
 class EnterItem extends StatelessWidget {
   const EnterItem({Key? key}) : super(key: key);
@@ -39,6 +41,14 @@ class _AddItemFormState extends State<AddItemForm> {
   final _formKey = GlobalKey<FormState>();
   final foodnameController = TextEditingController();
   final expirationDateController = TextEditingController();
+  final itemAddController = ItemAddController();
+  DateTime dueDate = DateTime.now();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    itemAddController.init();
+  }
 
   @override
   void dispose() {
@@ -100,54 +110,71 @@ class _AddItemFormState extends State<AddItemForm> {
               ),
             ),
             const SizedBox(height: 15.0),
-            TextFormField(
-              controller: expirationDateController,
-              keyboardType: TextInputType.number,
-              validator: (expirationDate) {
-                if (expirationDate!.isEmpty) {
-                  return '유통기한을 입력하세요';
-                } else {
-                  return null;
-                }
+            InputDatePickerFormField(
+              firstDate: DateTime.now(),
+              lastDate: DateTime.now().add(Duration(days: 30)),
+              initialDate: DateTime.now(),
+              onDateSubmitted: (date) {
+                setState(() {
+                  dueDate = date;
+                });
               },
-              //keyboardType: TextInputType.number,
-              //inputFormatters: [
-              //  FilteringTextInputFormatter.allow(RegExp('[0-9]')),
-              //],
-              //obscureText: true,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                filled: true,
-                fillColor: Color(0x14212121),
-                labelText: "유통기한",
-                labelStyle: TextStyle(
-                    fontSize: 12.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-                hintText: "유통기한을 입력해주세요",
-                hintStyle: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Color(0x14212121)),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0)),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff6200EE))),
-                errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                ),
-                errorStyle: TextStyle(
-                  fontFamily: "Roboto",
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
             ),
+
+            // TextFormField(
+            //   controller: expirationDateController,
+            //   keyboardType: TextInputType.number,
+            //   validator: (expirationDate) {
+            //     if (expirationDate!.isEmpty) {
+            //       return '유통기한을 입력하세요';
+            //     } else {
+            //       return null;
+            //     }
+            //   },
+            //   //keyboardType: TextInputType.number,
+            //   //inputFormatters: [
+            //   //  FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+            //   //],
+            //   //obscureText: true,
+            //   decoration: const InputDecoration(
+            //     border: InputBorder.none,
+            //     filled: true,
+            //     fillColor: Color(0x14212121),
+            //     labelText: "유통기한",
+            //     labelStyle: TextStyle(
+            //         fontSize: 12.0,
+            //         color: Colors.black,
+            //         fontWeight: FontWeight.w400),
+            //     hintText: "유통기한을 입력해주세요",
+            //     hintStyle: TextStyle(
+            //         fontSize: 16.0,
+            //         color: Colors.black,
+            //         fontWeight: FontWeight.w500),
+            //     enabledBorder: UnderlineInputBorder(
+            //       borderSide: BorderSide(color: Color(0x14212121)),
+            //       borderRadius: BorderRadius.only(
+            //           topLeft: Radius.circular(4.0),
+            //           topRight: Radius.circular(4.0)),
+            //     ),
+            //     focusedBorder: UnderlineInputBorder(
+            //         borderSide: BorderSide(color: Color(0xff6200EE))),
+            //     errorBorder: UnderlineInputBorder(
+            //       borderSide: BorderSide(color: Colors.red),
+            //     ),
+            //     errorStyle: TextStyle(
+            //       fontFamily: "Roboto",
+            //       fontSize: 12.0,
+            //       fontWeight: FontWeight.w400,
+            //     ),
+            //   ),
+            // ),
             const SizedBox(height: 15.0),
+            ElevatedButton(
+                onPressed: () {
+                  itemAddController.add(ItemAddDTO(
+                      foodnameController.text, "bananamilk", "drink", dueDate));
+                },
+                child: Text("아이템 추가"))
           ],
         ),
       ),

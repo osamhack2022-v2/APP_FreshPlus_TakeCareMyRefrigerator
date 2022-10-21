@@ -1,10 +1,10 @@
 //아이템 추가하는 창
 
 import 'package:flutter/material.dart';
-import '../barcode_recognition.dart';
-import '../receipt_recognition.dart';
-
-
+import 'barcode_recognition.dart';
+import 'receipt_recognition.dart';
+import 'package:get/get.dart';
+import 'enterItem.dart';
 
 class OcrScan extends StatelessWidget {
   @override
@@ -40,7 +40,9 @@ class OcrScan extends StatelessWidget {
                           Icons.arrow_back,
                           color: Colors.white,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.back();
+                        },
                       ),
                       SizedBox(width: 11.0),
                       IconButton(
@@ -50,8 +52,7 @@ class OcrScan extends StatelessWidget {
                           Icons.home,
                           color: Colors.white,
                         ),
-                        onPressed: () {
-                        },
+                        onPressed: () {},
                       ),
                     ],
                   )),
@@ -110,13 +111,10 @@ class OcrScan extends StatelessWidget {
                               "바코드가 자동으로 인식 됩니다",
                             ),
                             Barcodescanner(),
-                            
                           ],
                         ),
                       ),
-                      Center(
-                        child: EnterItem(),
-                      ),
+                      Center(child: EnterItem()),
                     ],
                   ),
                 ),

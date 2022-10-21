@@ -24,16 +24,16 @@
 @import firebase_core;
 #endif
 
-#if __has_include(<modal_progress_hud_nsn/ModalProgressHudNsnPlugin.h>)
-#import <modal_progress_hud_nsn/ModalProgressHudNsnPlugin.h>
+#if __has_include(<flutter_barcode_scanner/SwiftFlutterBarcodeScannerPlugin.h>)
+#import <flutter_barcode_scanner/SwiftFlutterBarcodeScannerPlugin.h>
 #else
-@import modal_progress_hud_nsn;
+@import flutter_barcode_scanner;
 #endif
 
-#if __has_include(<path_provider_ios/FLTPathProviderPlugin.h>)
-#import <path_provider_ios/FLTPathProviderPlugin.h>
+#if __has_include(<flutter_mobile_vision_2/FlutterMobileVisionPlugin.h>)
+#import <flutter_mobile_vision_2/FlutterMobileVisionPlugin.h>
 #else
-@import path_provider_ios;
+@import flutter_mobile_vision_2;
 #endif
 
 @implementation GeneratedPluginRegistrant
@@ -42,8 +42,8 @@
   [FLTFirebaseFirestorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseFirestorePlugin"]];
   [FLTFirebaseAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAuthPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
-  [ModalProgressHudNsnPlugin registerWithRegistrar:[registry registrarForPlugin:@"ModalProgressHudNsnPlugin"]];
-  [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
+  [SwiftFlutterBarcodeScannerPlugin registerWithRegistrar:[registry registrarForPlugin:@"SwiftFlutterBarcodeScannerPlugin"]];
+  [FlutterMobileVisionPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterMobileVisionPlugin"]];
 }
 
 @end

@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '/firebase/controller/main/user_ctrl.dart';
+import '/firebase/controller/main/general/dto.dart';
 
 class UTab extends StatefulWidget {
   _UTabState createState() => _UTabState();
@@ -8,7 +11,7 @@ class UTab extends StatefulWidget {
 class _UTabState extends State<UTab> with TickerProviderStateMixin {
   CollectionReference product =
       FirebaseFirestore.instance.collection('product');
-
+  final UserController userCtrl = Get.arguments;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
 
@@ -81,14 +84,14 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
       body: Column(
         children: [
           Container(
-            color: Color(0xff2C7B0C),
             child: TabBar(
               tabs: [
                 Container(
+                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
-                    '위험물품 \n M + L 개',
+                    '위험물품',
                     style: TextStyle(
                       fontSize: 14.0,
                       fontFamily: 'Roboto',
@@ -98,10 +101,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
+                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
-                    '유실\nK개',
+                    '유실',
                     style: TextStyle(
                       fontSize: 14.0,
                       fontFamily: 'Roboto',
@@ -111,10 +115,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
+                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
-                    '음료 \n N\' 개',
+                    '음료',
                     style: TextStyle(
                       fontSize: 14.0,
                       fontFamily: 'Roboto',
@@ -124,10 +129,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
+                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
-                    '즉석식품\nN\'\' 개',
+                    '즉석식품',
                     style: TextStyle(
                       fontSize: 14.0,
                       fontFamily: 'Roboto',
@@ -147,73 +153,239 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
               controller: _tabController,
               children: [
                 Container(
-                  child: StreamBuilder(
-                    stream: product.snapshots(),
+                  alignment: Alignment.topCenter,
+                  child: FutureBuilder(
+                    future: userCtrl.getWarningItemList(),
                     builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-                      if (streamSnapshot.hasData) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount:
-                              streamSnapshot.data!.docs.length,
-                          itemBuilder: (context, index) {
-                            final DocumentSnapshot documentSnapshot =
-                                streamSnapshot.data!.docs[index];
-                            return Card(
-                              margin: EdgeInsets.only(
-                                  left: 8, right: 8, top: 2, bottom: 2),
-                              child: ListTile(
-                                leading: Image(
-                                    image: AssetImage("assets/freshmeal.jpg")),
-                                title: Text(documentSnapshot['name']),
-                                subtitle: Text(documentSnapshot['date']),
-                                trailing: Text(
-                                  '위험',
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'Roboto',
+                        AsyncSnapshot<List<ItemDTO>> snapshot) {
+                      if (snapshot.hasData) {
+                        if (snapshot.data!.length > 0) {
+                          return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                final ItemDTO item = snapshot.data![index];
+                                String imageAddress =
+                                    "assets/" + item.itemCode + ".jpg";
+                                String state = "안전";
+                                switch (item.status) {
+                                  case "trash":
+                                    state = "위험";
+                                    break;
+                                  case "warning":
+                                    state = "위험";
+                                    break;
+                                  case "lost":
+                                    state = "분실";
+                                    break;
+                                  default:
+                                    break;
+                                }
+                                int leftDay = 0;
+                                return Card(
+                                  margin: EdgeInsets.only(
+                                      left: 8, right: 8, top: 2, bottom: 2),
+                                  child: ListTile(
+                                    leading:
+                                        Image(image: AssetImage(imageAddress)),
+                                    title: Text(item.itemName),
+                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    trailing: Text(
+                                      state,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Roboto',
+                                      ),
+                                    ),
+                                    isThreeLine: true,
                                   ),
-                                ),
-                                isThreeLine: true,
-                              ),
-                            );
-                          },
-                        );
+                                );
+                              });
+                        } else {
+                          return Center(child: Text("아이템이 없습니다"));
+                        }
                       }
                       return Center(child: CircularProgressIndicator());
                     },
                   ),
                 ),
                 Container(
-                  color: Colors.green[200],
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Tab2 View',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
+                  alignment: Alignment.topCenter,
+                  child: FutureBuilder(
+                    future: userCtrl.getWarningItemList(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<ItemDTO>> snapshot) {
+                      if (snapshot.hasData) {
+                        if (snapshot.data!.length > 0) {
+                          return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                final ItemDTO item = snapshot.data![index];
+                                String imageAddress =
+                                    "assets/" + item.itemCode + ".jpg";
+                                String state = "안전";
+                                switch (item.status) {
+                                  case "trash":
+                                    state = "위험";
+                                    break;
+                                  case "warning":
+                                    state = "위험";
+                                    break;
+                                  case "lost":
+                                    state = "분실";
+                                    break;
+                                  default:
+                                    break;
+                                }
+                                int leftDay = 0;
+                                return Card(
+                                  margin: EdgeInsets.only(
+                                      left: 8, right: 8, top: 2, bottom: 2),
+                                  child: ListTile(
+                                    leading:
+                                        Image(image: AssetImage(imageAddress)),
+                                    title: Text(item.itemName),
+                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    trailing: Text(
+                                      state,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Roboto',
+                                      ),
+                                    ),
+                                    isThreeLine: true,
+                                  ),
+                                );
+                              });
+                        } else {
+                          return Center(child: Text("아이템이 없습니다"));
+                        }
+                      }
+                      return Center(child: CircularProgressIndicator());
+                    },
                   ),
                 ),
                 Container(
-                  color: Colors.green[200],
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Tab3 View',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
+                  alignment: Alignment.topCenter,
+                  child: FutureBuilder(
+                    future: userCtrl.getCategoryList("drink"),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<ItemDTO>> snapshot) {
+                      if (snapshot.hasData) {
+                        if (snapshot.data!.length > 0) {
+                          return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                final ItemDTO item = snapshot.data![index];
+                                String imageAddress =
+                                    "assets/" + item.itemCode + ".jpg";
+                                String state = "안전";
+                                switch (item.status) {
+                                  case "trash":
+                                    state = "위험";
+                                    break;
+                                  case "warning":
+                                    state = "위험";
+                                    break;
+                                  case "lost":
+                                    state = "분실";
+                                    break;
+                                  default:
+                                    break;
+                                }
+                                int leftDay = 0;
+                                return Card(
+                                  margin: EdgeInsets.only(
+                                      left: 8, right: 8, top: 2, bottom: 2),
+                                  child: ListTile(
+                                    leading:
+                                        Image(image: AssetImage(imageAddress)),
+                                    title: Text(item.itemName),
+                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    trailing: Text(
+                                      state,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Roboto',
+                                      ),
+                                    ),
+                                    isThreeLine: true,
+                                  ),
+                                );
+                              });
+                        } else {
+                          return Center(child: Text("아이템이 없습니다"));
+                        }
+                      }
+                      return Center(child: CircularProgressIndicator());
+                    },
                   ),
                 ),
                 Container(
-                  color: Colors.green[200],
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Tab4 View',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
+                  alignment: Alignment.topCenter,
+                  child: FutureBuilder(
+                    future: userCtrl.getCategoryList("food"),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<ItemDTO>> snapshot) {
+                      if (snapshot.hasData) {
+                        if (snapshot.data!.length > 0) {
+                          return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                final ItemDTO item = snapshot.data![index];
+                                String imageAddress =
+                                    "assets/" + item.itemCode + ".jpg";
+                                String state = "안전";
+                                switch (item.status) {
+                                  case "trash":
+                                    state = "위험";
+                                    break;
+                                  case "warning":
+                                    state = "위험";
+                                    break;
+                                  case "lost":
+                                    state = "분실";
+                                    break;
+                                  default:
+                                    break;
+                                }
+                                int leftDay = 0;
+                                return Card(
+                                  margin: EdgeInsets.only(
+                                      left: 8, right: 8, top: 2, bottom: 2),
+                                  child: ListTile(
+                                    leading:
+                                        Image(image: AssetImage(imageAddress)),
+                                    title: Text(item.itemName),
+                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    trailing: Text(
+                                      state,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Roboto',
+                                      ),
+                                    ),
+                                    isThreeLine: true,
+                                  ),
+                                );
+                              });
+                        } else {
+                          return Center(child: Text("아이템이 없습니다"));
+                        }
+                      }
+                      return Center(child: CircularProgressIndicator());
+                    },
                   ),
                 ),
               ],

@@ -102,14 +102,16 @@ class UserBoxRepository {
 
   Future<void> addItems(String uid, String itemID) async {
     await userBoxesRef!.doc(uid).update({
-      'itemList': FieldValue.arrayUnion([itemID])
+      'items': FieldValue.arrayUnion([itemID])
     });
+    await editItemNum(uid, 1);
   }
 
   Future<void> deleteItems(String uid, String itemID) async {
     await userBoxesRef!.doc(uid).update({
-      'itemList': FieldValue.arrayRemove([itemID])
+      'items': FieldValue.arrayRemove([itemID])
     });
+    await editItemNum(uid, -1);
   }
 
   Future<UserBox> getUserBox(String uid) async {
@@ -156,8 +158,15 @@ class UserBoxRepository {
           type = ItemType.food;
           break;
       }
-      return Item(value.get('itemID'), value.get('itemName'), value.get('itemCode')
-      ,value.get('uid'), inDate, dueDate, status, type);
+      return Item(
+          value.get('itemID'),
+          value.get('itemName'),
+          value.get('itemCode'),
+          value.get('uid'),
+          inDate,
+          dueDate,
+          status,
+          type);
     }).toList();
   }
 }
