@@ -8,9 +8,10 @@ class UserBox {
   int warningNum;
   int trashNum;
   int lostNum;
+  int notInNum;
   DateTime last;
   UserBox(this.uid, this.itemNum, this.items, this.warningNum, this.trashNum,
-      this.lostNum, this.last);
+      this.lostNum, this.notInNum, this.last);
 }
 
 class UserBoxRepositoryException {
@@ -45,6 +46,7 @@ class UserBoxRepository {
       'warningNum': 0,
       'trashNum': 0,
       'lostNum': 0,
+      'notInNum': 0,
       'last': Timestamp.fromDate(DateTime.now())
     };
     if (userBoxSnapshot.exists == true) {
@@ -81,19 +83,25 @@ class UserBoxRepository {
     int warningNum = (await (userBoxesRef!
                 .doc(uid)
                 .collection('items')
-                .where("itemType", isEqualTo: "warning"))
+                .where("status", isEqualTo: "warning"))
             .get())
         .size;
     int trashNum = (await (userBoxesRef!
                 .doc(uid)
                 .collection('items')
-                .where("itemType", isEqualTo: "trash"))
+                .where("status", isEqualTo: "trash"))
             .get())
         .size;
     int lostNum = (await (userBoxesRef!
                 .doc(uid)
                 .collection('items')
-                .where("itemType", isEqualTo: "lost"))
+                .where("status", isEqualTo: "lost"))
+            .get())
+        .size;
+    int notIn = (await (userBoxesRef!
+                .doc(uid)
+                .collection('items')
+                .where("status", isEqualTo: "notIn"))
             .get())
         .size;
     await userBoxRef.update(
@@ -125,6 +133,7 @@ class UserBoxRepository {
         userBoxSnapshot.get('warningNum'),
         userBoxSnapshot.get('trashNum'),
         userBoxSnapshot.get('lostNum'),
+        userBoxSnapshot.get('notInNum'),
         userBoxSnapshot.get('last').toDate());
   }
 
@@ -143,8 +152,8 @@ class UserBoxRepository {
         case ('lost'):
           status = ItemStatus.lost;
           break;
-        case ('noHost'):
-          status = ItemStatus.noHost;
+        case ('notIn'):
+          status = ItemStatus.notIn;
           break;
         case ('trash'):
           status = ItemStatus.trash;
