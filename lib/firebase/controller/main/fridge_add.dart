@@ -16,7 +16,7 @@ class FridgeAddController {
     uid = user.uid;
     unitID = user.unitID;
     print(user.type);
-    if (user.type != UserType.master) throw CtrlException('no-master');
+    if (user.type != "master") throw CtrlException('no-master');
     unitRepo = UnitRepository();
     fridgeRepo = FridgeRepository(unitID);
     fridgeRepo.init();

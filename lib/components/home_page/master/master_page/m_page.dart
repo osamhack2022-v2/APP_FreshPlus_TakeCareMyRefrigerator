@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:helloworld/firebase/controller/main/general/dto.dart';
+import 'package:helloworld/firebase/controller/main/unit_ctrl.dart';
 import '../master_tab/m_tab.dart';
 import 'package:helloworld/components/general/homepage_drawer.dart';
 import 'package:helloworld/components/general/homepage_gauge.dart';
+import 'fridge_add.dart';
 
 class MPage extends StatefulWidget {
   const MPage({Key? key}) : super(key: key);
@@ -13,9 +16,11 @@ class MPage extends StatefulWidget {
 class _MPageState extends State<MPage> {
   final _formKey = GlobalKey<FormState>();
   bool _isClcked = true;
-
+  final UnitController unitCtrl = Get.arguments;
+  late UnitDTO unit;
   @override
   Widget build(BuildContext context) {
+    unit = unitCtrl.getUnit();
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -24,7 +29,7 @@ class _MPageState extends State<MPage> {
             backgroundColor: Color(0xff2C7B0C),
             toolbarHeight: 56.0,
             title: Text(
-              "User_Name 의 부대 냉장고", //User_Name Firebase에서 받아와야함
+              unit.unitID + "의 부대 냉장고", //User_Name Firebase에서 받아와야함
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20.0,
@@ -150,7 +155,9 @@ class _MPageState extends State<MPage> {
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => FridgeAdd());
+            },
             child: Align(
               alignment: Alignment.center,
               child: Icon(
@@ -172,11 +179,11 @@ class _MPageState extends State<MPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("총 물품 : N개"),
-                      Text("유통기한 임박 : M개"),
-                      Text("유통기한 경과 : L개"),
-                      Text("유실된 물품 : K개"),
-                      Text("미등록 물품 : T개"),
+                      Text("총 물품 : " + unit.itemNum.toString() + "개"),
+                      Text("유통기한 임박 : " + unit.warningNum.toString() + "개"),
+                      Text("유통기한 경과 : " + unit.trashNum.toString() + "개"),
+                      Text("유실된 물품 : " + unit.lostNum.toString() + "개"),
+                      Text("미등록 물품 : " + unit.noHostNum.toString() + "개"),
                     ],
                   )
                 ]),

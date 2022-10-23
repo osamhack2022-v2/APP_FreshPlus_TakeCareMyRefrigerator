@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'user_repository.dart';
 
-//noHost should be changed to notRegistered
-enum ItemStatus { ok, lost, noHost, warning, trash }
+//notIn should be changed to notRegistered
+enum ItemStatus { ok, lost, notIn, warning, trash }
 
 enum ItemType { drink, food }
 
@@ -60,8 +60,8 @@ class ItemRepository {
       case (ItemStatus.lost):
         itemDoc['status'] = 'lost';
         break;
-      case (ItemStatus.noHost):
-        itemDoc['status'] = 'noHost';
+      case (ItemStatus.notIn):
+        itemDoc['status'] = 'notIn';
         break;
       case (ItemStatus.trash):
         itemDoc['status'] = 'trash';
@@ -114,8 +114,8 @@ class ItemRepository {
       case (ItemStatus.lost):
         statusStr = 'lost';
         break;
-      case (ItemStatus.noHost):
-        statusStr = 'noHost';
+      case (ItemStatus.notIn):
+        statusStr = 'notIn';
         break;
       case (ItemStatus.trash):
         statusStr = 'trash';
@@ -142,8 +142,8 @@ class ItemRepository {
       case ('lost'):
         status = ItemStatus.lost;
         break;
-      case ('noHost'):
-        status = ItemStatus.noHost;
+      case ('notIn'):
+        status = ItemStatus.notIn;
         break;
       case ('trash'):
         status = ItemStatus.trash;

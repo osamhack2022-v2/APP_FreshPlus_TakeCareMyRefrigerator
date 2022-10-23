@@ -15,6 +15,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
 
+  int _leftDay(DateTime day, DateTime now) {
+    final diff = day.difference(now);
+    return diff.inDays;
+  }
+
   Future<void> _update(DocumentSnapshot documentSnapshot) async {
     nameController.text = documentSnapshot['name'];
     dateController.text = documentSnapshot['date'];
@@ -84,10 +89,10 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
       body: Column(
         children: [
           Container(
+            color: Color(0xff2C7B0C),
             child: TabBar(
               tabs: [
                 Container(
-                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
@@ -101,7 +106,6 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
@@ -115,7 +119,6 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
@@ -129,7 +132,6 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  color: Color(0xff2C7B0C),
                   height: 56,
                   alignment: Alignment.center,
                   child: Text(
@@ -165,23 +167,31 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 final ItemDTO item = snapshot.data![index];
-                                String imageAddress =
-                                    "assets/" + item.itemCode + ".jpg";
+                                String imageAddress = "assets/item_image/" +
+                                    item.itemCode +
+                                    ".jpg";
                                 String state = "안전";
+                                Color color = Colors.green;
+                                int leftDay = _leftDay(item.dueDate, DateTime.now());
+                                String subtitle = "유통기한이 $leftDay일 남았습니다";
                                 switch (item.status) {
                                   case "trash":
                                     state = "위험";
+                                    color = Colors.red;
+                                    subtitle = "유통기한이 지났습니다. 빨리 버려주세요";
                                     break;
                                   case "warning":
-                                    state = "위험";
+                                    state = "주의";
+                                    color = Colors.orange;
                                     break;
                                   case "lost":
                                     state = "분실";
+                                    color = Colors.purple;
+                                    subtitle = "제품이 분실되었습니다.";
                                     break;
                                   default:
                                     break;
                                 }
-                                int leftDay = 0;
                                 return Card(
                                   margin: EdgeInsets.only(
                                       left: 8, right: 8, top: 2, bottom: 2),
@@ -189,11 +199,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                     leading:
                                         Image(image: AssetImage(imageAddress)),
                                     title: Text(item.itemName),
-                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    subtitle: Text(subtitle),
                                     trailing: Text(
                                       state,
                                       style: TextStyle(
-                                        color: Colors.red,
+                                        color: color,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Roboto',
@@ -224,23 +234,29 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 final ItemDTO item = snapshot.data![index];
-                                String imageAddress =
-                                    "assets/" + item.itemCode + ".jpg";
+                                String imageAddress = "assets/item_image/" +
+                                    item.itemCode +
+                                    ".jpg";
                                 String state = "안전";
+                                Color color = Colors.green;
+                                int leftDay = _leftDay(item.dueDate, DateTime.now());
+                                String subtitle = "유통기한이 $leftDay일 남았습니다";
                                 switch (item.status) {
                                   case "trash":
                                     state = "위험";
+                                    color = Colors.red;
                                     break;
                                   case "warning":
-                                    state = "위험";
+                                    state = "주의";
+                                    color = Colors.orange;
                                     break;
                                   case "lost":
                                     state = "분실";
+                                    color = Colors.purple;
                                     break;
                                   default:
                                     break;
                                 }
-                                int leftDay = 0;
                                 return Card(
                                   margin: EdgeInsets.only(
                                       left: 8, right: 8, top: 2, bottom: 2),
@@ -248,11 +264,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                     leading:
                                         Image(image: AssetImage(imageAddress)),
                                     title: Text(item.itemName),
-                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    subtitle: Text(subtitle),
                                     trailing: Text(
                                       state,
                                       style: TextStyle(
-                                        color: Colors.red,
+                                        color: color,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Roboto',
@@ -283,23 +299,29 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 final ItemDTO item = snapshot.data![index];
-                                String imageAddress =
-                                    "assets/" + item.itemCode + ".jpg";
+                                String imageAddress = "assets/item_image/" +
+                                    item.itemCode +
+                                    ".jpg";
                                 String state = "안전";
+                                Color color = Colors.green;
+                                int leftDay = _leftDay(item.dueDate, DateTime.now());
+                                String subtitle = "유통기한이 $leftDay일 남았습니다";
                                 switch (item.status) {
                                   case "trash":
                                     state = "위험";
+                                    color = Colors.red;
                                     break;
                                   case "warning":
-                                    state = "위험";
+                                    state = "주의";
+                                    color = Colors.orange;
                                     break;
                                   case "lost":
                                     state = "분실";
+                                    color = Colors.purple;
                                     break;
                                   default:
                                     break;
                                 }
-                                int leftDay = 0;
                                 return Card(
                                   margin: EdgeInsets.only(
                                       left: 8, right: 8, top: 2, bottom: 2),
@@ -307,11 +329,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                     leading:
                                         Image(image: AssetImage(imageAddress)),
                                     title: Text(item.itemName),
-                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    subtitle: Text(subtitle),
                                     trailing: Text(
                                       state,
                                       style: TextStyle(
-                                        color: Colors.red,
+                                        color: color,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Roboto',
@@ -342,23 +364,29 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 final ItemDTO item = snapshot.data![index];
-                                String imageAddress =
-                                    "assets/" + item.itemCode + ".jpg";
+                                String imageAddress = "assets/item_image/" +
+                                    item.itemCode +
+                                    ".jpg";
                                 String state = "안전";
+                                Color color = Colors.green;
+                                int leftDay = _leftDay(item.dueDate, DateTime.now());
+                                String subtitle = "유통기한이 $leftDay일 남았습니다";
                                 switch (item.status) {
                                   case "trash":
                                     state = "위험";
+                                    color = Colors.red;
                                     break;
                                   case "warning":
-                                    state = "위험";
+                                    state = "주의";
+                                    color = Colors.orange;
                                     break;
                                   case "lost":
                                     state = "분실";
+                                    color = Colors.purple;
                                     break;
                                   default:
                                     break;
                                 }
-                                int leftDay = 0;
                                 return Card(
                                   margin: EdgeInsets.only(
                                       left: 8, right: 8, top: 2, bottom: 2),
@@ -366,11 +394,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                     leading:
                                         Image(image: AssetImage(imageAddress)),
                                     title: Text(item.itemName),
-                                    subtitle: Text("유통기한이 $leftDay일 남았습니다."),
+                                    subtitle: Text(subtitle),
                                     trailing: Text(
                                       state,
                                       style: TextStyle(
-                                        color: Colors.red,
+                                        color: color,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Roboto',

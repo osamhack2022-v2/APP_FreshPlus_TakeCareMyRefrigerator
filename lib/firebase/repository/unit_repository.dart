@@ -9,10 +9,21 @@ class Unit {
   int warningNum;
   int trashNum;
   int lostNum;
+  int notInNum;
   int noHostNum;
   DateTime last;
-  Unit(this.unitID, this.unitName, this.fridges, this.master, this.itemNum,
-      this.warningNum, this.trashNum, this.lostNum, this.noHostNum, this.last);
+  Unit(
+      this.unitID,
+      this.unitName,
+      this.fridges,
+      this.master,
+      this.itemNum,
+      this.warningNum,
+      this.trashNum,
+      this.lostNum,
+      this.notInNum,
+      this.noHostNum,
+      this.last);
 }
 
 class UnitRepositoryException {
@@ -35,6 +46,7 @@ class UnitRepository {
       'warningNum': 0,
       'trashNum': 0,
       'lostNum': 0,
+      'notInNum': 0,
       'noHostNum': 0,
       'last': Timestamp.fromDate(DateTime.now())
     };
@@ -96,16 +108,19 @@ class UnitRepository {
     int trashNum = 0;
     int lostNum = 0;
     int noHostNum = 0;
+    int notInNum=0;
     query.docs.forEach((doc) {
       warningNum += doc.get('warningNum') as int;
       trashNum += doc.get('trashNum') as int;
       lostNum += doc.get('lostNum') as int;
+      notInNum += doc.get('notInNum') as int;
       noHostNum += doc.get('noHostNum') as int;
     });
     await unitRef.update({
       'warningNum': warningNum,
       'trashNum': trashNum,
       'lostNum': lostNum,
+      'notInNum' : notInNum,
       'noHostNum': noHostNum,
     });
   }
@@ -132,10 +147,13 @@ class UnitRepository {
   }
 
   Future<Unit> getUnit(String unitID) async {
+    print(3);
     DocumentSnapshot unitSnapshot =
         await FirebaseFirestore.instance.collection('unit').doc(unitID).get();
+    print(4);
     if (unitSnapshot.exists == false)
       throw UnitRepositoryException('unit-exists');
+    print(5);
     return Unit(
         unitSnapshot.get('unitID'),
         unitSnapshot.get('unitName'),
@@ -145,6 +163,7 @@ class UnitRepository {
         unitSnapshot.get('warningNum'),
         unitSnapshot.get('trashNum'),
         unitSnapshot.get('lostNum'),
+        unitSnapshot.get('notInNum'),
         unitSnapshot.get('noHostNum'),
         unitSnapshot.get('last').toDate());
   }

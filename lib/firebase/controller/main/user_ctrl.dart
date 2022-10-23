@@ -63,7 +63,7 @@ class UserController {
 
   UserBoxDTO getUserBox() {
     return UserBoxDTO(reqUid, userBox.itemNum, userBox.warningNum,
-        userBox.trashNum, userBox.lostNum);
+        userBox.trashNum, userBox.lostNum,userBox.notInNum);
   }
 
   Future<List<ItemDTO>> getWarningItemList() async {
@@ -120,7 +120,7 @@ class UserController {
         case (ItemStatus.lost):
           status = "lost";
           break;
-        case (ItemStatus.noHost):
+        case (ItemStatus.notIn):
           status = "noHost";
           break;
         case (ItemStatus.trash):
@@ -128,6 +128,8 @@ class UserController {
           break;
         case (ItemStatus.warning):
           status = "warning";
+          break;
+        default:
           break;
       }
       return ItemDTO(value.itemID, value.itemName, value.itemCode, value.uid,

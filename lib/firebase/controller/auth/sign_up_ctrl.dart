@@ -16,7 +16,9 @@ Future<List<String>> getFridgeList(String unitID) async {
   try {
     UserRepository repo = UserRepository();
     UnitRepository unit_repo = UnitRepository();
+    print(1);
     await repo.requestLogIn(adminEmail, adminPassword);
+    print(2);
     Unit unit = await unit_repo.getUnit(unitID);
     return unit.fridges;
   } on UserRepositoryException catch (e) {
@@ -90,14 +92,14 @@ Future<String> signUp(String email, String password, String name, String unitID,
     if (userType == "master") {
       //addUnit
       await unit_repo
-          .addUnit(Unit(unitID, "", [], uid, 0, 0, 0, 0, 0, DateTime.now()));
+          .addUnit(Unit(unitID, "", [], uid, 0, 0, 0, 0, 0, 0,DateTime.now()));
     } else if (userType == "manager") {
       //editManager
       await fridge_repo.editManager(fridgeID, uid);
       UserBoxRepository userboxRepo = UserBoxRepository(unitID, fridgeID);
       userboxRepo.init();
       await userboxRepo
-          .addUserBox(UserBox(uid, 0, [], 0, 0, 0, DateTime.now()));
+          .addUserBox(UserBox(uid, 0, [], 0, 0, 0, 0,DateTime.now()));
     } else {
       //addUsers
       await fridge_repo.addUsers(fridgeID, uid);
@@ -105,7 +107,7 @@ Future<String> signUp(String email, String password, String name, String unitID,
       UserBoxRepository userboxRepo = UserBoxRepository(unitID, fridgeID);
       userboxRepo.init();
       await userboxRepo
-          .addUserBox(UserBox(uid, 0, [], 0, 0, 0, DateTime.now()));
+          .addUserBox(UserBox(uid, 0, [], 0, 0, 0, 0,DateTime.now()));
     }
   } on UserRepositoryException catch (e) {
     throw CtrlException(e.code);

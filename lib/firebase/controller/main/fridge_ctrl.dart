@@ -23,13 +23,14 @@ class FridgeController {
     uid = user.uid;
     unitID = user.unitID;
     fridgeID = user.fridgeID;
+    print(user.type);
     switch (user.type) {
       case ("master"):
         userType = "master";
         if (reqFridgeID == null) {
           throw CtrlException('null-parameter');
         }
-        this.reqFridgeID = reqFridgeID!;
+        this.reqFridgeID = reqFridgeID;
         break;
 
       case ("manager"):
@@ -42,9 +43,8 @@ class FridgeController {
     }
     fridgeRepo = FridgeRepository(unitID);
     fridgeRepo.init();
-    userBoxRepo = UserBoxRepository(unitID, reqFridgeID!);
+    userBoxRepo = UserBoxRepository(unitID, this.reqFridgeID);
     userBoxRepo.init();
-    await _checkStatus();
     try {
       fridge = await fridgeRepo.getFridge(this.reqFridgeID);
     } on FridgeRepositoryException catch (e) {
@@ -62,12 +62,12 @@ class FridgeController {
     fridge.users.forEach((value) async {
       var userBox;
       try {
-        userBox = await userBoxRepo.getUserBox(fridge.manager);
+        userBox = await userBoxRepo.getUserBox(value);
       } on UserBoxRepositoryException catch (e) {
         CtrlException(e.code);
       }
       list.add(UserBoxDTO(userBox.uid, userBox.itemNum, userBox.warningNum,
-          userBox.trashNum, userBox.lostNum));
+          userBox.trashNum, userBox.lostNum,userBox.notInNum));
     });
     return list;
   }
@@ -89,8 +89,8 @@ class FridgeController {
                 type = "food";
                 break;
             }
-            list.add(
-                ItemDTO(value.itemID, value.itemCode, value.itemName, value.uid, status, type,value.dueDate));
+            list.add(ItemDTO(value.itemID, value.itemCode, value.itemName,
+                value.uid, status, type, value.dueDate));
           });
         } on UserBoxRepositoryException catch (e) {
           CtrlException(e.code);
@@ -116,9 +116,8 @@ class FridgeController {
             type = "food";
             break;
         }
-        list.add(
-            ItemDTO(value.itemID, value.itemName,value.itemCode,
-             value.uid, "NoHost", type,value.dueDate));
+        list.add(ItemDTO(value.itemID, value.itemName, value.itemCode,
+            value.uid, "NoHost", type, value.dueDate));
       });
     } on UserBoxRepositoryException catch (e) {
       CtrlException(e.code);

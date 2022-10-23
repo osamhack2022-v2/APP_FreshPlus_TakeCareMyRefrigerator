@@ -9,6 +9,8 @@ import 'user/u_page.dart';
 import 'master/master_page/m_page.dart';
 import 'leader/leader_page/l_page.dart';
 import '/firebase/controller/main/user_ctrl.dart';
+import '/firebase/controller/main/fridge_ctrl.dart';
+import '/firebase/controller/main/unit_ctrl.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -51,10 +53,15 @@ class HomePage extends StatelessWidget {
     var user = await getLogInUser();
     switch (user.type) {
       case ("manager"):
-        Get.offAll(() => ManagerPage());
+      print(1);
+        var fridgeCtrl = FridgeController();
+        await fridgeCtrl.init(null);
+        Get.offAll(() => ManagerPage(), arguments: fridgeCtrl);
         break;
       case ("master"):
-        Get.offAll(() => const MPage());
+        var unitCtrl = UnitController();
+        await unitCtrl.init();
+        Get.offAll(() => const MPage(),arguments:unitCtrl);
         break;
       default:
         var userCtrl = UserController();

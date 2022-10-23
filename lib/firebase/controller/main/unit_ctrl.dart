@@ -19,21 +19,20 @@ class UnitController {
     var user = await getLogInUser();
     uid = user.uid;
     unitID = user.unitID;
-    if (user.type != UserType.master) throw CtrlException('no-master');
+    if (user.type != "master") throw CtrlException('no-master');
     unitRepo = UnitRepository();
     fridgeRepo = FridgeRepository(unitID);
     fridgeRepo.init();
-    await _checkStatus();
+    //await _checkStatus();
     try {
       unit = await unitRepo.getUnit(unitID);
     } on UnitRepositoryException catch (e) {
       throw CtrlException(e.code);
     }
   }
-
   UnitDTO getUnit() {
     return UnitDTO(unit.unitID, unit.master, unit.itemNum, unit.warningNum,
-        unit.lostNum, unit.noHostNum);
+        unit.trashNum,unit.lostNum, unit.noHostNum);
   }
 
   Future<List<FridgeDTO>> getFridgeList() async {

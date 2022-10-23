@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:flutlab/components/pages/login_page.dart';
+import '/components/auth/login_page/login_page.dart';
 import 'package:get/get.dart';
+import '/firebase/controller/auth/sign_in_ctrl.dart';
 
 class HomepageDrawer extends StatefulWidget {
   const HomepageDrawer({Key? key}) : super(key: key);
@@ -125,8 +126,8 @@ class _HomepageDrawerState extends State<HomepageDrawer> {
                       ),
                       TextButton(
                         onPressed: () {
-                          _signOut();
-                          //Get.to(LoginPage());
+                          signOut();
+                          Get.to(LoginPage());
                         },
                         child: const Text('Yes'),
                       ),

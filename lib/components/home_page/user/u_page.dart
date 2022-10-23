@@ -6,6 +6,7 @@ import 'package:helloworld/components/general/homepage_gauge.dart';
 import '/components/item_add/item_add.dart';
 import '/firebase/controller/main/user_ctrl.dart';
 import '/firebase/controller/main/general/dto.dart';
+import '/firebase/controller/main/item_add.dart';
 
 class UPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -57,6 +58,19 @@ class UPage extends StatelessWidget {
                       ),
                       onPressed: () {},
                     ),
+                    AbsorbPointer(
+                        absorbing: Navigator.canPop(context) == false,
+                        child: IconButton(
+                          iconSize: 18.0,
+                          padding: EdgeInsets.zero,
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Get.back();
+                          },
+                        ))
                   ],
                 )),
           ),
@@ -66,8 +80,10 @@ class UPage extends StatelessWidget {
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Get.to(() => OcrScan());
+            onPressed: () async {
+              var controller = ItemAddController();
+              await controller.init();
+              Get.to(() => OcrScan(), arguments: controller);
             },
             child: Align(
               alignment: Alignment.center,
@@ -90,9 +106,13 @@ class UPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("총 물품 : "+ctrl.userBox.itemNum.toString()+"개"),
-                      Text("유통기한 임박 : "+ctrl.userBox.warningNum.toString()+"개"),
-                      Text("유통기한 경과 : "+ctrl.userBox.trashNum.toString()+"개"),
+                      Text("총 물품 : " + ctrl.userBox.itemNum.toString() + "개"),
+                      Text("유통기한 임박 : " +
+                          ctrl.userBox.warningNum.toString() +
+                          "개"),
+                      Text("유통기한 경과 : " +
+                          ctrl.userBox.trashNum.toString() +
+                          "개"),
                     ],
                   )
                 ]),

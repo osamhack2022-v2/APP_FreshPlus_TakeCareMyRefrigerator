@@ -4,8 +4,9 @@ class UserBoxDTO {
   int warningNum;
   int trashNum;
   int lostNum;
-  UserBoxDTO(
-      this.uid, this.itemNum, this.warningNum, this.trashNum, this.lostNum);
+  int notInNum;
+  UserBoxDTO(this.uid, this.itemNum, this.warningNum, this.trashNum,
+      this.lostNum, this.notInNum);
 }
 
 class UserDTO {
@@ -56,10 +57,11 @@ class UnitDTO {
   String master;
   int itemNum;
   int warningNum;
+  int trashNum;
   int lostNum;
   int noHostNum;
-  UnitDTO(this.unitID, this.master, this.itemNum, this.warningNum, this.lostNum,
-      this.noHostNum);
+  UnitDTO(this.unitID, this.master, this.itemNum, this.warningNum,
+      this.trashNum, this.lostNum, this.noHostNum);
 }
 
 class ItemAddDTO {

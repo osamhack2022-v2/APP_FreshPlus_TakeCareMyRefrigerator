@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:firebase_core/firebase_core.dart';
-import '../leader_page/l_u_page.dart';
 import '../leader_tab/l_tab.dart';
 import 'package:helloworld/components/general/homepage_drawer.dart';
 import 'package:helloworld/components/general/homepage_gauge.dart';
+import 'package:get/get.dart';
+import '/firebase/controller/main/user_ctrl.dart';
+import '/firebase/controller/main/fridge_ctrl.dart';
+import '../../user/u_page.dart';
 
 class ManagerPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final FridgeController fridgeCtrl = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +21,7 @@ class ManagerPage extends StatelessWidget {
               backgroundColor: Color(0xff2C7B0C),
               toolbarHeight: 56.0,
               title: Text(
-                "User_Name 의 냉장고", //User_Name Firebase에서 받아와야함
+                fridgeCtrl.fridgeID + " 냉장고", //User_Name Firebase에서 받아와야함
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
@@ -34,8 +37,10 @@ class ManagerPage extends StatelessWidget {
                     Icons.currency_exchange,
                     color: Colors.white,
                   ),
-                  onPressed: () {
-                    Get.to(LUPage());
+                  onPressed: () async {
+                    var userCtrl = UserController();
+                    await userCtrl.init(null, fridgeCtrl.fridge.manager);
+                    Get.to(() => UPage(), arguments: userCtrl);
                   },
                 ),
               ]),
@@ -98,11 +103,21 @@ class ManagerPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("총 물품 : N개"),
-                      Text("유통기한 임박 : M개"),
-                      Text("유통기한 경과 : L개"),
-                      Text("유실된 물품 : K개"),
-                      Text("미등록 물품 : T개"),
+                      Text("총 물품 : " +
+                          fridgeCtrl.fridge.itemNum.toString() +
+                          "개"),
+                      Text("유통기한 임박 : " +
+                          fridgeCtrl.fridge.warningNum.toString() +
+                          "개"),
+                      Text("유통기한 경과 : " +
+                          fridgeCtrl.fridge.trashNum.toString() +
+                          "개"),
+                      Text("유실된 물품 : " +
+                          fridgeCtrl.fridge.lostNum.toString() +
+                          "개"),
+                      Text("미등록 물품 : " +
+                          fridgeCtrl.fridge.noHostNum.toString() +
+                          "개"),
                     ],
                   )
                 ]),
