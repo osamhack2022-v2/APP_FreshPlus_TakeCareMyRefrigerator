@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "160603413044",
+    "project_id": "fresh-plus-osam",
+    "storage_bucket": "fresh-plus-osam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160603413044:android:c1f317f018b360e0928861",
+        "android_client_info": {
+          "package_name": "com.example.ai_camera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160603413044-1d94j5d6sujaaf7hdj1v5gn77nutot6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCZW5m3JFuxRTcMI6gDUQGDse36dnN_jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160603413044-1d94j5d6sujaaf7hdj1v5gn77nutot6e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "160603413044-6opr1dqn1kol3mqdnqv5kjqvm1i3iai2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aiCamera"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160603413044:android:a33190fcc2232602928861",
+        "android_client_info": {
+          "package_name": "com.example.helloworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160603413044-1d94j5d6sujaaf7hdj1v5gn77nutot6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCZW5m3JFuxRTcMI6gDUQGDse36dnN_jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160603413044-1d94j5d6sujaaf7hdj1v5gn77nutot6e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "160603413044-6opr1dqn1kol3mqdnqv5kjqvm1i3iai2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aiCamera"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
