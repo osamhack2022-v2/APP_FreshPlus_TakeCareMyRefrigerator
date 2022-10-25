@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/res/merged/release/color/common_google_signin_btn_text_dark.xml",
+        "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/7dd77388cce3f359ce455eec9aaa3ec9/jetified-play-services-base-17.1.0/res/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/res/merged/release/color/common_google_signin_btn_text_light.xml",
+        "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/7dd77388cce3f359ce455eec9aaa3ec9/jetified-play-services-base-17.1.0/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/res/merged/release/color/common_google_signin_btn_tint.xml",
+        "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/7dd77388cce3f359ce455eec9aaa3ec9/jetified-play-services-base-17.1.0/res/color/common_google_signin_btn_tint.xml"
+    }
+]

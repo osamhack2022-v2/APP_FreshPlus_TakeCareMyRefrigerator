@@ -1,0 +1,53 @@
+{
+  "name": "flutter_blue_plus",
+  "version": "0.0.1",
+  "summary": "Flutter plugin for connecting and communicationg with Bluetooth Low Energy devices, on Android and iOS",
+  "description": "Flutter plugin for connecting and communicationg with Bluetooth Low Energy devices, on Android and iOS",
+  "homepage": "https://github.com/boskokg/flutter_blue_plus",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Bosko Popovic": "boskokg@gmail.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": [
+    "Classes/**/*",
+    "gen/**/*"
+  ],
+  "public_header_files": [
+    "Classes/**/*.h",
+    "gen/**/*.h"
+  ],
+  "dependencies": {
+    "Flutter": [
+
+    ]
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "frameworks": "CoreBluetooth",
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1"
+  },
+  "subspecs": [
+    {
+      "name": "Protos",
+      "source_files": [
+        "gen/*.pbobjc.{h,m}",
+        "gen/**/*.pbobjc.{h,m}"
+      ],
+      "header_mappings_dir": "gen",
+      "requires_arc": false,
+      "dependencies": {
+        "Protobuf": [
+          "~> 3.11"
+        ]
+      }
+    }
+  ]
+}

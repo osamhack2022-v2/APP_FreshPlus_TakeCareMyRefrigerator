@@ -1,0 +1,40 @@
+{
+  "name": "google_mlkit_object_detection",
+  "version": "0.5.0",
+  "summary": "A Flutter plugin to use Google's ML Kit Object Detection and Tracking to detect and track objects in an image or live camera feed.",
+  "description": "A Flutter plugin to use Google's ML Kit Object Detection and Tracking to detect and track objects in an image or live camera feed.",
+  "homepage": "https://github.com/bharat-biradar/Google-Ml-Kit-plugin",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": "Multiple Authors",
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "public_header_files": "Classes/**/*.h",
+  "dependencies": {
+    "Flutter": [
+
+    ],
+    "GoogleMLKit/ObjectDetection": [
+      "~> 3.1.0"
+    ],
+    "GoogleMLKit/ObjectDetectionCustom": [
+      "~> 3.1.0"
+    ],
+    "google_mlkit_commons": [
+
+    ]
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "static_framework": true,
+  "swift_versions": "5.0",
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "i386"
+  },
+  "swift_version": "5.0"
+}

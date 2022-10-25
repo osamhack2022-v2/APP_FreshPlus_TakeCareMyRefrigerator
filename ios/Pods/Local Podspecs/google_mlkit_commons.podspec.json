@@ -1,0 +1,34 @@
+{
+  "name": "google_mlkit_commons",
+  "version": "0.2.0",
+  "summary": "A Flutter plugin with commons files to implement google's standalone ml kit made for mobile platform.",
+  "description": "A Flutter plugin with commons files to implement google's standalone ml kit made for mobile platform.",
+  "homepage": "https://github.com/bharat-biradar/Google-Ml-Kit-plugin",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": "Multiple Authors",
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "public_header_files": "Classes/**/*.h",
+  "dependencies": {
+    "Flutter": [
+
+    ],
+    "MLKitVision": [
+
+    ]
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "static_framework": true,
+  "swift_versions": "5.0",
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "i386"
+  },
+  "swift_version": "5.0"
+}

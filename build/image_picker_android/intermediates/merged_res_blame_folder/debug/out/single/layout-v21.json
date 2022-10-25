@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/25fbb6a3e47380dc53f9e038ee0298c6/core-1.8.0/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/25fbb6a3e47380dc53f9e038ee0298c6/core-1.8.0/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/25fbb6a3e47380dc53f9e038ee0298c6/core-1.8.0/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/25fbb6a3e47380dc53f9e038ee0298c6/core-1.8.0/res/layout-v21/notification_template_custom_big.xml"
+    }
+]

@@ -1,0 +1,28 @@
+{
+  "name": "gallery_saver",
+  "version": "0.0.1",
+  "summary": "Saves images and videos to gallery and photos.",
+  "description": "Saves images and videos to gallery and photos.",
+  "homepage": "https://github.com/CarnegieTechnologies/gallery_saver",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Carnegie Technologies d.o.o": "devoffice@carnegietechnologies.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "public_header_files": "Classes/**/*.h",
+  "dependencies": {
+    "Flutter": [
+
+    ]
+  },
+  "swift_versions": "5.0",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "swift_version": "5.0"
+}
