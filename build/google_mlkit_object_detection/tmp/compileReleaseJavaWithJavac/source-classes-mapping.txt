@@ -1,0 +1,6 @@
+com/google_mlkit_object_detection/BuildConfig.java
+ com.google_mlkit_object_detection.BuildConfig
+com/google_mlkit_object_detection/ObjectDetector.java
+ com.google_mlkit_object_detection.ObjectDetector
+com/google_mlkit_object_detection/GoogleMlKitObjectDetectionPlugin.java
+ com.google_mlkit_object_detection.GoogleMlKitObjectDetectionPlugin

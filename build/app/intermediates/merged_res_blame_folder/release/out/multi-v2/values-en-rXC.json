@@ -4,7 +4,7 @@
             "outputFile": "/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/25fbb6a3e47380dc53f9e038ee0298c6/core-1.8.0/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/bcd58f4f8b0dea68667096f26243123a/browser-1.4.0/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "/Users/dancho/.gradle/caches/transforms-2/files-2.1/ca1cba421eec5614940267e9ef797be0/browser-1.4.0/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

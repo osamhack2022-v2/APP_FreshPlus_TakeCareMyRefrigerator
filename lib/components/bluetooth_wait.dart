@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:helloworld/components/camera_view.dart';
+import '/components/camera_view.dart';
 import 'package:get/get.dart';
-import 'package:helloworld/components/object_detector.dart';
+import '/components/object_detector.dart';
 import 'package:camera/camera.dart';
 
 class BlueWait extends StatelessWidget {

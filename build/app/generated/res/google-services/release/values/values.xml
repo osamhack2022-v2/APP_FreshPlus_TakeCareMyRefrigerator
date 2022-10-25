@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">160603413044-1d94j5d6sujaaf7hdj1v5gn77nutot6e.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">160603413044</string>
+    <string name="google_api_key" translatable="false">AIzaSyBCZW5m3JFuxRTcMI6gDUQGDse36dnN_jg</string>
+    <string name="google_app_id" translatable="false">1:160603413044:android:a33190fcc2232602928861</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBCZW5m3JFuxRTcMI6gDUQGDse36dnN_jg</string>
+    <string name="google_storage_bucket" translatable="false">fresh-plus-osam.appspot.com</string>
+    <string name="project_id" translatable="false">fresh-plus-osam</string>
+</resources>

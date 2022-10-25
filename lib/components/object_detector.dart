@@ -1,11 +1,12 @@
 import 'dart:collection';
 import 'dart:io' as io;
 
+import 'package:FreshPlus_Sub_App/components/bluetooth_wait.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
-import 'package:helloworld/components/firebase_sync.dart';
+import '/components/firebase_sync.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -129,19 +130,20 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
       // TODO: set _customPaint to draw boundingRect on top of image
       _customPaint = null;
     }
-    print(3);
+    if(objects.length!=0) print(objects.length);
+    else print("ddkfdkfkdf");
     HashMap<String,int> map = HashMap();
-      for(var object in objects){
-        String label = object.labels.first.text;
-        if(map.containsKey(label)==true){
-          map[label] = map[label]!+1;
-        }
-        else{
-          map[label] = 0;
-        }
-      }
+    //   for(var object in objects){
+    //     String label = object.labels.first.text;
+    //     if(map.containsKey(label)==true){
+    //       map[label] = map[label]!+1;
+    //     }
+    //     else{
+    //       map[label] = 0;
+    //     }
+    //   }
     _isBusy = false;
-    Get.off(()=>FirebaseSync(),arguments:map);
+    if(objects.length!=0) Get.off(()=>BlueWait(),arguments:map);
     if (mounted) {
       setState(() {});
     }

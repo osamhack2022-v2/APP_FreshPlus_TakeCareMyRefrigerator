@@ -6,7 +6,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
-import 'package:helloworld/components/firebase_sync.dart';
+import '/components/firebase_sync.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
 enum ScreenMode { liveFeed, gallery }

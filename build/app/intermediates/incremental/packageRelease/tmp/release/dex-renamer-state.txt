@@ -1,4 +1,4 @@
-#Mon Oct 24 23:52:57 KST 2022
+#Tue Oct 25 17:12:49 KST 2022
 base.0=/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

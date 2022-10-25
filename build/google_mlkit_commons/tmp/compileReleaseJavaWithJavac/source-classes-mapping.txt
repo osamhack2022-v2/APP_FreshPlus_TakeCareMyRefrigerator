@@ -1,0 +1,9 @@
+com/google_mlkit_commons/GenericModelManager.java
+ com.google_mlkit_commons.GenericModelManager
+ com.google_mlkit_commons.IsModelDownloaded
+com/google_mlkit_commons/GoogleMlKitCommonsPlugin.java
+ com.google_mlkit_commons.GoogleMlKitCommonsPlugin
+com/google_mlkit_commons/InputImageConverter.java
+ com.google_mlkit_commons.InputImageConverter
+com/google_mlkit_commons/BuildConfig.java
+ com.google_mlkit_commons.BuildConfig

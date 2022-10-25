@@ -13,264 +13,413 @@
 11    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 11-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:3:4-79
 11-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:3:21-77
-12    <!--
-13         New Bluetooth permissions in Android 12
-14           https://developer.android.com/about/versions/12/features/bluetooth-permissions
-15    -->
-16    <!--
-17         Include "neverForLocation" only if you can strongly assert that
-18           your app never derives physical location from Bluetooth scan results.
-19    -->
-20    <uses-permission
-20-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:15:5-17:58
-21        android:name="android.permission.BLUETOOTH_SCAN"
-21-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:16:9-57
-22        android:usesPermissionFlags="neverForLocation" />
-22-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:17:9-55
-23    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" /> <!-- Request legacy Bluetooth permissions on older devices. -->
-23-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:18:5-76
-23-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:18:22-73
-24    <uses-permission
-24-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:21:5-23:38
-25        android:name="android.permission.BLUETOOTH"
-25-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:22:9-52
-26        android:maxSdkVersion="30" />
-26-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:23:9-35
-27    <uses-permission
-27-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:24:5-26:38
-28        android:name="android.permission.BLUETOOTH_ADMIN"
-28-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:25:9-58
-29        android:maxSdkVersion="30" />
-29-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:26:9-35
-30    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-30-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:27:5-79
-30-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:27:22-76
-31    <uses-permission android:name="android.permission.CAMERA" />
-31-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:7:5-65
-31-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:7:22-62
-32    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-32-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:8:5-71
-32-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:8:22-68
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:7:5-65
+12-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:7:22-62
+13    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+13-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:8:5-71
+13-->[:camera] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/camera/intermediates/library_manifest/release/AndroidManifest.xml:8:22-68
+14    <!--
+15         New Bluetooth permissions in Android 12
+16           https://developer.android.com/about/versions/12/features/bluetooth-permissions
+17    -->
+18    <!--
+19         Include "neverForLocation" only if you can strongly assert that
+20           your app never derives physical location from Bluetooth scan results.
+21    -->
+22    <uses-permission
+22-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:15:5-17:58
+23        android:name="android.permission.BLUETOOTH_SCAN"
+23-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:16:9-57
+24        android:usesPermissionFlags="neverForLocation" />
+24-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:17:9-55
+25    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" /> <!-- Request legacy Bluetooth permissions on older devices. -->
+25-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:18:5-76
+25-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:18:22-73
+26    <uses-permission
+26-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:21:5-23:38
+27        android:name="android.permission.BLUETOOTH"
+27-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:22:9-52
+28        android:maxSdkVersion="30" />
+28-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:23:9-35
+29    <uses-permission
+29-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:24:5-26:38
+30        android:name="android.permission.BLUETOOTH_ADMIN"
+30-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:25:9-58
+31        android:maxSdkVersion="30" />
+31-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:26:9-35
+32    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+32-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:27:5-79
+32-->[:flutter_blue_plus] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/flutter_blue_plus/intermediates/library_manifest/release/AndroidManifest.xml:27:22-76
 33    <uses-permission android:name="android.permission.INTERNET" />
-33-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:23:5-67
-33-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:23:22-64
+33-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:23:5-67
+33-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:23:22-64
 34    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-34-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:5-79
-34-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:22-76
-35
-36    <application
-37        android:name="android.app.Application"
-37-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:6:9-42
-38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-38-->[androidx.core:core:1.6.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/122df2e57d294d1a53db26bbc3b813c1/core-1.6.0/AndroidManifest.xml:24:18-86
-39        android:icon="@mipmap/ic_launcher"
-39-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:7:9-43
-40        android:label="helloworld" >
-40-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:5:9-35
-41        <activity
-41-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:8:9-28:20
-42            android:name="com.example.helloworld.MainActivity"
-42-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:9:13-41
-43            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-43-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:13:13-163
-44            android:exported="true"
-44-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:10:13-36
-45            android:hardwareAccelerated="true"
-45-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:14:13-47
-46            android:launchMode="singleTop"
-46-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:11:13-43
-47            android:theme="@style/LaunchTheme"
-47-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:12:13-47
-48            android:windowSoftInputMode="adjustResize" >
-48-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:15:13-55
-49
-50            <!--
-51                 Specifies an Android theme to apply to this Activity as soon as
-52                 the Android process has started. This theme is visible to the user
-53                 while the Flutter UI initializes. After that, this theme continues
-54                 to determine the Window background behind the Flutter UI.
-55            -->
-56            <meta-data
-56-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:20:13-23:17
-57                android:name="io.flutter.embedding.android.NormalTheme"
-57-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:21:15-70
-58                android:resource="@style/NormalTheme" />
-58-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:22:15-52
-59
-60            <intent-filter>
-60-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:24:13-27:29
-61                <action android:name="android.intent.action.MAIN" />
-61-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:25:17-68
-61-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:25:25-66
-62
-63                <category android:name="android.intent.category.LAUNCHER" />
-63-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:26:17-76
-63-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:26:27-74
-64            </intent-filter>
-65        </activity>
-66        <!--
-67             Don't delete the meta-data below.
-68             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-69        -->
-70        <meta-data
-70-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:31:9-33:33
-71            android:name="flutterEmbedding"
-71-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:32:13-44
-72            android:value="2" />
-72-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:33:13-30
-73
-74        <service
-74-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:8:9-12:19
-75            android:name="com.google.firebase.components.ComponentDiscoveryService"
-75-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:8:18-89
-76            android:directBootAware="true"
-76-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/35641e0965f5110d2da5b478f4cfb63a/jetified-firebase-common-20.2.0/AndroidManifest.xml:34:13-43
-77            android:exported="false" >
-77-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:66:13-37
-78            <meta-data
-78-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
-79                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-79-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:10:17-124
-80                android:value="com.google.firebase.components.ComponentRegistrar" />
-80-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
-81            <meta-data
-81-->[:cloud_firestore] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/cloud_firestore/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
-82                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-82-->[:cloud_firestore] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/cloud_firestore/intermediates/library_manifest/release/AndroidManifest.xml:10:17-134
-83                android:value="com.google.firebase.components.ComponentRegistrar" />
-83-->[:cloud_firestore] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/cloud_firestore/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
-84            <meta-data
-84-->[:firebase_core] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
-85                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-85-->[:firebase_core] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:10:17-124
-86                android:value="com.google.firebase.components.ComponentRegistrar" />
-86-->[:firebase_core] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
-87            <meta-data
-87-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:67:13-69:85
-88                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-88-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:68:17-109
-89                android:value="com.google.firebase.components.ComponentRegistrar" />
-89-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:69:17-82
-90            <meta-data
-90-->[com.google.firebase:firebase-firestore:24.4.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/8eb5fb4f4515be1ae154ef731e20880b/jetified-firebase-firestore-24.4.0/AndroidManifest.xml:19:13-21:85
-91                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-91-->[com.google.firebase:firebase-firestore:24.4.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/8eb5fb4f4515be1ae154ef731e20880b/jetified-firebase-firestore-24.4.0/AndroidManifest.xml:20:17-111
-92                android:value="com.google.firebase.components.ComponentRegistrar" />
-92-->[com.google.firebase:firebase-firestore:24.4.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/8eb5fb4f4515be1ae154ef731e20880b/jetified-firebase-firestore-24.4.0/AndroidManifest.xml:21:17-82
-93        </service>
-94
-95        <uses-library
-95-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-96            android:name="androidx.window.extensions"
-96-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-97            android:required="false" />
-97-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-98        <uses-library
-98-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-99            android:name="androidx.window.sidecar"
-99-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-100            android:required="false" />
-100-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-101
-102        <activity
-102-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:27:9-44:20
-103            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-103-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:28:13-80
-104            android:excludeFromRecents="true"
-104-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:29:13-46
-105            android:exported="true"
-105-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:30:13-36
-106            android:launchMode="singleTask"
-106-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:31:13-44
-107            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-107-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:32:13-72
-108            <intent-filter>
-108-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:33:13-43:29
-109                <action android:name="android.intent.action.VIEW" />
-109-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:17-69
-109-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:25-66
-110
-111                <category android:name="android.intent.category.DEFAULT" />
-111-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:17-76
-111-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:27-73
-112                <category android:name="android.intent.category.BROWSABLE" />
-112-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:17-78
-112-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:27-75
-113
-114                <data
-114-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:39:17-42:51
-115                    android:host="firebase.auth"
-115-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:40:21-49
-116                    android:path="/"
-116-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:41:21-37
-117                    android:scheme="genericidp" />
-117-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:42:21-48
-118            </intent-filter>
-119        </activity>
-120        <activity
-120-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:45:9-62:20
-121            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-121-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:46:13-79
-122            android:excludeFromRecents="true"
-122-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:47:13-46
-123            android:exported="true"
-123-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:48:13-36
-124            android:launchMode="singleTask"
-124-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:49:13-44
-125            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-125-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:50:13-72
-126            <intent-filter>
-126-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:51:13-61:29
-127                <action android:name="android.intent.action.VIEW" />
-127-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:17-69
-127-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:25-66
-128
-129                <category android:name="android.intent.category.DEFAULT" />
-129-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:17-76
-129-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:27-73
-130                <category android:name="android.intent.category.BROWSABLE" />
-130-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:17-78
-130-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:27-75
-131
-132                <data
-132-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:39:17-42:51
-133                    android:host="firebase.auth"
-133-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:40:21-49
-134                    android:path="/"
-134-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:41:21-37
-135                    android:scheme="recaptcha" />
-135-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/ef4fcafab28b375fa4cfff55042b66c5/jetified-firebase-auth-21.1.0/AndroidManifest.xml:42:21-48
-136            </intent-filter>
-137        </activity>
-138
-139        <provider
-139-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/35641e0965f5110d2da5b478f4cfb63a/jetified-firebase-common-20.2.0/AndroidManifest.xml:25:9-30:39
-140            android:name="com.google.firebase.provider.FirebaseInitProvider"
-140-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/35641e0965f5110d2da5b478f4cfb63a/jetified-firebase-common-20.2.0/AndroidManifest.xml:26:13-77
-141            android:authorities="com.example.helloworld.firebaseinitprovider"
-141-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/35641e0965f5110d2da5b478f4cfb63a/jetified-firebase-common-20.2.0/AndroidManifest.xml:27:13-72
-142            android:directBootAware="true"
-142-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/35641e0965f5110d2da5b478f4cfb63a/jetified-firebase-common-20.2.0/AndroidManifest.xml:28:13-43
-143            android:exported="false"
-143-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/35641e0965f5110d2da5b478f4cfb63a/jetified-firebase-common-20.2.0/AndroidManifest.xml:29:13-37
-144            android:initOrder="100" />
-144-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/35641e0965f5110d2da5b478f4cfb63a/jetified-firebase-common-20.2.0/AndroidManifest.xml:30:13-36
-145
-146        <activity
-146-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/642cc9e2632e586d1058ed231591ead4/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-147            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-147-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/642cc9e2632e586d1058ed231591ead4/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-148            android:exported="false"
-148-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/642cc9e2632e586d1058ed231591ead4/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-149            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-149-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/642cc9e2632e586d1058ed231591ead4/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-150
-151        <meta-data
-151-->[com.google.android.gms:play-services-basement:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/0cdd8aceb5059ba1c457f63b9183d1a3/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
-152            android:name="com.google.android.gms.version"
-152-->[com.google.android.gms:play-services-basement:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/0cdd8aceb5059ba1c457f63b9183d1a3/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
-153            android:value="@integer/google_play_services_version" />
-153-->[com.google.android.gms:play-services-basement:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/0cdd8aceb5059ba1c457f63b9183d1a3/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
-154    </application>
+34-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:5-79
+34-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:22-76
+35    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+35-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:24:5-68
+35-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:24:22-65
+36    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+36-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:26:5-82
+36-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:26:22-79
+37
+38    <application
+39        android:name="android.app.Application"
+39-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:6:9-42
+40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+40-->[androidx.core:core:1.8.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/25fbb6a3e47380dc53f9e038ee0298c6/core-1.8.0/AndroidManifest.xml:24:18-86
+41        android:icon="@mipmap/ic_launcher"
+41-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:7:9-43
+42        android:label="helloworld" >
+42-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:5:9-35
+43        <activity
+43-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:8:9-28:20
+44            android:name="com.example.helloworld.MainActivity"
+44-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:9:13-41
+45            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+45-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:13:13-163
+46            android:exported="true"
+46-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:10:13-36
+47            android:hardwareAccelerated="true"
+47-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:14:13-47
+48            android:launchMode="singleTop"
+48-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:11:13-43
+49            android:theme="@style/LaunchTheme"
+49-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:12:13-47
+50            android:windowSoftInputMode="adjustResize" >
+50-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:15:13-55
+51
+52            <!--
+53                 Specifies an Android theme to apply to this Activity as soon as
+54                 the Android process has started. This theme is visible to the user
+55                 while the Flutter UI initializes. After that, this theme continues
+56                 to determine the Window background behind the Flutter UI.
+57            -->
+58            <meta-data
+58-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:20:13-23:17
+59                android:name="io.flutter.embedding.android.NormalTheme"
+59-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:21:15-70
+60                android:resource="@style/NormalTheme" />
+60-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:22:15-52
+61
+62            <intent-filter>
+62-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:24:13-27:29
+63                <action android:name="android.intent.action.MAIN" />
+63-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:25:17-68
+63-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:25:25-66
+64
+65                <category android:name="android.intent.category.LAUNCHER" />
+65-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:26:17-76
+65-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:26:27-74
+66            </intent-filter>
+67        </activity>
+68        <!--
+69             Don't delete the meta-data below.
+70             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+71        -->
+72        <meta-data
+72-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:31:9-33:33
+73            android:name="flutterEmbedding"
+73-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:32:13-44
+74            android:value="2" />
+74-->/Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/android/app/src/main/AndroidManifest.xml:33:13-30
+75
+76        <service
+76-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:8:9-12:19
+77            android:name="com.google.firebase.components.ComponentDiscoveryService"
+77-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:8:18-89
+78            android:directBootAware="true"
+78-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/c634a2545f06e29703a5db11b8954037/jetified-firebase-common-20.2.0/AndroidManifest.xml:34:13-43
+79            android:exported="false" >
+79-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:66:13-37
+80            <meta-data
+80-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
+81                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+81-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:10:17-124
+82                android:value="com.google.firebase.components.ComponentRegistrar" />
+82-->[:firebase_auth] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_auth/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
+83            <meta-data
+83-->[:cloud_firestore] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/cloud_firestore/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
+84                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+84-->[:cloud_firestore] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/cloud_firestore/intermediates/library_manifest/release/AndroidManifest.xml:10:17-134
+85                android:value="com.google.firebase.components.ComponentRegistrar" />
+85-->[:cloud_firestore] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/cloud_firestore/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
+86            <meta-data
+86-->[:firebase_core] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:9:13-11:85
+87                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+87-->[:firebase_core] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:10:17-124
+88                android:value="com.google.firebase.components.ComponentRegistrar" />
+88-->[:firebase_core] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/firebase_core/intermediates/library_manifest/release/AndroidManifest.xml:11:17-82
+89            <meta-data
+89-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:67:13-69:85
+90                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+90-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:68:17-109
+91                android:value="com.google.firebase.components.ComponentRegistrar" />
+91-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:69:17-82
+92            <meta-data
+92-->[com.google.firebase:firebase-firestore:24.4.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/8b8ea7ac44e76a9a6e8c59b5903a4a9e/jetified-firebase-firestore-24.4.0/AndroidManifest.xml:19:13-21:85
+93                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+93-->[com.google.firebase:firebase-firestore:24.4.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/8b8ea7ac44e76a9a6e8c59b5903a4a9e/jetified-firebase-firestore-24.4.0/AndroidManifest.xml:20:17-111
+94                android:value="com.google.firebase.components.ComponentRegistrar" />
+94-->[com.google.firebase:firebase-firestore:24.4.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/8b8ea7ac44e76a9a6e8c59b5903a4a9e/jetified-firebase-firestore-24.4.0/AndroidManifest.xml:21:17-82
+95            <meta-data
+95-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:32:13-34:85
+96                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+96-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:33:17-96
+97                android:value="com.google.firebase.components.ComponentRegistrar" />
+97-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:34:17-82
+98            <meta-data
+98-->[com.google.firebase:firebase-installations:17.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/a5009d647c04ba2181582f2839cd3c9c/jetified-firebase-installations-17.1.0/AndroidManifest.xml:17:13-19:85
+99                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+99-->[com.google.firebase:firebase-installations:17.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/a5009d647c04ba2181582f2839cd3c9c/jetified-firebase-installations-17.1.0/AndroidManifest.xml:18:17-127
+100                android:value="com.google.firebase.components.ComponentRegistrar" />
+100-->[com.google.firebase:firebase-installations:17.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/a5009d647c04ba2181582f2839cd3c9c/jetified-firebase-installations-17.1.0/AndroidManifest.xml:19:17-82
+101        </service>
+102
+103        <provider
+103-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:8:9-16:20
+104            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+104-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:9:13-82
+105            android:authorities="com.example.helloworld.flutter.image_provider"
+105-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:10:13-74
+106            android:exported="false"
+106-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:11:13-37
+107            android:grantUriPermissions="true" >
+107-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:12:13-47
+108            <meta-data
+108-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:13:13-15:75
+109                android:name="android.support.FILE_PROVIDER_PATHS"
+109-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:14:17-67
+110                android:resource="@xml/flutter_image_picker_file_paths" />
+110-->[:image_picker_android] /Users/dancho/Desktop/project/subapp/APP_FreshPlus_TakeCareMyRefrigerator/build/image_picker_android/intermediates/library_manifest/release/AndroidManifest.xml:15:17-72
+111        </provider>
+112
+113        <uses-library
+113-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/9a30143a20a029e68d2a2c8980fee508/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+114            android:name="androidx.window.extensions"
+114-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/9a30143a20a029e68d2a2c8980fee508/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+115            android:required="false" />
+115-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/9a30143a20a029e68d2a2c8980fee508/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+116        <uses-library
+116-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/9a30143a20a029e68d2a2c8980fee508/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+117            android:name="androidx.window.sidecar"
+117-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/9a30143a20a029e68d2a2c8980fee508/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+118            android:required="false" />
+118-->[androidx.window:window:1.0.0-beta04] /Users/dancho/.gradle/caches/transforms-2/files-2.1/9a30143a20a029e68d2a2c8980fee508/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+119
+120        <service
+120-->[com.google.mlkit:linkfirebase:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/2527d1b6ed2927fbbb8f52e30c956f93/jetified-linkfirebase-17.0.0/AndroidManifest.xml:9:9-15:19
+121            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+121-->[com.google.mlkit:linkfirebase:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/2527d1b6ed2927fbbb8f52e30c956f93/jetified-linkfirebase-17.0.0/AndroidManifest.xml:10:13-91
+122            android:directBootAware="true"
+122-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:17:13-43
+123            android:exported="false" >
+123-->[com.google.mlkit:linkfirebase:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/2527d1b6ed2927fbbb8f52e30c956f93/jetified-linkfirebase-17.0.0/AndroidManifest.xml:11:13-37
+124            <meta-data
+124-->[com.google.mlkit:linkfirebase:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/2527d1b6ed2927fbbb8f52e30c956f93/jetified-linkfirebase-17.0.0/AndroidManifest.xml:12:13-14:85
+125                android:name="com.google.firebase.components:com.google.mlkit.linkfirebase.internal.LinkFirebaseComponentRegistrar"
+125-->[com.google.mlkit:linkfirebase:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/2527d1b6ed2927fbbb8f52e30c956f93/jetified-linkfirebase-17.0.0/AndroidManifest.xml:13:17-132
+126                android:value="com.google.firebase.components.ComponentRegistrar" />
+126-->[com.google.mlkit:linkfirebase:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/2527d1b6ed2927fbbb8f52e30c956f93/jetified-linkfirebase-17.0.0/AndroidManifest.xml:14:17-82
+127            <meta-data
+127-->[com.google.mlkit:object-detection:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/0bbd5d1dd9c161930c53156517aa9cc2/jetified-object-detection-17.0.0/AndroidManifest.xml:14:13-16:85
+128                android:name="com.google.firebase.components:com.google.mlkit.vision.objects.defaults.internal.DefaultObjectsRegistrar"
+128-->[com.google.mlkit:object-detection:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/0bbd5d1dd9c161930c53156517aa9cc2/jetified-object-detection-17.0.0/AndroidManifest.xml:15:17-136
+129                android:value="com.google.firebase.components.ComponentRegistrar" />
+129-->[com.google.mlkit:object-detection:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/0bbd5d1dd9c161930c53156517aa9cc2/jetified-object-detection-17.0.0/AndroidManifest.xml:16:17-82
+130            <meta-data
+130-->[com.google.mlkit:object-detection-custom:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/039f6a57ee07e3818520f1527c6f97b5/jetified-object-detection-custom-17.0.0/AndroidManifest.xml:11:13-13:85
+131                android:name="com.google.firebase.components:com.google.mlkit.vision.objects.custom.internal.CustomObjectsRegistrar"
+131-->[com.google.mlkit:object-detection-custom:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/039f6a57ee07e3818520f1527c6f97b5/jetified-object-detection-custom-17.0.0/AndroidManifest.xml:12:17-133
+132                android:value="com.google.firebase.components.ComponentRegistrar" />
+132-->[com.google.mlkit:object-detection-custom:17.0.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/039f6a57ee07e3818520f1527c6f97b5/jetified-object-detection-custom-17.0.0/AndroidManifest.xml:13:17-82
+133            <meta-data
+133-->[com.google.mlkit:vision-internal-vkp:18.2.2] /Users/dancho/.gradle/caches/transforms-2/files-2.1/87e3e543ce633efaa129468cbc57120f/jetified-vision-internal-vkp-18.2.2/AndroidManifest.xml:14:13-16:85
+134                android:name="com.google.firebase.components:com.google.mlkit.vision.vkp.VkpRegistrar"
+134-->[com.google.mlkit:vision-internal-vkp:18.2.2] /Users/dancho/.gradle/caches/transforms-2/files-2.1/87e3e543ce633efaa129468cbc57120f/jetified-vision-internal-vkp-18.2.2/AndroidManifest.xml:15:17-103
+135                android:value="com.google.firebase.components.ComponentRegistrar" />
+135-->[com.google.mlkit:vision-internal-vkp:18.2.2] /Users/dancho/.gradle/caches/transforms-2/files-2.1/87e3e543ce633efaa129468cbc57120f/jetified-vision-internal-vkp-18.2.2/AndroidManifest.xml:16:17-82
+136            <meta-data
+136-->[com.google.mlkit:vision-common:17.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/d271366b6268fc2b07f137728047ddeb/jetified-vision-common-17.1.0/AndroidManifest.xml:12:13-14:85
+137                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+137-->[com.google.mlkit:vision-common:17.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/d271366b6268fc2b07f137728047ddeb/jetified-vision-common-17.1.0/AndroidManifest.xml:13:17-124
+138                android:value="com.google.firebase.components.ComponentRegistrar" />
+138-->[com.google.mlkit:vision-common:17.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/d271366b6268fc2b07f137728047ddeb/jetified-vision-common-17.1.0/AndroidManifest.xml:14:17-82
+139            <meta-data
+139-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:20:13-22:85
+140                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+140-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:21:17-120
+141                android:value="com.google.firebase.components.ComponentRegistrar" />
+141-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:22:17-82
+142        </service>
+143
+144        <activity
+144-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:27:9-44:20
+145            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+145-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:28:13-80
+146            android:excludeFromRecents="true"
+146-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:29:13-46
+147            android:exported="true"
+147-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:30:13-36
+148            android:launchMode="singleTask"
+148-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:31:13-44
+149            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+149-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:32:13-72
+150            <intent-filter>
+150-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:33:13-43:29
+151                <action android:name="android.intent.action.VIEW" />
+151-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:17-69
+151-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:25-66
+152
+153                <category android:name="android.intent.category.DEFAULT" />
+153-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:17-76
+153-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:27-73
+154                <category android:name="android.intent.category.BROWSABLE" />
+154-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:17-78
+154-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:27-75
 155
-156</manifest>
+156                <data
+156-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:39:17-42:51
+157                    android:host="firebase.auth"
+157-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:40:21-49
+158                    android:path="/"
+158-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:41:21-37
+159                    android:scheme="genericidp" />
+159-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:42:21-48
+160            </intent-filter>
+161        </activity>
+162        <activity
+162-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:45:9-62:20
+163            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+163-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:46:13-79
+164            android:excludeFromRecents="true"
+164-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:47:13-46
+165            android:exported="true"
+165-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:48:13-36
+166            android:launchMode="singleTask"
+166-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:49:13-44
+167            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+167-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:50:13-72
+168            <intent-filter>
+168-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:51:13-61:29
+169                <action android:name="android.intent.action.VIEW" />
+169-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:17-69
+169-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:25-66
+170
+171                <category android:name="android.intent.category.DEFAULT" />
+171-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:17-76
+171-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:27-73
+172                <category android:name="android.intent.category.BROWSABLE" />
+172-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:17-78
+172-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:27-75
+173
+174                <data
+174-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:39:17-42:51
+175                    android:host="firebase.auth"
+175-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:40:21-49
+176                    android:path="/"
+176-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:41:21-37
+177                    android:scheme="recaptcha" />
+177-->[com.google.firebase:firebase-auth:21.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/db03ed3e53b1f7ff0ba541f0d9b4452d/jetified-firebase-auth-21.1.0/AndroidManifest.xml:42:21-48
+178            </intent-filter>
+179        </activity>
+180
+181        <receiver
+181-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:37:9-44:20
+182            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+182-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:38:13-78
+183            android:exported="true"
+183-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:39:13-36
+184            android:permission="com.google.android.c2dm.permission.SEND" >
+184-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:40:13-73
+185            <intent-filter>
+185-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:41:13-43:29
+186                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+186-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:42:17-81
+186-->[com.google.firebase:firebase-iid:20.1.5] /Users/dancho/.gradle/caches/transforms-2/files-2.1/49588c13bc59cc88a65f685a733c6f10/jetified-firebase-iid-20.1.5/AndroidManifest.xml:42:25-78
+187            </intent-filter>
+188        </receiver>
+189
+190        <provider
+190-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/c634a2545f06e29703a5db11b8954037/jetified-firebase-common-20.2.0/AndroidManifest.xml:25:9-30:39
+191            android:name="com.google.firebase.provider.FirebaseInitProvider"
+191-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/c634a2545f06e29703a5db11b8954037/jetified-firebase-common-20.2.0/AndroidManifest.xml:26:13-77
+192            android:authorities="com.example.helloworld.firebaseinitprovider"
+192-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/c634a2545f06e29703a5db11b8954037/jetified-firebase-common-20.2.0/AndroidManifest.xml:27:13-72
+193            android:directBootAware="true"
+193-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/c634a2545f06e29703a5db11b8954037/jetified-firebase-common-20.2.0/AndroidManifest.xml:28:13-43
+194            android:exported="false"
+194-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/c634a2545f06e29703a5db11b8954037/jetified-firebase-common-20.2.0/AndroidManifest.xml:29:13-37
+195            android:initOrder="100" />
+195-->[com.google.firebase:firebase-common:20.2.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/c634a2545f06e29703a5db11b8954037/jetified-firebase-common-20.2.0/AndroidManifest.xml:30:13-36
+196        <provider
+196-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:9:9-13:38
+197            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+197-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:10:13-78
+198            android:authorities="com.example.helloworld.mlkitinitprovider"
+198-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:11:13-69
+199            android:exported="false"
+199-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:12:13-37
+200            android:initOrder="99" />
+200-->[com.google.mlkit:common:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/441db3db2d7eedb0c55527d0f62e6c3a/jetified-common-18.1.0/AndroidManifest.xml:13:13-35
+201
+202        <activity
+202-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/37425ca1da537beeff65bfee35ec9b80/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+203            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+203-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/37425ca1da537beeff65bfee35ec9b80/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+204            android:exported="false"
+204-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/37425ca1da537beeff65bfee35ec9b80/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+205            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+205-->[com.google.android.gms:play-services-base:18.0.1] /Users/dancho/.gradle/caches/transforms-2/files-2.1/37425ca1da537beeff65bfee35ec9b80/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+206
+207        <meta-data
+207-->[com.google.android.gms:play-services-basement:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/44d97af77f657143fa1b80b3f0d51e6f/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+208            android:name="com.google.android.gms.version"
+208-->[com.google.android.gms:play-services-basement:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/44d97af77f657143fa1b80b3f0d51e6f/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+209            android:value="@integer/google_play_services_version" />
+209-->[com.google.android.gms:play-services-basement:18.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/44d97af77f657143fa1b80b3f0d51e6f/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+210
+211        <service
+211-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/dancho/.gradle/caches/transforms-2/files-2.1/4858a518b76159725d5f908339d7ab6e/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+212            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+212-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/dancho/.gradle/caches/transforms-2/files-2.1/4858a518b76159725d5f908339d7ab6e/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+213            android:exported="false" >
+213-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/dancho/.gradle/caches/transforms-2/files-2.1/4858a518b76159725d5f908339d7ab6e/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+214            <meta-data
+214-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/dancho/.gradle/caches/transforms-2/files-2.1/4858a518b76159725d5f908339d7ab6e/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+215                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+215-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/dancho/.gradle/caches/transforms-2/files-2.1/4858a518b76159725d5f908339d7ab6e/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+216                android:value="cct" />
+216-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/dancho/.gradle/caches/transforms-2/files-2.1/4858a518b76159725d5f908339d7ab6e/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+217        </service>
+218        <service
+218-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/dancho/.gradle/caches/transforms-2/files-2.1/6b824a47ab8d2c5fa55fe8601563d97d/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
+219            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+219-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/dancho/.gradle/caches/transforms-2/files-2.1/6b824a47ab8d2c5fa55fe8601563d97d/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
+220            android:exported="false"
+220-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/dancho/.gradle/caches/transforms-2/files-2.1/6b824a47ab8d2c5fa55fe8601563d97d/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
+221            android:permission="android.permission.BIND_JOB_SERVICE" >
+221-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/dancho/.gradle/caches/transforms-2/files-2.1/6b824a47ab8d2c5fa55fe8601563d97d/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
+222        </service>
+223
+224        <receiver
+224-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/dancho/.gradle/caches/transforms-2/files-2.1/6b824a47ab8d2c5fa55fe8601563d97d/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
+225            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+225-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/dancho/.gradle/caches/transforms-2/files-2.1/6b824a47ab8d2c5fa55fe8601563d97d/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
+226            android:exported="false" />
+226-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/dancho/.gradle/caches/transforms-2/files-2.1/6b824a47ab8d2c5fa55fe8601563d97d/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
+227
+228        <provider
+228-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/57cd5c29f3917fcbf3d8dbb9e644c675/jetified-lifecycle-process-2.1.0/AndroidManifest.xml:23:9-27:43
+229            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+229-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/57cd5c29f3917fcbf3d8dbb9e644c675/jetified-lifecycle-process-2.1.0/AndroidManifest.xml:24:13-79
+230            android:authorities="com.example.helloworld.lifecycle-process"
+230-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/57cd5c29f3917fcbf3d8dbb9e644c675/jetified-lifecycle-process-2.1.0/AndroidManifest.xml:25:13-69
+231            android:exported="false"
+231-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/57cd5c29f3917fcbf3d8dbb9e644c675/jetified-lifecycle-process-2.1.0/AndroidManifest.xml:26:13-37
+232            android:multiprocess="true" />
+232-->[androidx.lifecycle:lifecycle-process:2.1.0] /Users/dancho/.gradle/caches/transforms-2/files-2.1/57cd5c29f3917fcbf3d8dbb9e644c675/jetified-lifecycle-process-2.1.0/AndroidManifest.xml:27:13-40
+233    </application>
+234
+235</manifest>
