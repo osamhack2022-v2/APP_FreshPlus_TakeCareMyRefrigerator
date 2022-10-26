@@ -40,6 +40,18 @@ class _AddItemFormState extends State<AddItemForm> {
   final foodnameController = TextEditingController();
   final expirationDateController = TextEditingController();
 
+  static const List<String> _Item = <String>[
+    '우유',
+    '비요뜨',
+    '딸기우유',
+    '초코에몽',
+    '바나나우유',
+    '프로틴음료',
+    '커피',
+    '액티비티',
+    '콜라',
+  ];
+
   @override
   void dispose() {
     foodnameController.dispose();
@@ -56,48 +68,57 @@ class _AddItemFormState extends State<AddItemForm> {
         padding: const EdgeInsets.fromLTRB(24.0, 0.0, 23.0, 0.0),
         child: Column(
           children: [
-            TextFormField(
-              controller: foodnameController,
-              validator: (foodname) {
-                if (foodname!.isEmpty) {
-                  return '제품 이름을 간략하게 적어주세요';
-                } else if (foodname.length < 15) {
-                  return '식품이름은 15자를 초과할 수 없습니다.';
-                } else {
-                  return null;
+            Autocomplete<String>(
+              optionsBuilder: (TextEditingValue textEditingValue) {
+                if (textEditingValue.text == '') {
+                  return const Iterable<String>.empty();
                 }
+                return _Item.where((String option) {
+                  return option.contains(textEditingValue.text.toLowerCase());
+                });
               },
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                filled: true,
-                fillColor: Color(0x14212121),
-                labelText: "식품이름",
-                labelStyle: TextStyle(
-                    fontSize: 12.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-                hintText: "식품이름을 입력해주세요",
-                hintStyle: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Color(0x14212121)),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0)),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff6200EE))),
-                errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                ),
-                errorStyle: TextStyle(
-                  fontFamily: "Roboto",
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              onSelected: (String selection) {
+                debugPrint('You just selected $selection');
+              },
+              fieldViewBuilder:
+                  (context, controller, focusNode, onEditingComplete) {
+                return TextFormField(
+                  controller: controller,
+                  focusNode: focusNode,
+                  onEditingComplete: onEditingComplete,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    filled: true,
+                    fillColor: Color(0x14212121),
+                    labelText: "식품이름",
+                    labelStyle: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                    hintText: "식품이름을 입력해주세요",
+                    hintStyle: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0x14212121)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(4.0),
+                          topRight: Radius.circular(4.0)),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff6200EE))),
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 15.0),
             TextFormField(
