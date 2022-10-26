@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:flutlab/components/pages/login_page.dart';
 import 'package:get/get.dart';
+import 'package:helloworld/components/password_reset/self_certification.dart';
 
 class HomepageDrawer extends StatefulWidget {
   const HomepageDrawer({Key? key}) : super(key: key);
@@ -95,7 +96,7 @@ class _HomepageDrawerState extends State<HomepageDrawer> {
                 ),
               ),
               onTap: () {
-                //Get.to("password reset page route here");
+                Get.to(()=> SelfCertification());
               },
             ),
           ),
