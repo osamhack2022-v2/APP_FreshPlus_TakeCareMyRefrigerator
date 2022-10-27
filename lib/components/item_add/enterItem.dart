@@ -42,6 +42,7 @@ class _AddItemFormState extends State<AddItemForm> {
   final foodnameController = TextEditingController();
   final expirationDateController = TextEditingController();
   final itemAddController = ItemAddController();
+  ItemAddDTO? item = null;
   DateTime dueDate = DateTime.now();
   @override
   void initState() {
@@ -66,49 +67,62 @@ class _AddItemFormState extends State<AddItemForm> {
         padding: const EdgeInsets.fromLTRB(24.0, 0.0, 23.0, 0.0),
         child: Column(
           children: [
-            TextFormField(
-              controller: foodnameController,
-              validator: (foodname) {
-                if (foodname!.isEmpty) {
-                  return '제품 이름을 간략하게 적어주세요';
-                } else if (foodname.length < 15) {
-                  return '식품이름은 15자를 초과할 수 없습니다.';
-                } else {
-                  return null;
+            Autocomplete<String>(
+              optionsBuilder: (TextEditingValue textEditingValue) {
+                if (textEditingValue.text == '') {
+                  return const Iterable<String>.empty();
                 }
+                return itemAddController
+                    .getByName(textEditingValue.text)
+                    .map((value) {
+                  return value.itemName;
+                });
               },
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                filled: true,
-                fillColor: Color(0x14212121),
-                labelText: "식품이름",
-                labelStyle: TextStyle(
-                    fontSize: 12.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-                hintText: "식품이름을 입력해주세요",
-                hintStyle: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Color(0x14212121)),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0)),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff6200EE))),
-                errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                ),
-                errorStyle: TextStyle(
-                  fontFamily: "Roboto",
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              onSelected: (String selection) {
+                debugPrint('You just selected $selection');
+                item = itemAddController.getByCertName(selection);
+              },
+              fieldViewBuilder:
+                  (context, controller, focusNode, onEditingComplete) {
+                return TextFormField(
+                  controller: controller,
+                  focusNode: focusNode,
+                  onEditingComplete: onEditingComplete,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    filled: true,
+                    fillColor: Color(0x14212121),
+                    labelText: "식품이름",
+                    labelStyle: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                    hintText: "식품이름을 입력해주세요",
+                    hintStyle: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0x14212121)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(4.0),
+                          topRight: Radius.circular(4.0)),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff6200EE))),
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                );
+              },
             ),
+            const SizedBox(height: 15.0),
             const SizedBox(height: 15.0),
             InputDatePickerFormField(
               firstDate: DateTime.now(),
@@ -120,59 +134,12 @@ class _AddItemFormState extends State<AddItemForm> {
                 });
               },
             ),
-
-            // TextFormField(
-            //   controller: expirationDateController,
-            //   keyboardType: TextInputType.number,
-            //   validator: (expirationDate) {
-            //     if (expirationDate!.isEmpty) {
-            //       return '유통기한을 입력하세요';
-            //     } else {
-            //       return null;
-            //     }
-            //   },
-            //   //keyboardType: TextInputType.number,
-            //   //inputFormatters: [
-            //   //  FilteringTextInputFormatter.allow(RegExp('[0-9]')),
-            //   //],
-            //   //obscureText: true,
-            //   decoration: const InputDecoration(
-            //     border: InputBorder.none,
-            //     filled: true,
-            //     fillColor: Color(0x14212121),
-            //     labelText: "유통기한",
-            //     labelStyle: TextStyle(
-            //         fontSize: 12.0,
-            //         color: Colors.black,
-            //         fontWeight: FontWeight.w400),
-            //     hintText: "유통기한을 입력해주세요",
-            //     hintStyle: TextStyle(
-            //         fontSize: 16.0,
-            //         color: Colors.black,
-            //         fontWeight: FontWeight.w500),
-            //     enabledBorder: UnderlineInputBorder(
-            //       borderSide: BorderSide(color: Color(0x14212121)),
-            //       borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(4.0),
-            //           topRight: Radius.circular(4.0)),
-            //     ),
-            //     focusedBorder: UnderlineInputBorder(
-            //         borderSide: BorderSide(color: Color(0xff6200EE))),
-            //     errorBorder: UnderlineInputBorder(
-            //       borderSide: BorderSide(color: Colors.red),
-            //     ),
-            //     errorStyle: TextStyle(
-            //       fontFamily: "Roboto",
-            //       fontSize: 12.0,
-            //       fontWeight: FontWeight.w400,
-            //     ),
-            //   ),
-            // ),
             const SizedBox(height: 15.0),
             ElevatedButton(
                 onPressed: () {
-                  itemAddController.add(ItemAddDTO(
-                      foodnameController.text, "bananamilk", "drink", dueDate));
+                  if (item != null) {
+                    itemAddController.add(item!);
+                  }
                 },
                 child: Text("아이템 추가"))
           ],

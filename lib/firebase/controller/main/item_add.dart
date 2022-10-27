@@ -34,6 +34,15 @@ class ItemAddController {
     return result;
   }
 
+  ItemAddDTO? getByCertName(String name) {
+    var list = productRepo.searchByName(name);
+    for (var product in list) {
+      return ItemAddDTO(product.itemName, product.itemCode, product.type,
+          DateTime.now().add(product.day));
+    }
+    return null;
+  }
+
   ItemAddDTO? getByBarcode(String code) {
     var product = productRepo.searchByCode(code);
     if (product == null)

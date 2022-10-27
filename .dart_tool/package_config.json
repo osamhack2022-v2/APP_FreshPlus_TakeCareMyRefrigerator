@@ -57,7 +57,7 @@
     },
     {
       "name": "collection",
-      "rootUri": "file:///home/codespace/.pub-cache/hosted/pub.dev/collection-1.16.0",
+      "rootUri": "file:///home/codespace/.pub-cache/hosted/pub.dev/collection-1.17.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -165,7 +165,7 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///home/codespace/.pub-cache/hosted/pub.dev/js-0.6.4",
+      "rootUri": "file:///home/codespace/.pub-cache/hosted/pub.dev/js-0.6.5",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
@@ -243,9 +243,9 @@
     },
     {
       "name": "stack_trace",
-      "rootUri": "file:///home/codespace/.pub-cache/hosted/pub.dev/stack_trace-1.10.0",
+      "rootUri": "file:///home/codespace/.pub-cache/hosted/pub.dev/stack_trace-1.11.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.18"
     },
     {
       "name": "stream_channel",
@@ -308,7 +308,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-10-26T06:48:23.180531Z",
+  "generated": "2022-10-27T04:47:16.849941Z",
   "generator": "pub",
-  "generatorVersion": "2.19.0-318.0.dev"
+  "generatorVersion": "2.19.0-343.0.dev"
 }

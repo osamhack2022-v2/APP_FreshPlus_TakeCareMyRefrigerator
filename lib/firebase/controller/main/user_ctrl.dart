@@ -86,7 +86,7 @@ class UserController {
 
   Future<List<ItemDTO>> getTrashItemList() async {
     var items =
-        await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'warning');
+        await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'trash');
     return items.map((value) {
       String type = "drink";
       switch (value.type) {

@@ -178,4 +178,46 @@ class UserBoxRepository {
           type);
     }).toList();
   }
+
+  Future<List<Item>> getNoHost() async {
+    CollectionReference itemsRef =
+        userBoxesRef!.doc("noHost").collection("items");
+    List<QueryDocumentSnapshot> queryDocSnapshotList =
+     (await itemsRef.get()).docs;
+    return queryDocSnapshotList.map((value) {
+      if (value.exists == false) throw UserBoxRepositoryException('no-item');
+      DateTime inDate = value.get('inDate').toDate();
+      DateTime dueDate = value.get('dueDate').toDate();
+      ItemStatus status = ItemStatus.ok;
+      ItemType type = ItemType.drink;
+      switch (value.get('status')) {
+        case ('lost'):
+          status = ItemStatus.lost;
+          break;
+        case ('notIn'):
+          status = ItemStatus.notIn;
+          break;
+        case ('trash'):
+          status = ItemStatus.trash;
+          break;
+        case ('warning'):
+          status = ItemStatus.warning;
+          break;
+      }
+      switch (value.get('type')) {
+        case ("food"):
+          type = ItemType.food;
+          break;
+      }
+      return Item(
+          value.get('itemID'),
+          value.get('itemName'),
+          value.get('itemCode'),
+          value.get('uid'),
+          inDate,
+          dueDate,
+          status,
+          type);
+    }).toList();
+  }
 }

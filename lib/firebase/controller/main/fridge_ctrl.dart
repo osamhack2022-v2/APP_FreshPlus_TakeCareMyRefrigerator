@@ -68,15 +68,17 @@ class FridgeController {
         CtrlException(e.code);
       }
       list.add(UserBoxDTO(userBox.uid, userBox.itemNum, userBox.warningNum,
-          userBox.trashNum, userBox.lostNum,userBox.notInNum));
+          userBox.trashNum, userBox.lostNum, userBox.notInNum));
     });
     return list;
   }
 
   Future<List<ItemDTO>> getStatusItemList(String status) async {
     List<ItemDTO> list = [];
+    List<String> userList = fridge.users;
+    userList.add(fridge.manager);
     await () async {
-      fridge.users.forEach((value) async {
+      userList.forEach((value) async {
         List<Item> itemList;
         try {
           itemList = await userBoxRepo.getItemsQuery(value, "status", status);
@@ -105,10 +107,8 @@ class FridgeController {
   Future<List<ItemDTO>> getNoHostItemList() async {
     List<ItemDTO> list = [];
     try {
-      var itemList =
-          await userBoxRepo.getItemsQuery("NoHost", "status", "noHost");
-      itemList.forEach((value) {
-        var type;
+      return (await userBoxRepo.getNoHost()).map((value) {
+        var type = "food";
         switch (value.type) {
           case (ItemType.drink):
             type = "drink";
@@ -117,9 +117,9 @@ class FridgeController {
             type = "food";
             break;
         }
-        list.add(ItemDTO(value.itemID, value.itemName, value.itemCode,
-            value.uid, "NoHost", type, value.dueDate));
-      });
+        return ItemDTO(value.itemID, value.itemCode, value.itemName, value.uid,
+            "ok", type, value.dueDate);
+      }).toList();
     } on UserBoxRepositoryException catch (e) {
       CtrlException(e.code);
     }
