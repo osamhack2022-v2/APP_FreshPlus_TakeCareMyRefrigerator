@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../user/u_tab.dart';
-import 'package:helloworld/components/general/homepage_drawer.dart';
-import 'package:helloworld/components/general/homepage_gauge.dart';
+import '/components/general/homepage_drawer.dart';
+import '/components/general/homepage_gauge.dart';
 import '/components/item_add/item_add.dart';
 import '/firebase/controller/main/user_ctrl.dart';
-import '/firebase/controller/main/general/dto.dart';
 import '/firebase/controller/main/item_add.dart';
 
 class UPage extends StatelessWidget {

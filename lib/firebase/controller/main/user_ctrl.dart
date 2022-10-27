@@ -1,5 +1,5 @@
-import 'package:helloworld/firebase/controller/ctrl_exception.dart';
-import 'package:helloworld/firebase/repository/item_repository.dart';
+import '/firebase/controller/ctrl_exception.dart';
+import '/firebase/repository/item_repository.dart';
 import 'main_ctrl.dart';
 import '/firebase/repository/user_repository.dart';
 import '/firebase/repository/user_box_repository.dart';
@@ -53,7 +53,7 @@ class UserController {
 
     userBoxRepo = UserBoxRepository(unitID, this.reqFridgeID);
     userBoxRepo.init();
-    //await _checkStatus();
+    await _checkStatus();
     try {
       userBox = await userBoxRepo.getUserBox(this.reqUid);
     } on UserBoxRepositoryException catch (e) {
@@ -138,17 +138,20 @@ class UserController {
   }
 
   Future<void> _checkStatus() async {
+    print("CheckStatus Started");
     var user = await userBoxRepo.getUserBox(uid);
     var itemRepo = ItemRepository(unitID, fridgeID, uid);
     bool changeLog = false;
     itemRepo.init();
     if (_sameDay(user.last, DateTime.now()) == false) {
+      print("CHecking Status Really");
       changeLog = await itemRepo.checkDate();
     }
     if (changeLog) {
+      print("Update User Stats");
       await userBoxRepo.updateUserStats(uid);
     }
-    userBoxRepo.editLast(uid);
+    await userBoxRepo.editLast(uid);
   }
 
   bool _sameDay(DateTime a, DateTime b) {

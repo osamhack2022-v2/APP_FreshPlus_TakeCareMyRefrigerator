@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
-import '../master_page/m_l_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '/firebase/controller/main/unit_ctrl.dart';
+import '/firebase/controller/main/general/dto.dart';
 
 class MTab extends StatefulWidget {
   _MTabState createState() => _MTabState();
@@ -12,7 +12,7 @@ class _MTabState extends State<MTab>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   CollectionReference product =
       FirebaseFirestore.instance.collection('product');
-
+  final UnitController unitCtrl = Get.arguments;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
@@ -90,75 +90,22 @@ class _MTabState extends State<MTab>
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            color: Color(0xff2C7B0C),
-            child: TabBar(
-              tabs: [
-                Container(
-                  height: 56,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '분대\n M + B개',
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 56,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '유실\nK개',
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 56,
-                  alignment: Alignment.center,
-                  child: Text(
-                    '미등록\nT개',
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-              labelColor: Color(0xffC8DDC0),
-              unselectedLabelColor: Colors.black,
-              controller: _tabController,
-            ),
-          ),
           Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: [
+            child: 
                 Container(
-                  child: StreamBuilder(
-                    stream: product.snapshots(),
+                  child: FutureBuilder(
+                    future: unitCtrl.getFridgeList(),
                     builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-                      if (streamSnapshot.hasData) {
-                        var testlength = streamSnapshot.data!.docs.length;
-                        print('$testlength');
+                        AsyncSnapshot<List<FridgeDTO>> snapshot) {
+                      if (snapshot.hasData) {
+                      
                         return ListView.builder(
                           shrinkWrap: true,
-                          itemCount: streamSnapshot.data!.docs.length,
+                          itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            final DocumentSnapshot documentSnapshot =
-                                streamSnapshot.data!.docs[index];
+                            var fridge = snapshot.data![index];
                             return GestureDetector(
-                              onTap: () => Get.to(MLPage()),
+                              //onTap: () => Get.to(),
                               child: Card(
                                 margin: EdgeInsets.only(
                                     left: 8, right: 8, top: 2, bottom: 2),
@@ -166,11 +113,11 @@ class _MTabState extends State<MTab>
                                   leading: CircleAvatar(
                                       backgroundImage:
                                           AssetImage("assets/member.jpg")),
-                                  title: Text(documentSnapshot['name']),
+                                  title: Text(fridge.fridgeID),
                                   subtitle: Column(
                                     children: <Widget>[
-                                      Text(documentSnapshot['date']),
-                                      Text(documentSnapshot['number']),
+                                      Text("유통기한 임박 제품 "+ fridge.warningNum.toString()+"개"),
+                                      Text("유통기한 경과 제품 "+ fridge.trashNum.toString()+"개"),
                                     ],
                                   ),
                                   isThreeLine: true,
@@ -184,28 +131,6 @@ class _MTabState extends State<MTab>
                     },
                   ),
                 ),
-                Container(
-                  color: Colors.green[200],
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Tab2 View',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.green[200],
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Tab3 View',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),

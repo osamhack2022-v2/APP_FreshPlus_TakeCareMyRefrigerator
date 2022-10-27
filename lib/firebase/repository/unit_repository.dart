@@ -9,7 +9,6 @@ class Unit {
   int warningNum;
   int trashNum;
   int lostNum;
-  int notInNum;
   int noHostNum;
   DateTime last;
   Unit(
@@ -21,7 +20,6 @@ class Unit {
       this.warningNum,
       this.trashNum,
       this.lostNum,
-      this.notInNum,
       this.noHostNum,
       this.last);
 }
@@ -108,20 +106,20 @@ class UnitRepository {
     int trashNum = 0;
     int lostNum = 0;
     int noHostNum = 0;
-    int notInNum=0;
+    int itemNum = 0;
     query.docs.forEach((doc) {
       warningNum += doc.get('warningNum') as int;
       trashNum += doc.get('trashNum') as int;
       lostNum += doc.get('lostNum') as int;
-      notInNum += doc.get('notInNum') as int;
       noHostNum += doc.get('noHostNum') as int;
+      itemNum += doc.get('itemNum') as int;
     });
     await unitRef.update({
       'warningNum': warningNum,
       'trashNum': trashNum,
       'lostNum': lostNum,
-      'notInNum' : notInNum,
       'noHostNum': noHostNum,
+      'itemNum':itemNum,
     });
   }
 
@@ -163,7 +161,6 @@ class UnitRepository {
         unitSnapshot.get('warningNum'),
         unitSnapshot.get('trashNum'),
         unitSnapshot.get('lostNum'),
-        unitSnapshot.get('notInNum'),
         unitSnapshot.get('noHostNum'),
         unitSnapshot.get('last').toDate());
   }

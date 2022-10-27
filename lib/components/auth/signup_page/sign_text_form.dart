@@ -1,7 +1,7 @@
 // name, email, armyCode, password Textflied
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:helloworld/firebase/controller/ctrl_exception.dart';
+import '/firebase/controller/ctrl_exception.dart';
 import '../login_page/login_page.dart';
 import '/firebase/controller/auth/sign_up_ctrl.dart';
 

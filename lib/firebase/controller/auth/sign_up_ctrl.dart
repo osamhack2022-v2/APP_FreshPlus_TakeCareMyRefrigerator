@@ -92,7 +92,7 @@ Future<String> signUp(String email, String password, String name, String unitID,
     if (userType == "master") {
       //addUnit
       await unit_repo
-          .addUnit(Unit(unitID, "", [], uid, 0, 0, 0, 0, 0, 0,DateTime.now()));
+          .addUnit(Unit(unitID, "", [], uid, 0, 0, 0, 0, 0,DateTime.now()));
     } else if (userType == "manager") {
       //editManager
       await fridge_repo.editManager(fridgeID, uid);

@@ -55,10 +55,7 @@ class FridgeRepository {
   }
 
   Future<void> deleteFridge(String fridgeID) async {
-    DocumentReference fridgeRef = FirebaseFirestore.instance
-        .collection('unit')
-        .doc(unitID)
-        .collection('fridges')
+    DocumentReference fridgeRef = fridgesRef!
         .doc(fridgeID);
     fridgeRef.delete();
   }
@@ -73,10 +70,8 @@ class FridgeRepository {
     await fridgesRef!.doc(fridgeID).update({'itemNum': (numPast + num)});
   }
 
-  Future<void> editLast(String unitID) async {
-    await FirebaseFirestore.instance
-        .collection('unit')
-        .doc(unitID)
+  Future<void> editLast(String fridgeID) async {
+    await fridgesRef!.doc(fridgeID)
         .update({'last': Timestamp.fromDate(DateTime.now())});
   }
 
@@ -88,18 +83,18 @@ class FridgeRepository {
     int warningNum = 0;
     int trashNum = 0;
     int lostNum = 0;
-    int noHostNum = 0;
+    int itemNum = 0;
     query.docs.forEach((doc) {
       warningNum += doc.get('warningNum') as int;
       trashNum += doc.get('trashNum') as int;
       lostNum += doc.get('lostNum') as int;
-      noHostNum += doc.get('noHostNum') as int;
+      itemNum += doc.get('itemNum') as int;
     });
     await fridgeRef.update({
       'warningNum': warningNum,
       'trashNum': trashNum,
       'lostNum': lostNum,
-      'noHostNum': noHostNum,
+      'itemNum' : itemNum,
     });
   }
 

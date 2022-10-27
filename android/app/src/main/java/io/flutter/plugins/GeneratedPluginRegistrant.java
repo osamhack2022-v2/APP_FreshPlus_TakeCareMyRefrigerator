@@ -30,20 +30,5 @@ public final class GeneratedPluginRegistrant {
     } catch(Exception e) {
       Log.e(TAG, "Error registering plugin firebase_core, io.flutter.plugins.firebase.core.FlutterFirebaseCorePlugin", e);
     }
-    try {
-      flutterEngine.getPlugins().add(new com.amolg.flutterbarcodescanner.FlutterBarcodeScannerPlugin());
-    } catch(Exception e) {
-      Log.e(TAG, "Error registering plugin flutter_barcode_scanner, com.amolg.flutterbarcodescanner.FlutterBarcodeScannerPlugin", e);
-    }
-    try {
-      flutterEngine.getPlugins().add(new ng.com.piccmaq.flutter.flutter_mobile_vision_2.FlutterMobileVisionPlugin());
-    } catch(Exception e) {
-      Log.e(TAG, "Error registering plugin flutter_mobile_vision_2, ng.com.piccmaq.flutter.flutter_mobile_vision_2.FlutterMobileVisionPlugin", e);
-    }
-    try {
-      flutterEngine.getPlugins().add(new io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin());
-    } catch(Exception e) {
-      Log.e(TAG, "Error registering plugin flutter_plugin_android_lifecycle, io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin", e);
-    }
   }
 }

@@ -1,9 +1,9 @@
-import 'package:helloworld/firebase/controller/main/general/dto.dart';
-import 'package:helloworld/firebase/repository/item_repository.dart';
+import '/firebase/controller/main/general/dto.dart';
+import '/firebase/repository/item_repository.dart';
 
 import 'main_ctrl.dart';
 import '/firebase/repository/user_repository.dart';
-import 'package:helloworld/firebase/controller/ctrl_exception.dart';
+import '/firebase/controller/ctrl_exception.dart';
 import '/firebase/repository/unit_repository.dart';
 import '/firebase/repository/fridge_repository.dart';
 import '/firebase/repository/user_box_repository.dart';
@@ -23,16 +23,17 @@ class UnitController {
     unitRepo = UnitRepository();
     fridgeRepo = FridgeRepository(unitID);
     fridgeRepo.init();
-    //await _checkStatus();
+    await _checkStatus();
     try {
       unit = await unitRepo.getUnit(unitID);
     } on UnitRepositoryException catch (e) {
       throw CtrlException(e.code);
     }
   }
+
   UnitDTO getUnit() {
     return UnitDTO(unit.unitID, unit.master, unit.itemNum, unit.warningNum,
-        unit.trashNum,unit.lostNum, unit.noHostNum);
+        unit.trashNum, unit.lostNum, unit.noHostNum);
   }
 
   Future<List<FridgeDTO>> getFridgeList() async {
@@ -72,21 +73,15 @@ class UnitController {
             if (_sameDay(userNow.last, DateTime.now()) == false) {
               changeLog = await itemRepo.checkDate();
             }
-            if (changeLog) {
-              await boxRepo.updateUserStats(userID);
-            }
+            await boxRepo.updateUserStats(userID);
             boxRepo.editLast(userID);
           }
         }
-        if (changeLog) {
-          await fridgeRepo.updateFridgeStats(fridgeID);
-        }
+        await fridgeRepo.updateFridgeStats(fridgeID);
         await fridgeRepo.editLast(fridgeID);
       }
     }
-    if (changeLog) {
-      await unitRepo.updateUnitStats(unitID);
-    }
+    await unitRepo.updateUnitStats(unitID);
     await unitRepo.editLast(unitID);
   }
 

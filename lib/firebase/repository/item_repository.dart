@@ -137,6 +137,14 @@ class ItemRepository {
     if (itemSnapshot.exists == false) throw ItemRepositoryException('no-item');
     DateTime inDate = itemSnapshot.get('inDate').toDate();
     DateTime dueDate = itemSnapshot.get('dueDate').toDate();
+    ItemType type = ItemType.drink;
+    switch (itemSnapshot.get('type')) {
+      case ('food'):
+        type = ItemType.food;
+        break;
+      default:
+        break;
+    }
     ItemStatus status = ItemStatus.ok;
     switch (itemSnapshot.get('status')) {
       case ('lost'):
@@ -160,23 +168,33 @@ class ItemRepository {
         inDate,
         dueDate,
         status,
-        itemSnapshot.get('type'));
+        type);
   }
 
   //If changed return true, else false
   Future<bool> checkDate() async {
     bool changeLog = false;
     var querySnapshot = await itemsRef!
-        .where("duedate", isLessThan: DateTime.now())
-        .where("status", isNotEqualTo: "lost")
+        .where("dueDate", isLessThan: DateTime.now())
+        .where("status", isEqualTo: "ok")
         .get();
-    changeLog = await changeByQuery(querySnapshot, ItemStatus.trash);
+    print(querySnapshot.size);
+    var querySnapshot2 = await itemsRef!
+        .where("dueDate", isLessThan: DateTime.now())
+        .where("status", isEqualTo: "warning")
+        .get();
+    if ((await changeByQuery(querySnapshot, ItemStatus.trash)) == true) {
+      changeLog = true;
+    }
+    if ((await changeByQuery(querySnapshot2, ItemStatus.trash)) == true) {
+      changeLog = true;
+    }
 
     var querySnapshotWarning = await itemsRef!
         .where("dueDate",
             isLessThan: DateTime.now().add(const Duration(days: 2)))
         .where("dueDate", isGreaterThan: DateTime.now())
-        .where("status", isNotEqualTo: "lost")
+        .where("status", isEqualTo: "ok")
         .get();
     changeLog = await changeByQuery(querySnapshotWarning, ItemStatus.warning);
     return changeLog;

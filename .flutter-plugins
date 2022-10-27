@@ -5,6 +5,3 @@ firebase_auth=/home/codespace/.pub-cache/hosted/pub.dev/firebase_auth-3.11.2/
 firebase_auth_web=/home/codespace/.pub-cache/hosted/pub.dev/firebase_auth_web-4.6.1/
 firebase_core=/home/codespace/.pub-cache/hosted/pub.dev/firebase_core-1.24.0/
 firebase_core_web=/home/codespace/.pub-cache/hosted/pub.dev/firebase_core_web-1.7.3/
-flutter_barcode_scanner=/home/codespace/.pub-cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0/
-flutter_mobile_vision_2=/home/codespace/.pub-cache/hosted/pub.dev/flutter_mobile_vision_2-0.1.13/
-flutter_plugin_android_lifecycle=/home/codespace/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.7/

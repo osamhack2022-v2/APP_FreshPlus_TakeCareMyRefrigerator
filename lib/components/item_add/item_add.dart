@@ -1,8 +1,5 @@
-//아이템 추가하는 창
-
 import 'package:flutter/material.dart';
 import 'barcode_recognition.dart';
-import 'receipt_recognition.dart';
 import 'package:get/get.dart';
 import 'enterItem.dart';
 
@@ -14,6 +11,19 @@ class OcrScan extends StatelessWidget {
         home: DefaultTabController(
           length: 3,
           child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Color(0xff2C7B0C),
+              toolbarHeight: 56.0,
+              title: Text(
+                "아이템 추가", //User_Name Firebase에서 받아와야함
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontFamily: "Roboto",
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
             bottomNavigationBar: BottomAppBar(
               shape: CircularNotchedRectangle(),
               notchMargin: 8.0,
@@ -96,7 +106,6 @@ class OcrScan extends StatelessWidget {
                             Text(
                               "영수증이 자동으로 인식됩니다",
                             ),
-                            ReceiptRecognition(),
                           ],
                         ),
                       ),
@@ -110,7 +119,7 @@ class OcrScan extends StatelessWidget {
                             Text(
                               "바코드가 자동으로 인식 됩니다",
                             ),
-                            Barcodescanner(),
+                            //Barcodescanner(),
                           ],
                         ),
                       ),

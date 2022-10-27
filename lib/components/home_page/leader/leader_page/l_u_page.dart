@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../leader_tab/l_u_tab.dart';
-import 'package:helloworld/components/general/homepage_drawer.dart';
-import 'package:helloworld/components/general/homepage_gauge.dart';
+import '/components/general/homepage_drawer.dart';
+import '/components/general/homepage_gauge.dart';
 
 class LUPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();

@@ -1,4 +1,4 @@
-import 'package:helloworld/firebase/repository/item_repository.dart';
+import '/firebase/repository/item_repository.dart';
 
 import 'main_ctrl.dart';
 import 'general/dto.dart';
@@ -45,6 +45,7 @@ class FridgeController {
     fridgeRepo.init();
     userBoxRepo = UserBoxRepository(unitID, this.reqFridgeID);
     userBoxRepo.init();
+    await _checkStatus();
     try {
       fridge = await fridgeRepo.getFridge(this.reqFridgeID);
     } on FridgeRepositoryException catch (e) {
@@ -129,23 +130,23 @@ class FridgeController {
     var fridge = await fridgeRepo.getFridge(fridgeID);
     bool changeLog = false;
     if (_sameDay(fridge.last, DateTime.now()) == false) {
-      for (var uid in fridge.users) {
+      print("check Started");
+      var userlist = fridge.users;
+      userlist.add(fridge.manager);
+      for (var uid in userlist) {
+        print(uid);
         var user = await userBoxRepo.getUserBox(uid);
         var itemRepo = ItemRepository(unitID, fridgeID, uid);
         itemRepo.init();
         if (_sameDay(user.last, DateTime.now()) == false) {
           changeLog = await itemRepo.checkDate();
         }
-        if (changeLog) {
-          await userBoxRepo.updateUserStats(uid);
-        }
-        userBoxRepo.editLast(uid);
+        await userBoxRepo.updateUserStats(uid);
+        await userBoxRepo.editLast(uid);
       }
     }
-    if (changeLog) {
-      await fridgeRepo.updateFridgeStats(fridgeID);
-    }
-    await fridgeRepo.editLast(unitID);
+    await fridgeRepo.updateFridgeStats(fridgeID);
+    await fridgeRepo.editLast(fridgeID);
   }
 
   bool _sameDay(DateTime a, DateTime b) {

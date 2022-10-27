@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:helloworld/firebase/controller/main/general/dto.dart';
+import '/firebase/controller/main/general/dto.dart';
 import '../general/homepage_logo.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';

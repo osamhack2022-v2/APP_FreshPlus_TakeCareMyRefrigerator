@@ -24,26 +24,12 @@
 @import firebase_core;
 #endif
 
-#if __has_include(<flutter_barcode_scanner/SwiftFlutterBarcodeScannerPlugin.h>)
-#import <flutter_barcode_scanner/SwiftFlutterBarcodeScannerPlugin.h>
-#else
-@import flutter_barcode_scanner;
-#endif
-
-#if __has_include(<flutter_mobile_vision_2/FlutterMobileVisionPlugin.h>)
-#import <flutter_mobile_vision_2/FlutterMobileVisionPlugin.h>
-#else
-@import flutter_mobile_vision_2;
-#endif
-
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FLTFirebaseFirestorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseFirestorePlugin"]];
   [FLTFirebaseAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAuthPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
-  [SwiftFlutterBarcodeScannerPlugin registerWithRegistrar:[registry registrarForPlugin:@"SwiftFlutterBarcodeScannerPlugin"]];
-  [FlutterMobileVisionPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterMobileVisionPlugin"]];
 }
 
 @end

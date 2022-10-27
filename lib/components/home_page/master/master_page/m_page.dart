@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:helloworld/firebase/controller/main/general/dto.dart';
-import 'package:helloworld/firebase/controller/main/unit_ctrl.dart';
+import '/firebase/controller/main/general/dto.dart';
+import '/firebase/controller/main/unit_ctrl.dart';
 import '../master_tab/m_tab.dart';
-import 'package:helloworld/components/general/homepage_drawer.dart';
-import 'package:helloworld/components/general/homepage_gauge.dart';
+import '/components/general/homepage_drawer.dart';
+import '/components/general/homepage_gauge.dart';
 import 'fridge_add.dart';
 
 class MPage extends StatefulWidget {

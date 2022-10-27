@@ -1,4 +1,4 @@
-import 'package:helloworld/firebase/controller/ctrl_exception.dart';
+import '/firebase/controller/ctrl_exception.dart';
 import '/firebase/repository/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as FireAuth;
 import 'general/dto.dart';

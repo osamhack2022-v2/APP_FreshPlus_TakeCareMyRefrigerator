@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../leader_tab/l_tab.dart';
-import 'package:helloworld/components/general/homepage_drawer.dart';
-import 'package:helloworld/components/general/homepage_gauge.dart';
+import '/components/general/homepage_drawer.dart';
+import '/components/general/homepage_gauge.dart';
 import 'package:get/get.dart';
 import '/firebase/controller/main/user_ctrl.dart';
 import '/firebase/controller/main/fridge_ctrl.dart';
