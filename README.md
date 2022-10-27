@@ -44,7 +44,7 @@
 
 
 ## 시스템 구성도
-![시스템 구성도](구성도 이미지 링크)
+![시스템 구성도](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B5%AC%EC%83%81%EB%8F%84.PNG)
 
 
 ## 기능 설명
@@ -83,14 +83,14 @@
 ### Backend
 <table><tbody>
  <tr>
+  <td>
+   <div align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="40" height="40"/><br>TensorFlow</div>
+  </td>
     <td>
    <div align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/><br>Javascript</div>
   </td>
       <td>
    <div align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="40" height="40"/><br>Linux</div>
-  </td>
-  <td>
-   <div align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="40" height="40"/><br>TensorFlow</div>
   </td>
 <td>
    <div align="center"><img src="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/firebase.png" width="40" height="40"/><br>FireBase</div>
