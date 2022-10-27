@@ -82,11 +82,11 @@ class _LTabState extends State<LTab> with TickerProviderStateMixin,AutomaticKeep
 
   @override
   void initState() {
+    super.initState();
     _tabController = TabController(
       length: 4,
       vsync: this, //vsync에 this 형태로 전달해야 애니메이션이 정상 처리됨
     );
-    super.initState();
   }
 
   @override

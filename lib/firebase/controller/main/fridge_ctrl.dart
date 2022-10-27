@@ -79,7 +79,9 @@ class FridgeController {
     userList.add(fridge.manager);
     await () async {
       userList.forEach((value) async {
-        List<Item> itemList;
+        List<Item> itemList = [];
+        print("ItemList is");
+        print(itemList);
         try {
           itemList = await userBoxRepo.getItemsQuery(value, "status", status);
           itemList.forEach((value) {

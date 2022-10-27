@@ -80,7 +80,10 @@ class _AddItemFormState extends State<AddItemForm> {
               },
               onSelected: (String selection) {
                 debugPrint('You just selected $selection');
-                item = itemAddController.getByCertName(selection);
+                setState(
+                  ()
+                {item = itemAddController.getByCertName(selection);});
+                
               },
               fieldViewBuilder:
                   (context, controller, focusNode, onEditingComplete) {
@@ -127,8 +130,8 @@ class _AddItemFormState extends State<AddItemForm> {
             InputDatePickerFormField(
               firstDate: DateTime.now(),
               lastDate: DateTime.now().add(Duration(days: 30)),
-              initialDate: DateTime.now(),
-              onDateSubmitted: (date) {
+              initialDate: item!=null ? item!.dueDate : DateTime.now(),
+              onDateSaved: (date) {
                 setState(() {
                   dueDate = date;
                 });

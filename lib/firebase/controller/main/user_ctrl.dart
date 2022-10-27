@@ -68,7 +68,7 @@ class UserController {
 
   Future<List<ItemDTO>> getWarningItemList() async {
     var items =
-        await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'warning');
+        await userBoxRepo.getItemsQuery(reqUid, 'status', 'warning');
     return items.map((value) {
       String type = "drink";
       switch (value.type) {
@@ -86,7 +86,30 @@ class UserController {
 
   Future<List<ItemDTO>> getTrashItemList() async {
     var items =
-        await userBoxRepo.getItemsQuery('this.reqUid', 'status', 'trash');
+        await userBoxRepo.getItemsQuery(reqUid, 'status', 'trash');
+    return items.map((value) {
+      String type = "drink";
+      switch (value.type) {
+        case (ItemType.drink):
+          type = "drink";
+          break;
+        case (ItemType.food):
+          type = "food";
+          break;
+      }
+      return ItemDTO(value.itemID, value.itemName, value.itemCode, value.uid,
+          "trash", type, value.dueDate);
+    }).toList();
+  }
+  Future<List<ItemDTO>> getWarningTrashList() async{
+    var items= (await getTrashItemList());
+    items.addAll((await getWarningItemList()));
+    return items;
+  }
+
+  Future<List<ItemDTO>> getLostItemList() async {
+    var items =
+        await userBoxRepo.getItemsQuery(reqUid, 'status', 'lost');
     return items.map((value) {
       String type = "drink";
       switch (value.type) {

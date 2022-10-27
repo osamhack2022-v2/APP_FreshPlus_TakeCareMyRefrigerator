@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/firebase/controller/main/user_ctrl.dart';
 import '/firebase/controller/main/general/dto.dart';
-
+import 'dart:async';
 class UTab extends StatefulWidget {
   _UTabState createState() => _UTabState();
 }
@@ -14,6 +14,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
   final UserController userCtrl = Get.arguments;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
+
 
   int _leftDay(DateTime day, DateTime now) {
     final diff = day.difference(now);
@@ -157,7 +158,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                 Container(
                   alignment: Alignment.topCenter,
                   child: FutureBuilder(
-                    future: userCtrl.getWarningItemList(),
+                    future: userCtrl.getWarningTrashList(),
                     builder: (BuildContext context,
                         AsyncSnapshot<List<ItemDTO>> snapshot) {
                       if (snapshot.hasData) {
@@ -224,7 +225,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                 Container(
                   alignment: Alignment.topCenter,
                   child: FutureBuilder(
-                    future: userCtrl.getWarningItemList(),
+                    future: userCtrl.getLostItemList(),
                     builder: (BuildContext context,
                         AsyncSnapshot<List<ItemDTO>> snapshot) {
                       if (snapshot.hasData) {
@@ -245,6 +246,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                   case "trash":
                                     state = "위험";
                                     color = Colors.red;
+                                    subtitle = "유통기한이 지났습니다. 빨리 버려주세요";
                                     break;
                                   case "warning":
                                     state = "주의";
@@ -253,6 +255,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                   case "lost":
                                     state = "분실";
                                     color = Colors.purple;
+                                    subtitle = "제품이 분실되었습니다.";
                                     break;
                                   default:
                                     break;
@@ -306,10 +309,11 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                 Color color = Colors.green;
                                 int leftDay = _leftDay(item.dueDate, DateTime.now());
                                 String subtitle = "유통기한이 $leftDay일 남았습니다";
-                                switch (item.status) {
+switch (item.status) {
                                   case "trash":
                                     state = "위험";
                                     color = Colors.red;
+                                    subtitle = "유통기한이 지났습니다. 빨리 버려주세요";
                                     break;
                                   case "warning":
                                     state = "주의";
@@ -318,6 +322,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                   case "lost":
                                     state = "분실";
                                     color = Colors.purple;
+                                    subtitle = "제품이 분실되었습니다.";
                                     break;
                                   default:
                                     break;
@@ -375,6 +380,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                   case "trash":
                                     state = "위험";
                                     color = Colors.red;
+                                    subtitle = "유통기한이 지났습니다. 빨리 버려주세요";
                                     break;
                                   case "warning":
                                     state = "주의";
@@ -383,6 +389,7 @@ class _UTabState extends State<UTab> with TickerProviderStateMixin {
                                   case "lost":
                                     state = "분실";
                                     color = Colors.purple;
+                                    subtitle = "제품이 분실되었습니다.";
                                     break;
                                   default:
                                     break;

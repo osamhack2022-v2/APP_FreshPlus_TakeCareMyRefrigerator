@@ -10,6 +10,7 @@ import '/firebase/controller/main/item_add.dart';
 class UPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final UserController ctrl = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

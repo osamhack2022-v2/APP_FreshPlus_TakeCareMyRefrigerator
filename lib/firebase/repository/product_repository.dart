@@ -18,9 +18,9 @@ class ProductRepository {
     Product(2, "바나나우유", "bananamilk", "", Duration(days: 7), "drink"),
     Product(3, "두유", "beanmilk", "", Duration(days: 7), "drink"),
     Product(4, "딸기우유", "berrymilk", "", Duration(days: 7), "drink"),
-    Product(5, "치즈", "cheese", "", Duration(days: 10), "drink"),
-    Product(6, "닭가슴살", "chicken", "", Duration(days: 14), "drink"),
-    Product(7, "계란", "egg", "", Duration(days: 14), "drink"),
+    Product(5, "치즈", "cheese", "", Duration(days: 10), "food"),
+    Product(6, "닭가슴살", "chicken", "", Duration(days: 14), "food"),
+    Product(7, "계란", "egg", "", Duration(days: 14), "food"),
     Product(8, "갈아만든배", "idh", "", Duration(days: 30), "drink"),
     Product(9, "피크닉", "picnic", "", Duration(days: 30), "drink"),
   ];
