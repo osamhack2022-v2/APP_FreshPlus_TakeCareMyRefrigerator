@@ -48,14 +48,17 @@
 
 
 ## 기능 설명
-![Sub앱](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/SubappFlow.PNG)<br><br>
+### 📸 서브App + AI Camera
+![Sub앱](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/SubappFlow2.PNG)<br><br>
+### 🐤 매인App_용사용
 ![메인_용사](기능설명 이미지 링크)<br><br>
+### 🐔 매인App_관리자용
 ![메인_관리자](기능설명 이미지 링크)<br><br>
 
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 
-### 🐤 앱 최소 사양
+### 📊 앱 최소 사양
 - 최소사양: Android 5.0(API 21) 이상
 - 권장: Android 8.0(API 26) 이상
 
