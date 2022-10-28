@@ -36,9 +36,9 @@
 
 ### 📎 라이센스 원문
 <p align="Left">
-	<a href=""><img src='https://img.shields.io/badge/MIT-green?style=for-the-badge'></a>
-  <a href=""><img src='https://img.shields.io/badge/BSD_3-green?style=for-the-badge'></a>
-  <a href=""><img src='https://img.shields.io/badge/Apache_2.0-green?style=for-the-badge'></a>
-  <a href=""><img src='https://img.shields.io/badge/Syncfusion License-green?style=for-the-badge'></a>
+	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/MIT.md"><img src='https://img.shields.io/badge/MIT-green?style=for-the-badge'></a>
+  <a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/bsd3.md"><img src='https://img.shields.io/badge/BSD_3-green?style=for-the-badge'></a>
+  <a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/Apache.md"><img src='https://img.shields.io/badge/Apache_2.0-green?style=for-the-badge'></a>
+  <a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/syncfusion.md"><img src='https://img.shields.io/badge/Syncfusion License-green?style=for-the-badge'></a>
 </p>
 
