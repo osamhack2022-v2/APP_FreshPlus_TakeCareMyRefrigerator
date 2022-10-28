@@ -1,3 +1,8 @@
+### 🔙 다시 라이센스로
+<p align="Left">
+	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/license.md"><img src='https://img.shields.io/badge/To License-green?style=for-the-badge'></a>
+</p>
+
 ## Apache License
 ### Version 2.0, January 2004
 ### http://www.apache.org/licenses/
