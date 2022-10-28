@@ -53,7 +53,7 @@
 ### 🐤 메인App_용사용
 ![메인_용사](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EA%B8%B0%EB%8A%A5_%EC%9A%A9%EC%82%AC.PNG)<br><br>
 ### 🐔 메인App_관리자용
-![메인_관리자](기능설명 이미지 링크)<br><br>
+![메인_관리자](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EA%B8%B0%EB%8A%A5_%EA%B4%80%EB%A6%AC%EC%9E%90.PNG)<br><br>
 
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
