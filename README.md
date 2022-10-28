@@ -48,20 +48,18 @@
 
 
 ## 기능 설명
-![image](기능설명 이미지 링크)<br><br>
-![image](기능설명 이미지 링크)<br><br>
-![image](기능설명 이미지 링크)<br><br>
-![image](기능설명 이미지 링크)<br><br>
-![image](기능설명 이미지 링크)<br><br>
+![Sub앱](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/SubappFlow.PNG)<br><br>
+![메인_용사](기능설명 이미지 링크)<br><br>
+![메인_관리자](기능설명 이미지 링크)<br><br>
 
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 
-### 앱 최소 사양
+### 🐤 앱 최소 사양
 - 최소사양: Android 5.0(API 21) 이상
 - 권장: Android 8.0(API 26) 이상
 
-## 기술 스택 (Technique Used) 
+## 기술 스택 (Technique Used)  
 ### Infra
 <table><tbody>
  <tr>
@@ -134,27 +132,24 @@
 
 ## 설치 안내 (Installation Process)
 
- [APP 설치 안내](설치안내 MD 파일링크)
+### 🌱 App 설치안내
+- 설치에 앞서 [안드로이드 설정변경](https://ko.wikihow.com/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%97%90-APK-%ED%8C%8C%EC%9D%BC-%EC%84%A4%EC%B9%98%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)을 진행합니다.
+- [APK 파일](최종apk파일링크)을 다운로드 받은 후 설치합니다.
 
  
 
 
 ## 프로젝트 사용법 (Getting Started)
-본 시스템은 부대 단위로 도입하게 됩니다.
 
-1. 부대 냉장고 AI카메라 설치
+- 본 시스템은 부대 단위로 도입하게 됩니다.
+### 1️⃣ AI 카메라 설치
+- 부대의 냉장고에 AI카메라를 설치합니다.
 
-한줄설명
+### 2️⃣ 간부 가입 및 냉장고 등록
+- 간부님이 서비스에 가입 후, 카메라가 설치된 냉장고를 등록합니다.
 
-2. 간부 가입 및 냉장고등록
-
-한줄설명
-
-3. 용사 가입 및 사용
-
-한줄설명
-
-
+### 3️⃣ 용사 가입 및 사용
+- 해당 냉장고에 속한 용사의 가입이 허용되며 사용할 수 있습니다.
 
  
 ## 팀 정보 (Team Information)
@@ -166,8 +161,8 @@
 |육군일병 이찬규|팀원|IoT, AI SubApp 담당 (Arduino, BLE)|<a href="https://github.com/Tim-Lee0001"> <img src="http://img.shields.io/badge/-green?style=social&logo=github"/> |<a href="mailto:lck3365@kaist.ac.kr"> <img src="https://img.shields.io/badge/lck3365@kaist.ac.kr-green?logo=gmail&style=social">
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
- * MIT : This project is licensed under the terms of the MIT license.
-</p>
-<p align="Left">
+### 🖋️MIT 
+- This project is licensed under the terms of the MIT license. <p align="Left">
 	<a href="라이센스파일링크"><img src='https://img.shields.io/badge/License Detail-green?style=for-the-badge'></a>
 </p>
+
