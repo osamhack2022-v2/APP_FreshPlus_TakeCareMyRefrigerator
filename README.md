@@ -166,6 +166,6 @@
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
 ### 🖋️MIT 
 - This project is licensed under the terms of the MIT license. <p align="Left">
-	<a href="라이센스파일링크"><img src='https://img.shields.io/badge/License Detail-green?style=for-the-badge'></a>
+	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/license.md"><img src='https://img.shields.io/badge/License Detail-green?style=for-the-badge'></a>
 </p>
 
