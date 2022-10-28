@@ -12,7 +12,7 @@
 </p>
 </p>
 <p align="center">
-	<a href="발표자료링크"><img src='https://img.shields.io/badge/Document-yellow?style=for-the-badge'></a>
+	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EB%83%89%EC%9E%A5%EA%B3%A0%EB%A5%BC%EB%B6%80%ED%83%81%ED%95%B4_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf"><img src='https://img.shields.io/badge/Document-yellow?style=for-the-badge'></a>
 	<a href="유튜브링크"><img src='https://img.shields.io/badge/VIDEO-yellow?style=for-the-badge'></a>
 </p>
 
