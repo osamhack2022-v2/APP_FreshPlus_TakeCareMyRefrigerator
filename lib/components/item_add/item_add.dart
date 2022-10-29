@@ -67,20 +67,20 @@ class OcrScan extends StatelessWidget {
                     ],
                   )),
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {},
-              child: Align(
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 25.0,
-                ),
-              ),
-              backgroundColor: Color(0xffFFB200),
-            ),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.endDocked,
+            // floatingActionButton: FloatingActionButton(
+            //   onPressed: () {},
+            //   child: Align(
+            //     alignment: Alignment.center,
+            //     child: Icon(
+            //       Icons.add,
+            //       color: Colors.white,
+            //       size: 25.0,
+            //     ),
+            //   ),
+            //   backgroundColor: Color(0xffFFB200),
+            // ),
+            // floatingActionButtonLocation:
+            //     FloatingActionButtonLocation.endDocked,
             body: Column(
               children: <Widget>[
                 Container(

@@ -1,3 +1,4 @@
+import 'package:FreshPlus/components/home_page/home_page.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,7 @@ class FridgeAdd extends StatelessWidget {
             onPressed: () async {
               await controller.init();
               await controller.add(nameController.name.value);
+              Get.offAll(() => HomePage());
               print("added Successfully");
             },
             child: Align(
@@ -88,12 +90,12 @@ class FridgeAdd extends StatelessWidget {
                 border: InputBorder.none,
                 filled: true,
                 fillColor: Color(0x14212121),
-                labelText: "식품이름",
+                labelText: "냉장고 이름",
                 labelStyle: TextStyle(
                     fontSize: 12.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w400),
-                hintText: "식품이름을 입력해주세요",
+                hintText: "냉장고 이름을 입력해주세요",
                 hintStyle: TextStyle(
                     fontSize: 16.0,
                     color: Colors.black,

@@ -53,23 +53,7 @@ class ItemRepository {
       'inDate': Timestamp.fromDate(item.inDate),
       'dueDate': Timestamp.fromDate(item.dueDate),
     };
-    switch (item.status) {
-      case (ItemStatus.ok):
-        itemDoc['status'] = 'ok';
-        break;
-      case (ItemStatus.lost):
-        itemDoc['status'] = 'lost';
-        break;
-      case (ItemStatus.notIn):
-        itemDoc['status'] = 'notIn';
-        break;
-      case (ItemStatus.trash):
-        itemDoc['status'] = 'trash';
-        break;
-      case (ItemStatus.warning):
-        itemDoc['status'] = 'warning';
-        break;
-    }
+    itemDoc['status'] = "notIn";
     switch (item.type) {
       case (ItemType.drink):
         itemDoc['type'] = 'drink';
@@ -178,11 +162,13 @@ class ItemRepository {
         .where("dueDate", isLessThan: DateTime.now())
         .where("status", isEqualTo: "ok")
         .get();
-    print(querySnapshot.size);
+    print(itemsRef!.path);
+    print(querySnapshot.size.toString() + "size");
     var querySnapshot2 = await itemsRef!
         .where("dueDate", isLessThan: DateTime.now())
         .where("status", isEqualTo: "warning")
         .get();
+    print(querySnapshot.size.toString() + "size2");
     if ((await changeByQuery(querySnapshot, ItemStatus.trash)) == true) {
       changeLog = true;
     }
@@ -205,6 +191,7 @@ class ItemRepository {
     if (snap.size != 0) {
       var list = snap.docs;
       for (int i = 0; i < list.length; i++) {
+        print("change");
         await editstatus(list[i].id, status);
         changeLog = true;
       }

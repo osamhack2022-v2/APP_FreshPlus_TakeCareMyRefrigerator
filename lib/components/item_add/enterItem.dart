@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '/firebase/controller/main/item_add.dart';
 import '/firebase/controller/main/general/dto.dart';
+import 'package:get/get.dart';
+import '/components/home_page/home_page.dart';
 
 class EnterItem extends StatelessWidget {
-  const EnterItem({Key? key}) : super(key: key);
+  EnterItem({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -59,6 +61,10 @@ class _AddItemFormState extends State<AddItemForm> {
     super.dispose();
   }
 
+  void addItem(ItemAddDTO? item) {
+    if (item != null) itemAddController.add(item!);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -80,10 +86,10 @@ class _AddItemFormState extends State<AddItemForm> {
               },
               onSelected: (String selection) {
                 debugPrint('You just selected $selection');
-                setState(
-                  ()
-                {item = itemAddController.getByCertName(selection);});
-                
+                setState(() {
+                  item = itemAddController.getByCertName(selection);
+                  if (item != null) dueDate = item!.dueDate;
+                });
               },
               fieldViewBuilder:
                   (context, controller, focusNode, onEditingComplete) {
@@ -126,14 +132,14 @@ class _AddItemFormState extends State<AddItemForm> {
               },
             ),
             const SizedBox(height: 15.0),
-            const SizedBox(height: 15.0),
             InputDatePickerFormField(
               firstDate: DateTime.now(),
               lastDate: DateTime.now().add(Duration(days: 30)),
-              initialDate: item!=null ? item!.dueDate : DateTime.now(),
+              initialDate: item != null ? item!.dueDate : DateTime.now(),
               onDateSaved: (date) {
                 setState(() {
                   dueDate = date;
+                  if (item != null) item!.dueDate = date;
                 });
               },
             ),
@@ -141,10 +147,13 @@ class _AddItemFormState extends State<AddItemForm> {
             ElevatedButton(
                 onPressed: () {
                   if (item != null) {
-                    itemAddController.add(item!);
+                    addItem(item);
+                    Get.offAll(HomePage());
                   }
                 },
-                child: Text("아이템 추가"))
+                style: ElevatedButton.styleFrom(primary: Color(0xffFFB200)),
+                child:
+                    const Text("아이템 추가", style: TextStyle(color: Colors.white)))
           ],
         ),
       ),

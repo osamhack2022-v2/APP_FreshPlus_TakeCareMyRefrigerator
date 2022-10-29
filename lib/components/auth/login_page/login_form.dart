@@ -146,7 +146,7 @@ class _CustomFormState extends State<LoginForm> {
                   }
                 },
                 child: const Text(
-                  '로그인test',
+                  '로그인',
                   style: TextStyle(
                     fontSize: 14.0,
                     fontFamily: "Roboto",

@@ -55,8 +55,7 @@ class FridgeRepository {
   }
 
   Future<void> deleteFridge(String fridgeID) async {
-    DocumentReference fridgeRef = fridgesRef!
-        .doc(fridgeID);
+    DocumentReference fridgeRef = fridgesRef!.doc(fridgeID);
     fridgeRef.delete();
   }
 
@@ -71,7 +70,8 @@ class FridgeRepository {
   }
 
   Future<void> editLast(String fridgeID) async {
-    await fridgesRef!.doc(fridgeID)
+    await fridgesRef!
+        .doc(fridgeID)
         .update({'last': Timestamp.fromDate(DateTime.now())});
   }
 
@@ -94,7 +94,7 @@ class FridgeRepository {
       'warningNum': warningNum,
       'trashNum': trashNum,
       'lostNum': lostNum,
-      'itemNum' : itemNum,
+      'itemNum': itemNum,
     });
   }
 
@@ -123,6 +123,7 @@ class FridgeRepository {
   }
 
   Future<Fridge> getFridge(String fridgeID) async {
+    print(fridgeID);
     DocumentSnapshot fridgeSnapshot = await fridgesRef!.doc(fridgeID).get();
     if (fridgeSnapshot.exists == false)
       throw FridgeRepositoryException('no-fridge');

@@ -1,12 +1,13 @@
 class UserBoxDTO {
   String uid;
+  String userName;
   int itemNum;
   int warningNum;
   int trashNum;
   int lostNum;
   int notInNum;
-  UserBoxDTO(this.uid, this.itemNum, this.warningNum, this.trashNum,
-      this.lostNum, this.notInNum);
+  UserBoxDTO(this.uid, this.userName, this.itemNum, this.warningNum,
+      this.trashNum, this.lostNum, this.notInNum);
 }
 
 class UserDTO {
@@ -44,12 +45,13 @@ class FridgeDTO {
   String fridgeID;
   int itemNum;
   String manager;
+  String managerName;
   int warningNum;
   int trashNum;
   int lostNum;
   int noHostNum;
-  FridgeDTO(this.fridgeID, this.itemNum, this.manager, this.warningNum,
-      this.trashNum, this.lostNum, this.noHostNum);
+  FridgeDTO(this.fridgeID, this.itemNum, this.manager, this.managerName,
+      this.warningNum, this.trashNum, this.lostNum, this.noHostNum);
 }
 
 class UnitDTO {

@@ -1,3 +1,4 @@
+import 'package:FreshPlus/components/auth/reset_page/self_certification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_form.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,9 @@ class LoginPage extends StatelessWidget {
                             style: TextButton.styleFrom(
                               textStyle: const TextStyle(fontSize: 20),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.to(() => SelfCertification());
+                            },
                             child: const Text(
                               '비밀번호 재설정',
                               style: TextStyle(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:firebase_core/firebase_core.dart';
 import '/firebase/controller/main/general/dto.dart';
 import '/firebase/controller/main/unit_ctrl.dart';
 import '../master_tab/m_tab.dart';
 import '/components/general/homepage_drawer.dart';
 import '/components/general/homepage_gauge.dart';
+import 'package:FreshPlus/components/home_page/leader/leader_page/l_page.dart';
 import 'fridge_add.dart';
 
 class MPage extends StatefulWidget {
@@ -16,9 +16,19 @@ class MPage extends StatefulWidget {
 class _MPageState extends State<MPage> {
   final _formKey = GlobalKey<FormState>();
   bool _isClcked = true;
+  final SortController sortCtrl = SortController();
   final UnitController unitCtrl = Get.arguments;
   late UnitDTO unit;
   @override
+  int score(int itemNum, int warningNum, int trashNum) {
+    if (trashNum > 1)
+      return 100 - (80 + trashNum);
+    else if (warningNum > 1)
+      return 100 - (40 + 30 * warningNum / itemNum).toInt();
+    else
+      return 80;
+  }
+
   Widget build(BuildContext context) {
     unit = unitCtrl.getUnit();
     return MaterialApp(
@@ -26,7 +36,7 @@ class _MPageState extends State<MPage> {
         home: Scaffold(
           key: _formKey,
           appBar: AppBar(
-            backgroundColor: Color(0xff2C7B0C),
+            backgroundColor: Color(0xff7FB77E),
             toolbarHeight: 56.0,
             title: Text(
               unit.unitID + "의 부대 냉장고", //User_Name Firebase에서 받아와야함
@@ -38,10 +48,27 @@ class _MPageState extends State<MPage> {
               ),
             ),
           ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async {
+              Get.to(
+                () => FridgeAdd(),
+              );
+            },
+            child: Align(
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 25.0,
+              ),
+            ),
+            backgroundColor: Color(0xffFFB200),
+          ),
           bottomNavigationBar: BottomAppBar(
             shape: CircularNotchedRectangle(),
             notchMargin: 8.0,
-            color: Color(0xff2C7B0C),
+            color: Color(0xff7FB77E),
             child: Container(
                 height: 56.0,
                 child: Row(
@@ -122,10 +149,13 @@ class _MPageState extends State<MPage> {
                                     width: 89,
                                     child: ElevatedButton(
                                         onPressed: () {
+                                          sortCtrl.off();
                                           Navigator.of(context).pop();
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: Color(0xff2C7B0C),
+                                          primary: sortCtrl.warningSort
+                                              ? Color(0xff2C7B0C)
+                                              : Colors.blue,
                                         ),
                                         child: Text(
                                           '경과기간',
@@ -153,27 +183,13 @@ class _MPageState extends State<MPage> {
             width: 302.0,
             child: HomepageDrawer(),
           ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Get.to(() => FridgeAdd());
-            },
-            child: Align(
-              alignment: Alignment.center,
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 25.0,
-              ),
-            ),
-            backgroundColor: Color(0xffFFB200),
-          ),
           body: Column(
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(24.0, 22.0, 0.0, 4.0),
                 child: Row(children: [
-                  HomepageGauge(),
+                  HomepageGauge(
+                      score(unit.itemNum, unit.warningNum, unit.trashNum)),
                   SizedBox(width: 8.0),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -188,8 +204,10 @@ class _MPageState extends State<MPage> {
                   )
                 ]),
               ),
+              Container(height: 1, color: Color(0xffdddddd)),
+              Container(height: 1),
               Expanded(
-                child: MTab(),
+                child: MTab(sortCtrl),
               ),
             ],
           ),

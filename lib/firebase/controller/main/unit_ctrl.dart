@@ -11,7 +11,7 @@ import '/firebase/repository/user_box_repository.dart';
 class UnitController {
   late String uid;
   late String unitID;
-
+  late UserRepository userRepo;
   late UnitRepository unitRepo;
   late FridgeRepository fridgeRepo;
   late Unit unit;
@@ -23,6 +23,7 @@ class UnitController {
     unitRepo = UnitRepository();
     fridgeRepo = FridgeRepository(unitID);
     fridgeRepo.init();
+    userRepo = UserRepository();
     await _checkStatus();
     try {
       unit = await unitRepo.getUnit(unitID);
@@ -39,13 +40,18 @@ class UnitController {
   Future<List<FridgeDTO>> getFridgeList() async {
     var fridges = unit.fridges;
     List<FridgeDTO> list = [];
-    fridges.forEach((value) async {
+    for (int i = 0; i < fridges.length; i++) {
       try {
-        var fridge = await fridgeRepo.getFridge(value);
+        var fridge = await fridgeRepo.getFridge(fridges[i]);
+        String managerName = "";
+        if (fridge.manager != "")
+          managerName = (await userRepo.getUser(fridge.manager)).userName;
+
         list.add(FridgeDTO(
             fridge.fridgeID,
             fridge.itemNum,
             fridge.manager,
+            managerName,
             fridge.warningNum,
             fridge.trashNum,
             fridge.lostNum,
@@ -53,33 +59,27 @@ class UnitController {
       } on FridgeRepositoryException catch (e) {
         CtrlException(e.code);
       }
-    });
+    }
     return list;
   }
 
   Future<void> _checkStatus() async {
     var unit = await unitRepo.getUnit(unitID);
     bool changeLog = false;
-    if (_sameDay(unit.last, DateTime.now()) == false) {
-      for (var fridgeID in unit.fridges) {
-        var fridgeNow = await fridgeRepo.getFridge(fridgeID);
-        var boxRepo = UserBoxRepository(unitID, fridgeID);
-        boxRepo.init();
-        if (_sameDay(fridgeNow.last, DateTime.now()) == false) {
-          for (var userID in fridgeNow.users) {
-            var userNow = await boxRepo.getUserBox(userID);
-            var itemRepo = ItemRepository(unitID, fridgeID, uid);
-            itemRepo.init();
-            if (_sameDay(userNow.last, DateTime.now()) == false) {
-              changeLog = await itemRepo.checkDate();
-            }
-            await boxRepo.updateUserStats(userID);
-            boxRepo.editLast(userID);
-          }
-        }
-        await fridgeRepo.updateFridgeStats(fridgeID);
-        await fridgeRepo.editLast(fridgeID);
+    for (var fridgeID in unit.fridges) {
+      var fridgeNow = await fridgeRepo.getFridge(fridgeID);
+      var boxRepo = UserBoxRepository(unitID, fridgeID);
+      boxRepo.init();
+      for (var userID in fridgeNow.users) {
+        var userNow = await boxRepo.getUserBox(userID);
+        var itemRepo = ItemRepository(unitID, fridgeID, uid);
+        itemRepo.init();
+        changeLog = await itemRepo.checkDate();
+        await boxRepo.updateUserStats(userID);
+        boxRepo.editLast(userID);
       }
+      await fridgeRepo.updateFridgeStats(fridgeID);
+      await fridgeRepo.editLast(fridgeID);
     }
     await unitRepo.updateUnitStats(unitID);
     await unitRepo.editLast(unitID);

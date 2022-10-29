@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '/components/auth/login_page/login_page.dart';
 import 'package:get/get.dart';
 import '/firebase/controller/auth/sign_in_ctrl.dart';
+import '/firebase/controller/main/main_ctrl.dart';
+import '/firebase/controller/main/general/dto.dart';
 
 class HomepageDrawer extends StatefulWidget {
   const HomepageDrawer({Key? key}) : super(key: key);
@@ -17,33 +19,68 @@ class _HomepageDrawerState extends State<HomepageDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            currentAccountPicture: Container(
-              width: 20,
-              height: 20,
-              child: CircleAvatar(
-                backgroundImage: AssetImage("assets/profile.jpg"),
-              ),
-            ),
-            accountName: Text(
-              'User_name님',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Roboto',
-              ),
-            ),
-            accountEmail: Text(
-              'test@test.io',
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontSize: 14.0,
-                color: Color(0x99000000),
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            decoration: BoxDecoration(color: Colors.white),
+          FutureBuilder(
+            future: getLogInUser(),
+            builder: (context, AsyncSnapshot<UserDTO> snapshot) {
+              if (snapshot.hasData) {
+                return UserAccountsDrawerHeader(
+                  currentAccountPicture: Container(
+                    width: 20,
+                    height: 20,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage("assets/member.jpg"),
+                    ),
+                  ),
+                  accountName: Text(
+                    snapshot.data!.userName + '님',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Roboto',
+                    ),
+                  ),
+                  accountEmail: Text(
+                    snapshot.data!.fridgeID,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 14.0,
+                      color: Color(0x99000000),
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  decoration: BoxDecoration(color: Colors.white),
+                );
+              }
+              return UserAccountsDrawerHeader(
+                currentAccountPicture: Container(
+                  width: 20,
+                  height: 20,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage("assets/profile.jpg"),
+                  ),
+                ),
+                accountName: Text(
+                  'User_name님',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+                accountEmail: Text(
+                  'test@test.io',
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 14.0,
+                    color: Color(0x99000000),
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                decoration: BoxDecoration(color: Colors.white),
+              );
+            },
           ),
           Padding(
               padding: EdgeInsets.only(left: 7),

@@ -17,7 +17,7 @@ class _SignTextFormState extends State<SignTextForm> {
     '냉장고3',
     '냉장고4'
   ];*/
-  final List<String> member_list = <String>['user', 'manager', 'master'];
+  final List<String> member_list = <String>['용사', '분대장', '간부'];
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -26,6 +26,7 @@ class _SignTextFormState extends State<SignTextForm> {
   List<String> refrigerator_list = [];
   String fridge = "냉장고1";
   String userType = "master";
+  String kuserType = "간부";
   bool isChecked = false;
 
   @override
@@ -270,22 +271,34 @@ class _SignTextFormState extends State<SignTextForm> {
             borderSide: BorderSide(width: 1, color: Colors.white),
           ),
         ),
-        value: userType,
+        value: kuserType,
         elevation: 13,
         style: const TextStyle(color: Colors.black),
         onChanged: (String? value) async {
           setState(() {
-            userType = value!;
+            if (value == "간부") {
+              userType = "master";
+              kuserType = "간부";
+            } else if (value == "분대장") {
+              userType = "manager";
+              kuserType = "분대장";
+            } else {
+              userType = "user";
+              kuserType = "용사";
+            }
           });
           try {
-            if (value != "master") {
+            if (value != "간부") {
               if (armyCodeController.text.trim() != "") {
                 refrigerator_list =
                     await getFridgeList(armyCodeController.text.trim());
-                if (refrigerator_list.length > 0) fridge = refrigerator_list[0];
+
+                if (refrigerator_list.length > 0)
+                  setState(() {
+                    fridge = refrigerator_list[0];
+                  });
               }
             }
-            print(refrigerator_list);
           } on CtrlException catch (e) {
             print(e.code);
           }

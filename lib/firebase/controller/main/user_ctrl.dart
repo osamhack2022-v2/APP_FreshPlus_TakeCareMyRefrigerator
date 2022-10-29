@@ -14,16 +14,17 @@ class UserController {
   late String userType;
 
   //Requesting Pages
+  late ItemRepository itemRepo;
   late String reqFridgeID;
   late String reqUid;
   late UserBox userBox;
   late UserBoxRepository userBoxRepo;
+  late UserRepository userRepo;
   init(String? reqFridgeID, String? reqUid) async {
     var user = await getLogInUser();
     uid = user.uid;
     unitID = user.unitID;
     fridgeID = user.fridgeID;
-    userName = user.userName;
     print(user.type);
     switch (user.type) {
       case ("master"):
@@ -50,9 +51,12 @@ class UserController {
         this.reqUid = uid;
         break;
     }
-
+    userRepo = UserRepository();
+    userName = (await userRepo.getUser(this.reqUid)).userName;
     userBoxRepo = UserBoxRepository(unitID, this.reqFridgeID);
     userBoxRepo.init();
+    itemRepo = ItemRepository(unitID, this.reqFridgeID, this.reqUid);
+    itemRepo.init();
     await _checkStatus();
     try {
       userBox = await userBoxRepo.getUserBox(this.reqUid);
@@ -62,13 +66,12 @@ class UserController {
   }
 
   UserBoxDTO getUserBox() {
-    return UserBoxDTO(reqUid, userBox.itemNum, userBox.warningNum,
-        userBox.trashNum, userBox.lostNum,userBox.notInNum);
+    return UserBoxDTO(reqUid, userName, userBox.itemNum, userBox.warningNum,
+        userBox.trashNum, userBox.lostNum, userBox.notInNum);
   }
 
   Future<List<ItemDTO>> getWarningItemList() async {
-    var items =
-        await userBoxRepo.getItemsQuery(reqUid, 'status', 'warning');
+    var items = await userBoxRepo.getItemsQuery(reqUid, 'status', 'warning');
     return items.map((value) {
       String type = "drink";
       switch (value.type) {
@@ -85,8 +88,7 @@ class UserController {
   }
 
   Future<List<ItemDTO>> getTrashItemList() async {
-    var items =
-        await userBoxRepo.getItemsQuery(reqUid, 'status', 'trash');
+    var items = await userBoxRepo.getItemsQuery(reqUid, 'status', 'trash');
     return items.map((value) {
       String type = "drink";
       switch (value.type) {
@@ -101,15 +103,15 @@ class UserController {
           "trash", type, value.dueDate);
     }).toList();
   }
-  Future<List<ItemDTO>> getWarningTrashList() async{
-    var items= (await getTrashItemList());
+
+  Future<List<ItemDTO>> getWarningTrashList() async {
+    var items = (await getTrashItemList());
     items.addAll((await getWarningItemList()));
     return items;
   }
 
   Future<List<ItemDTO>> getLostItemList() async {
-    var items =
-        await userBoxRepo.getItemsQuery(reqUid, 'status', 'lost');
+    var items = await userBoxRepo.getItemsQuery(reqUid, 'status', 'lost');
     return items.map((value) {
       String type = "drink";
       switch (value.type) {
@@ -121,7 +123,7 @@ class UserController {
           break;
       }
       return ItemDTO(value.itemID, value.itemName, value.itemCode, value.uid,
-          "trash", type, value.dueDate);
+          "lost", type, value.dueDate);
     }).toList();
   }
 
@@ -144,7 +146,7 @@ class UserController {
           status = "lost";
           break;
         case (ItemStatus.notIn):
-          status = "noHost";
+          status = "notIn";
           break;
         case (ItemStatus.trash):
           status = "trash";
@@ -160,21 +162,21 @@ class UserController {
     }).toList();
   }
 
+  Future<void> deleteItem(String itemID) async {
+    await itemRepo.deleteItem(itemID);
+    await userBoxRepo.deleteItems(reqUid, itemID);
+    await userBoxRepo.editItemNum(reqUid, -1);
+  }
+
   Future<void> _checkStatus() async {
     print("CheckStatus Started");
-    var user = await userBoxRepo.getUserBox(uid);
-    var itemRepo = ItemRepository(unitID, fridgeID, uid);
+    var itemRepo = ItemRepository(unitID, reqFridgeID, reqUid);
     bool changeLog = false;
     itemRepo.init();
-    if (_sameDay(user.last, DateTime.now()) == false) {
-      print("CHecking Status Really");
-      changeLog = await itemRepo.checkDate();
-    }
-    if (changeLog) {
-      print("Update User Stats");
-      await userBoxRepo.updateUserStats(uid);
-    }
-    await userBoxRepo.editLast(uid);
+    print("CHecking Status Really");
+    changeLog = await itemRepo.checkDate();
+    await userBoxRepo.updateUserStats(reqUid);
+    await userBoxRepo.editLast(reqUid);
   }
 
   bool _sameDay(DateTime a, DateTime b) {
@@ -186,5 +188,18 @@ class UserController {
       }
     }
     return false;
+  }
+
+  Future<List<MessageDTO>> getMessages() async {
+    var unread = await userRepo.getUnreadMessage(reqUid);
+    //var read = await userRepo.getReadMessage(uid);
+    List<MessageDTO> unreadDTO = unread.map((value) {
+      return MessageDTO(value, false);
+    }).toList();
+    // List<MessageDTO> readDTO = read.map((value) {
+    //   return MessageDTO(value, true);
+    // }).toList();
+    // unreadDTO.addAll(readDTO);
+    return unreadDTO;
   }
 }

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-class HomepageGauge extends StatefulWidget {
-  const HomepageGauge({Key? key}) : super(key: key);
-  _HomepageGaugeState createState() => _HomepageGaugeState();
-}
-
-class _HomepageGaugeState extends State<HomepageGauge> {
+class HomepageGauge extends StatelessWidget {
+  final int percent;
+  HomepageGauge(this.percent);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,7 +22,7 @@ class _HomepageGaugeState extends State<HomepageGauge> {
                   GaugeRange(
                       startValue: 0,
                       endValue: 33,
-                      color: Color(0xFFFE2A25),
+                      color: Color(0xFFFAA0A0),
                       label: '위험',
                       sizeUnit: GaugeSizeUnit.factor,
                       labelStyle:
@@ -35,7 +32,7 @@ class _HomepageGaugeState extends State<HomepageGauge> {
                   GaugeRange(
                     startValue: 33,
                     endValue: 66,
-                    color: Color(0xFFFFBA00),
+                    color: Color(0xFFFFE9A0),
                     label: '양호',
                     labelStyle:
                         GaugeTextStyle(fontFamily: 'Times', fontSize: 20),
@@ -46,7 +43,7 @@ class _HomepageGaugeState extends State<HomepageGauge> {
                   GaugeRange(
                     startValue: 66,
                     endValue: 99,
-                    color: Color(0xFF00AB47),
+                    color: Color(0xFFC7F2A4),
                     label: '안전',
                     labelStyle:
                         GaugeTextStyle(fontFamily: 'Times', fontSize: 20),
@@ -56,7 +53,7 @@ class _HomepageGaugeState extends State<HomepageGauge> {
                   ),
                 ],
                 pointers: <GaugePointer>[
-                  NeedlePointer(value: 99)
+                  NeedlePointer(value: percent.toDouble())
                 ])
           ],
         )));

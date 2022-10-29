@@ -197,6 +197,10 @@ class UserRepository {
     var query = await messageCol.where('read', isEqualTo: false).get();
     List<String> messages = [];
     query.docs.forEach((value) {
+      var map = {
+        'read': true,
+      };
+      messageCol.doc(value.id).update(map);
       messages.add(value.get("message"));
     });
     return messages;
