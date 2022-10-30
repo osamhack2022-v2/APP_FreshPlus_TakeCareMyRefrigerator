@@ -140,9 +140,17 @@
 - 설치에 앞서 [안드로이드 설정변경](https://ko.wikihow.com/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%97%90-APK-%ED%8C%8C%EC%9D%BC-%EC%84%A4%EC%B9%98%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)을 진행합니다.
 - [APK 파일](https://drive.google.com/file/d/1FhftjYVA-8gTrOuJMNskY1QHqqWs2P-O/view?usp=share_link)을 다운로드 받은 후 설치합니다.
 
+### 🌱 SubApp 설치안내
+- [APK 파일](https://drive.google.com/file/d/1N5xXQBwKO0hkfo59OYJjdYhAtsjE5vzZ/view?usp=sharing)을 다운로드 받은 후 설치합니다.
+
+### Web(Linux OS) 설치안내
+- git clone https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator.git
+- . ./init.sh 실행
+- CodeSpace의 경우 ./run.sh
+- local의 경우 flutter run 실행 후 웹 브라우저 
+
+
  
-
-
 ## 프로젝트 사용법 (Getting Started)
 
 - 본 시스템은 부대 단위로 도입하게 됩니다.
