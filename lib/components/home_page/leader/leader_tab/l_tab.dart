@@ -281,8 +281,7 @@ class _LTabState extends State<LTab>
                     builder: (BuildContext context,
                         AsyncSnapshot<List<UserBoxDTO>> snapshot) {
                       if (snapshot.hasData) {
-                        if (widget.sortCtrl.warningSort == true) {
-                          print(1);
+                        if (true) {
                           snapshot.data!.sort(
                             (a, b) {
                               var res = a.trashNum.compareTo(b.trashNum);

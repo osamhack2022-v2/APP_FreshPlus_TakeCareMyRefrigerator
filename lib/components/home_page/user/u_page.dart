@@ -12,9 +12,9 @@ class UPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final UserController ctrl = Get.arguments;
   int score(int itemNum, int warningNum, int trashNum) {
-    if (trashNum > 1)
+    if (trashNum >= 1)
       return 100 - (80 + trashNum);
-    else if (warningNum > 1)
+    else if (warningNum >= 1)
       return 100 - (40 + 30 * warningNum / itemNum).toInt();
     else
       return 80;

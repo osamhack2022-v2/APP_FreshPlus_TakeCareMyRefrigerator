@@ -7,6 +7,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialize();
   runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
     home: Auth(),
   ));
 }

@@ -22,6 +22,9 @@ dependencies:
     sdk: flutter
   syncfusion_flutter_gauges: ^20.3.50
 
+dependency_overrides:
+  firebase_core_platform_interface: 4.5.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -54,6 +57,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - assets/
+   - assets/item_image/
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
