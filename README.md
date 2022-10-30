@@ -23,6 +23,14 @@
    <div align="center"> <strong> Fresh Plus 로고 </strong>  </div>
 </p>
 -->
+## 시연영상
+</p>
+<p align="center">
+	<a href="https://www.youtube.com/watch?v=mXFw8Qcw8QE"><img src='https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EB%8F%99%EC%98%81%EC%83%81%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0.jpg'></a>
+</p>
+
+
+
 ## Fresh Plus 로고
 </p>
 <p align="left">
