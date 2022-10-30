@@ -12,7 +12,7 @@
 </p>
 </p>
 <p align="center">
-	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EB%83%89%EC%9E%A5%EA%B3%A0%EB%A5%BC%EB%B6%80%ED%83%81%ED%95%B4_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf"><img src='https://img.shields.io/badge/Document-yellow?style=for-the-badge'></a>
+	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf"><img src='https://img.shields.io/badge/Document-yellow?style=for-the-badge'></a>
 	<a href="유튜브링크"><img src='https://img.shields.io/badge/VIDEO-yellow?style=for-the-badge'></a>
 </p>
 
@@ -137,7 +137,7 @@
 
 ### 🌱 App 설치안내
 - 설치에 앞서 [안드로이드 설정변경](https://ko.wikihow.com/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%97%90-APK-%ED%8C%8C%EC%9D%BC-%EC%84%A4%EC%B9%98%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)을 진행합니다.
-- [APK 파일](최종apk파일링크)을 다운로드 받은 후 설치합니다.
+- [APK 파일](https://drive.google.com/file/d/1FhftjYVA-8gTrOuJMNskY1QHqqWs2P-O/view?usp=share_link)을 다운로드 받은 후 설치합니다.
 
  
 
