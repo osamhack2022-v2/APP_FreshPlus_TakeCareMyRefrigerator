@@ -45,11 +45,18 @@
 
 
 ## 시스템 구성도
+
 ![시스템 구성도](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B5%AC%EC%83%81%EB%8F%84.PNG)
 
 
 ## 기능 설명
 ### 📸 서브App + AI Camera
+- 서브App의 경우 분리된 프로젝트로서 feature/SubApp 브랜치에서 개발내용을 확인하실 수 있습니다!
+</p>
+<p align="left">
+	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/tree/feature/SubApp"><img src='https://img.shields.io/badge/SubApp-yellow?style=for-the-badge'></a>
+</p>
+
 ![Sub앱](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/SubappFlow2.PNG)<br><br>
 ### 🐤 메인App_용사용
 ![메인_용사](https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EA%B8%B0%EB%8A%A5_%EC%9A%A9%EC%82%AC.PNG)<br><br>
@@ -143,13 +150,14 @@
 ### 🌱 SubApp 설치안내
 - [APK 파일](https://drive.google.com/file/d/1N5xXQBwKO0hkfo59OYJjdYhAtsjE5vzZ/view?usp=sharing)을 다운로드 받은 후 설치합니다.
 
-### Web(Linux OS) 설치안내
-- git clone https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator.git
-- . ./init.sh 실행
-- CodeSpace의 경우 ./run.sh
-- local의 경우 flutter run 실행 후 웹 브라우저 
+### 🌱 Web(Linux OS) 설치안내
 
-
+```bash
+$ git clone https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator.git
+$ . ./init.sh 실행
+$ CodeSpace의 경우 ./run.sh
+$ local의 경우 flutter run 실행 후 웹 브라우저 
+```
  
 ## 프로젝트 사용법 (Getting Started)
 
