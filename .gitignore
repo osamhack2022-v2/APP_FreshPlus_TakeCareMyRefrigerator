@@ -1,9 +1,0 @@
-README.md
-android/app/build.gradle
-android/app/src/main/AndroidManifest.xml
-android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
-ios/Flutter/Generated.xcconfig
-ios/Flutter/flutter_export_environment.sh
-ios/Runner/GeneratedPluginRegistrant.m
-lib/main.dart
-pubspec.yaml
