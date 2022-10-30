@@ -13,7 +13,7 @@
 </p>
 <p align="center">
 	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf"><img src='https://img.shields.io/badge/Document-yellow?style=for-the-badge'></a>
-	<a href="유튜브링크"><img src='https://img.shields.io/badge/VIDEO-yellow?style=for-the-badge'></a>
+	<a href="https://youtu.be/mXFw8Qcw8QE"><img src='https://img.shields.io/badge/VIDEO-yellow?style=for-the-badge'></a>
 </p>
 
 <!--
