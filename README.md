@@ -12,7 +12,6 @@
 </p>
 </p>
 <p align="center">
-	<a href="https://stellar-cast-38c.notion.site/a880bf0b20ce479981335c4734afd2e8"><img src='https://img.shields.io/badge/Notion-yellow?style=for-the-badge'></a>
 	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/blob/main/For_readme/%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf"><img src='https://img.shields.io/badge/Document-yellow?style=for-the-badge'></a>
 	<a href="유튜브링크"><img src='https://img.shields.io/badge/VIDEO-yellow?style=for-the-badge'></a>
 </p>
@@ -33,6 +32,12 @@
 
 
 ## 프로젝트 소개
+### 🐤 자세한 프로젝트 소개는 Notion에 잘 정리되어 있으니 참고해주시면 감사하겠습니다!
+</p>
+<p align="center">
+	<a href="https://stellar-cast-38c.notion.site/a880bf0b20ce479981335c4734afd2e8"><img src='https://img.shields.io/badge/Notion-yellow?style=for-the-badge'></a>
+</p>
+
 ### :star: 개발동기
 - 군대에서 **바나나우유 먹기 참 어렵습니다**
 - 라벨지를 이용한 주기, 수출대장 작성 등 복잡한 절차를 거쳐야 함
@@ -53,7 +58,7 @@
 ### 📸 서브App + AI Camera
 - 서브App의 경우 분리된 프로젝트로서 feature/SubApp 브랜치에서 개발내용을 확인하실 수 있습니다!
 </p>
-<p align="left">
+<p align="center">
 	<a href="https://github.com/osamhack2022-v2/APP_FreshPlus_TakeCareMyRefrigerator/tree/feature/SubApp"><img src='https://img.shields.io/badge/SubApp-yellow?style=for-the-badge'></a>
 </p>
 
